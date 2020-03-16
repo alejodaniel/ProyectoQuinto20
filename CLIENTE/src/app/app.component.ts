@@ -20,6 +20,7 @@ export class AppComponent {
   fecha1: string;
   fecha2: string;
   hora: string;
+  file = null;
   timbradas: any = 0;
 
   ngOnInit() {
@@ -64,7 +65,6 @@ export class AppComponent {
     }
     if (this.users[i].HoraTrabajada != 0) {
 
-      console.log(this.users[i].HoraTrabajada);
       let valor1;
       let valor2;
       let valor3;
@@ -98,9 +98,8 @@ export class AppComponent {
   }
 
   onChange(files: File[]) {
-
+    this.file = files;
     if (files[0]) {
-      console.log(files[0]);
       Papa.parse(files[0], {
         header: true,
         skipEmptyLines: true,
@@ -148,4 +147,12 @@ export class AppComponent {
       });
     }
   }
+
+  guardarDatos() {
+  }
+
+  cargarArchivoExistente() {
+
+  }
+
 }

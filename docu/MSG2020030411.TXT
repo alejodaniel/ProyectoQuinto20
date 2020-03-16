@@ -1,0 +1,1 @@
+indice, hora, puerta, num, nombre, departamento, departamento2, idusuario, estado, detalle

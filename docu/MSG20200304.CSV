@@ -1,0 +1,49 @@
+Índice,Hora    ,Puerta         ,Num   ,Nombre         ,Departamento,Departamento:2,ID Usuario                ,Estado              ,Detalle     
+0001 ,06:22:59,   001         ,0050  ,Gabriela Cunguan,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0002 ,06:44:32,   001         ,0161  ,CHRISTIAN MEJÍA,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0003 ,06:53:03,   001         ,      ,               ,          ,          ,                          ,(M56)Huella Invalida,            
+0004 ,06:53:05,   001         ,0026  ,Juan Doenitz Martinez Guevara,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0005 ,06:53:21,   001         ,0068  ,Jhonny Viteri  ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0006 ,06:56:39,   001         ,0064  ,Isabel Guacho  ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0007 ,06:57:55,   001         ,0095  ,Carlos Alberto Andocilla Andra,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0008 ,07:03:24,   001         ,0049  ,Luis Vicente   ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0009 ,07:03:27,   001         ,0114  ,Ismeria Ortega ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0010 ,07:07:27,   001         ,      ,               ,          ,          ,                          ,(M56)Huella Invalida,            
+0011 ,07:07:35,   001         ,0073  ,Carmen Moncayo ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0012 ,07:10:21,   001         ,0157  ,Marcia Garcia  ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0013 ,07:25:45,   001         ,0106  ,Paul Navas     ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0014 ,07:28:00,   001         ,0131  ,SOFIA BOHORQUEZ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0015 ,07:31:15,   001         ,0063  ,Pablo Saenz    ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0016 ,07:31:17,   001         ,0168  ,ANDRES CAÑIZARES,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0017 ,07:31:21,   001         ,0062  ,Leonardo Samaniego,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0018 ,07:31:27,   001         ,0153  ,Fernanda Segovia,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0019 ,07:33:17,   001         ,0123  ,Mauricio Prieto,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0020 ,07:33:20,   001         ,0006  ,Nathaly Durand Reinaga,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0021 ,07:33:47,   001         ,0014  ,MARÍA EDELINA VILLAGRAN OLIVO,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0022 ,07:35:47,   001         ,0045  ,Giovanny	 Pazmiño,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0023 ,07:45:13,   001         ,0169  ,GABRIELA CASTRO,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0024 ,07:52:31,   001         ,0089  ,Diana Puruncajas,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0025 ,07:53:29,   001         ,0003  ,Rafael Fernando Carrera Zurita,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0026 ,08:02:23,   001         ,0093  ,Alexandra Gordon,Dep_00    ,Dep2_00   ,                          ,(M28)Acceso por PIN ,00000:00000 
+0027 ,08:10:34,   001         ,0042  ,Andres Carvajal,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0028 ,08:11:34,   001         ,0109  ,Yogledis Herrera,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0029 ,08:14:55,   001         ,0121  ,Pablo Robayo   ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0030 ,08:18:48,   001         ,0078  ,Edgar Huerta   ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0031 ,08:21:17,   001         ,0134  ,DIEGO YANEZ    ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0032 ,08:21:46,   001         ,0159  ,CHRISTIAN RODRIGUEZ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0033 ,08:23:32,               ,01    ,supervisor     ,          ,          ,                          ,(L20)Inicio Sesión    Client,            
+0034 ,08:25:52,   001         ,      ,               ,          ,          ,                          ,(M56)Huella Invalida,            
+0035 ,08:25:56,   001         ,      ,               ,          ,          ,                          ,(M56)Huella Invalida,            
+0036 ,08:26:01,   001         ,      ,               ,          ,          ,                          ,(M56)Huella Invalida,            
+0037 ,08:26:04,   001         ,0149  ,Viviana Cuatín ,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0038 ,08:26:08,   001         ,0008  ,Mauricio Alejandro Guamán Chan,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0039 ,08:27:02,               ,01    ,supervisor     ,          ,          ,                          ,(L21)Cierre de Sesión    Client,            
+0040 ,08:30:14,   001         ,0162  ,MARITZA TITUAÑA,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0041 ,08:33:44,               ,01    ,supervisor     ,          ,          ,                          ,(L20)Inicio Sesión    Server,            
+0042 ,08:35:01,               ,01    ,supervisor     ,          ,          ,                          ,(L21)Cierre de Sesión    Server,            
+0043 ,08:36:58,               ,01    ,supervisor     ,          ,          ,                          ,(L20)Inicio Sesión    Server,            
+0044 ,08:37:07,   001         ,0054  ,Alberto Almaguer,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 
+0045 ,08:37:14,               ,01    ,supervisor     ,          ,          ,                          ,(L21)Cierre de Sesión    Server,            
+0046 ,08:38:59,               ,01    ,supervisor     ,          ,          ,                          ,(L20)Inicio Sesión    Client,            
+0047 ,08:42:54,   001         ,0069  ,Elizabeth Mera ,Dep_00    ,Dep2_00   ,                          ,(M28)Acceso por PIN ,00000:00000 
+0048 ,08:46:17,   001         ,0029  ,María Del Carmen Andrango,Dep_00    ,Dep2_00   ,                          ,(M39)Acceso por Huella/Vena,00000:00000 

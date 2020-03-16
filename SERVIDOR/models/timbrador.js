@@ -9,4 +9,4 @@ var asistSchema = Schema({
     nombre: String
 });
 
-module.exports = mongoose.model('Asistente', asistSchema);
+module.exports = mongoose.model('Cliente', asistSchema);
