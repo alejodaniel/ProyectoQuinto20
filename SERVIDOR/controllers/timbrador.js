@@ -25,9 +25,22 @@ exports.findAll = (req, res) => {
     });
 }
 
+//encontrar uno solo
+exports.findOne = (req, res) => {
+    Asistente.findById(req.params.asistenteId).then(asistente => {
+        if (!asistente) {
+            res.status(404).send({ message: 'No se encuentra lo que busca' });
+        }
+        res.json(asistente);
+    }).catch(err => {
+        if (err.kind === 'ObjectId') {
+            return res.status(404).send({ message: 'No se encuentra el dato ' });
+        }
+        return res.status(500).send({ message: 'Error de servidor' });
+    });
+}
 
 //actualizar
-
 exports.update = (req, res) => {
     Asistente.findByIdAndUpdate(req.body.id.req.body, { new: true }).then(asistente => {
         if (!asistente) {

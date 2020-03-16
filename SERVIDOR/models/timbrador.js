@@ -3,10 +3,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var asistSchema = Schema({
 
-   fecha: String,
-    hora: String,
+   nombre: String,
+    fecha: String,
     departamento: String,
-    nombre: String
+    hora1: String,
+    hora2: String,
+    hora3: String,
+    hora4: String,
+    timbradas: Number,
+    horaTrabajada: Number,
+
 });
 
-module.exports = mongoose.model('Cliente', asistSchema);
+module.exports = mongoose.model('Asistente', asistSchema);
