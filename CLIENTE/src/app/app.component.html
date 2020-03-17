@@ -2,69 +2,27 @@
   <hello name="{{ name }}"></hello>
 
 </div>
-<div class="container col-5">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+<form>
+  <div class="form-row align-items-center">
+    <div class="col-auto my-1">
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected disabled>Seleccione...</option>
+        <option value="0">One</option>
+        <option value="0">Two</option>
+        <option value="0">Three</option>
+      </select>
+    </div>
+    <div class="col-auto my-1">
+      <div class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-
-
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BUSQUEDA POR DOCENTE</a>
-      </li>
-    </ul>
-
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+      </div>
+    </div>
+   
   </div>
-</nav>
-</div>
-<br>
-<div class="container col-5">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-
-
-
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BUSQUEDA POR FECHA</a>
-        </li>
-      </ul>
-
-      <form class="form-inline my-2 my-lg-0">
-
-        <input class="form-control mr-sm-2" type="month" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
-</div>
-<br>
-<div class="container col-5">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-
-
-
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">BUSQUEDA POR FECHA</a>
-        </li>
-      </ul>
-
-      <form class="form-inline my-2 my-lg-0">
-
-        <input class="form-control mr-sm-2" type="date" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
+</form>
 </div>
 <br>
 <div class="container">
