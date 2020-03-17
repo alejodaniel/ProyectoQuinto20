@@ -76,7 +76,7 @@
     <br>
     <button (click)="cargarArchivoExistente()" type="button" class="btn btn-warning">Cargar Archivo Existente</button>
     <button (click)="uploads.click()" type="button" class="btn btn-primary">Cargar Archivo Nuevo</button>
-    <button *ngIf="file!=null" (click)="guardarDatos()" type="button" class="btn btn-success">Guardar Archivo</button>
+    <button *ngIf="file!=null" (click)="guardarDatos(uploads.files)" type="button" class="btn btn-success">Guardar Archivo</button>
   </div>
   <table class="table table-striped table-responsive">
     <thead>

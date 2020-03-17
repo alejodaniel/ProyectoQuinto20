@@ -1,6 +1,8 @@
 'use strict'
 var express = require('express');
 var bodyParser = require('body-parser');
+var multipart = require('connect-multiparty');
+
 var app = express();
 
 //cargar rutas
@@ -8,13 +10,17 @@ var asistRoutes = require('./routes/timbradores');
 
 
 //midelwares de body parser
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 //cors
 //config cabeceras y cors
 
-const cors = require('cors')
+const multipartMiddleware = multipart({
+    uploadDir: './uploads'
+});
+
+const cors = require('cors');
 const corsOptions = {
     origin: 'http://localhost:4200',
     optionsSuccessStatus: 200
@@ -30,5 +36,12 @@ app.use((req, res, next) => {
     next();
 });
 //rutas base
-app.use('/api',asistRoutes);
+app.use('/api', asistRoutes);
+
+app.post('/api/guardarArchivo', multipartMiddleware, (req, res) => {
+    console.log(req.files['uploads'][0].path)
+    res.json({'mensaje:': ''})
+});
+
+
 module.exports = app;
