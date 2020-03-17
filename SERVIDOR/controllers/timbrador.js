@@ -1,5 +1,6 @@
 'use strict'
 var Asistente = require('../models/timbrador');
+var Archivo = require('../models/archivo');
 
 //Guardar
 exports.create = (req, res) => {
@@ -13,7 +14,37 @@ exports.create = (req, res) => {
     }).catch(err => {
         res.status(500).send({message: 'Error al guardar'});
     });
-}
+};
+
+exports.createFile = (req, res) => {
+    var archivo = new Archivo(req.body);
+    archivo.save().then(data => {
+        return res.status(200).json({
+            ok: true,
+            action: 'Insert',
+            datos: data
+        });
+    }).catch(err => {
+        return res.status(500).json({
+            ok: false,
+            message: 'Error al crear'
+        })
+    });
+};
+
+exports.findAllFiles = (req, res) => {
+    Archivo.find().then(data => {
+        return res.status(200).json({
+            ok: true,
+            datos: data
+        });
+    }).catch(err => {
+        return res.status(500).json({
+            ok: false,
+            message: 'Error al crear'
+        })
+    });
+};
 
 
 //buscar todos
@@ -23,22 +54,49 @@ exports.findAll = (req, res) => {
     }).catch(err => {
         res.status(500).send({message: 'Error al buscar'});
     });
-}
+};
+
+//encontrar uno solo
+exports.findOneArchivo = (req, res) => {
+    Archivo.findById(req.params.archivoId).then(archivo => {
+        if (!archivo) {
+            return res.status(404).json({
+                ok: false,
+                message: 'Error al Buscar el id'
+            })
+        }
+        return res.status(200).json({
+            ok: true,
+            datos: archivo
+        });
+    }).catch(err => {
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({
+                ok: false,
+                message: 'Error al Buscar el id'
+            })
+        }
+        return res.status(500).json({
+            ok: false,
+            message: 'Error al Buscar'
+        })
+    });
+};
 
 //encontrar uno solo
 exports.findOne = (req, res) => {
     Asistente.findById(req.params.asistenteId).then(asistente => {
         if (!asistente) {
-            res.status(404).send({ message: 'No se encuentra lo que busca' });
+            res.status(404).send({message: 'No se encuentra lo que busca'});
         }
         res.json(asistente);
     }).catch(err => {
         if (err.kind === 'ObjectId') {
-            return res.status(404).send({ message: 'No se encuentra el dato ' });
+            return res.status(404).send({message: 'No se encuentra el dato '});
         }
-        return res.status(500).send({ message: 'Error de servidor' });
+        return res.status(500).send({message: 'Error de servidor'});
     });
-}
+};
 
 //actualizar
 exports.update = (req, res) => {
