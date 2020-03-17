@@ -1,5 +1,5 @@
 'use strict'
-var Asistente  = require('../models/timbrador');
+var Asistente = require('../models/timbrador');
 
 //Guardar
 exports.create = (req, res) => {
@@ -11,7 +11,7 @@ exports.create = (req, res) => {
         res.json(data);
         res.status(200).send({personasagg: data});
     }).catch(err => {
-        res.status(500).send({ message: 'Error al guardar' });
+        res.status(500).send({message: 'Error al guardar'});
     });
 }
 
@@ -21,7 +21,7 @@ exports.findAll = (req, res) => {
     Asistente.find().then(asistentes => {
         res.json(asistentes);
     }).catch(err => {
-        res.status(500).send({ message: 'Error al buscar' });
+        res.status(500).send({message: 'Error al buscar'});
     });
 }
 
@@ -29,16 +29,16 @@ exports.findAll = (req, res) => {
 //actualizar
 
 exports.update = (req, res) => {
-    Asistente.findByIdAndUpdate(req.body.id.req.body, { new: true }).then(asistente => {
+    Asistente.findByIdAndUpdate(req.body.id.req.body, {new: true}).then(asistente => {
         if (!asistente) {
-            res.status(404).send({ message: 'Asistente no se encuentra' });
+            res.status(404).send({message: 'Asistente no se encuentra'});
         }
         res.json(asistente);
     }).catch(err => {
         if (err.kind === 'ObjectId') {
-            res.status(404).send({ message: 'Asistente no encontrado' });
+            res.status(404).send({message: 'Asistente no encontrado'});
         }
-        res.status(500).send({ message: 'Error de servidor' });
+        res.status(500).send({message: 'Error de servidor'});
     });
 }
 
@@ -47,14 +47,14 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     Asistente.findByIdAndRemove(req.params.asistentesId)
         .then(asistente => {
-            if(!asistente) {
+            if (!asistente) {
                 return res.status(404).json({
                     msg: "Asistente no se ecuentra " + req.params.asistentesId
                 });
             }
             res.json({msg: "Se borro correctamente"});
         }).catch(err => {
-        if(err.kind === 'ObjectId' || err.nombre === 'NotFound') {
+        if (err.kind === 'ObjectId' || err.nombre === 'NotFound') {
             return res.status(404).json({
                 msg: "Asistente no se encuentra" + req.params.asistentesId
             });
@@ -64,3 +64,4 @@ exports.delete = (req, res) => {
         });
     });
 };
+

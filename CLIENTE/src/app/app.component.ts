@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import * as Papa from 'papaparse';
 import {User} from '../app/Models/User';
+import {ImagenesService} from "./services/imagenes.service";
 
 let obj: AppComponent;
 
@@ -22,10 +23,15 @@ export class AppComponent {
   hora: string;
   file = null;
   timbradas: any = 0;
+  uploadFile: Array<File>;
+
+  constructor(private imagenesService: ImagenesService) {
+  }
 
   ngOnInit() {
     obj = this;
   }
+
 
   quitar(data) {
     if (data > 0) {
@@ -148,7 +154,15 @@ export class AppComponent {
     }
   }
 
-  guardarDatos() {
+  guardarDatos(file) {
+    this.uploadFile = file;
+    let formData = new FormData();
+    for (let i = 0; i < this.uploadFile.length; i++) {
+      formData.append('uploads[]', this.uploadFile[i], this.uploadFile[i].name);
+    }
+    this.imagenesService.guardarArchivo(formData).subscribe(r => {
+      console.log(r);
+    });
   }
 
   cargarArchivoExistente() {
