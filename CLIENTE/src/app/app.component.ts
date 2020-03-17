@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import * as Papa from 'papaparse';
 import {User} from '../app/Models/User';
-import {ImagenesService} from "./services/imagenes.service";
+import {ImagenesService} from './services/imagenes.service';
+import {Archivo} from './Models/Archivo';
 
 let obj: AppComponent;
 
@@ -11,15 +12,19 @@ let obj: AppComponent;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name = 'Bienvenidos';
+  name = 'Sistema Biometrico';
   dataList: any[];
+  activeSelect: any = false;
   data: any[];
   user: User;
+  archivo: Archivo = new Archivo();
   users: any = [];
+  archivoSelected = 'selecione';
   arr: any = [];
   nombre: string;
   fecha1: string;
   fecha2: string;
+  dbFiles: any = [];
   hora: string;
   file = null;
   timbradas: any = 0;
@@ -105,13 +110,14 @@ export class AppComponent {
 
   onChange(files: File[]) {
     this.file = files;
+    this.archivo.nombre = this.file[0].name;
     if (files[0]) {
       Papa.parse(files[0], {
         header: true,
         skipEmptyLines: true,
         complete: (result, file) => {
           this.dataList = result.data;
-          this.dataList.sort(function (o1, o2) {
+          this.dataList.sort(function(o1, o2) {
             if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
               return 1;
             }
@@ -167,6 +173,40 @@ export class AppComponent {
 
   cargarArchivoExistente() {
 
+  }
+
+  guardarArchivoPersonas() {
+    this.archivo.usuarios = this.users as Array<any>;
+    this.imagenesService.guardarArchivoUsuarios(this.archivo).subscribe(res => {
+      this.limpiarDatos(res['datos']['usuarios']);
+    });
+  }
+
+  obtenerArchivoExistente() {
+    this.activeSelect = true;
+    this.imagenesService.getArchivoUsuarios().subscribe(r => {
+      this.dbFiles = r['datos'];
+    });
+  }
+
+  loadData(id) {
+    this.imagenesService.getOneArchivo(id).subscribe(r => {
+      this.limpiarDatos(r['datos']['usuarios']);
+    });
+  }
+
+
+  limpiarDatos(array) {
+    this.users = array.sort(function(o1, o2) {
+      if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
+        return 1;
+      }
+      if (o1.Nombre < o2.Nombre && o1.Fecha == o2.Fecha) {
+        return -1;
+      }
+      return 0;
+    });
+    this.file = null;
   }
 
 }
