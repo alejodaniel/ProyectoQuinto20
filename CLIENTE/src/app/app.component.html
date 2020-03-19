@@ -44,15 +44,15 @@
   <table class="table table-bordered table-responsive">
     <thead>
     <tr>
-      <td>Nombre</td>
-      <td>Fecha</td>
-      <td>Departamento</td>
-      <td>Hora1</td>
-      <td>Hora2</td>
-      <td>Hora3</td>
-      <td>Hora4</td>
-      <td>N° Timbradas</td>
-      <td>Hora Trabajada</td>
+      <td><b>Nombre</b></td>
+      <td><b>Fecha</b></td>
+      <td><b>Departamento</b></td>
+      <td><b>Fecha1</b></td>
+      <td><b>Fecha2</b></td>
+      <td><b>Fecha3</b></td>
+      <td><b>Fecha4</b></td>
+      <td><b>N° Timbradas</b></td>
+      <td><b>Horas Trabajadas</b></td>
       <td *ngIf="this.file == null">Editar</td>
     </tr>
     </thead>
@@ -60,15 +60,15 @@
     <tbody *ngIf="this.file !=null">
     <tr *ngFor="let record of users;let i = index;">
       <ng-container *ngIf="quitar(i)">
-        <td> {{record.Nombre}}</td>
-        <td> {{record.Fecha}} </td>
+        <td > {{record.Nombre}} </td>
+        <td > {{record.Fecha |date: "dd/MM/yyyy"}} </td>
         <td> {{record.Departamento}} </td>
         <td> {{record.Hora1}} </td>
-        <td> {{record.Hora2}} </td>
-        <td> {{record.Hora3}} </td>
-        <td> {{record.Hora4}} </td>
+        <td type="input"> {{record.Hora2}} </td>
+        <td type="input"> {{record.Hora3}} </td>
+        <td type="input"> {{record.Hora4}} </td>
         <td *ngIf="contTimbradas(record,i)"> {{record.timbradas}} </td>
-        <td *ngIf="contHorasTrabajadas(record,i)">{{record.HoraTrabajada}}</td>
+        <td *ngIf="contHorasTrabajadas(record,i)" >{{record.HoraTrabajada}}</td>
 
       </ng-container>
     </tr>

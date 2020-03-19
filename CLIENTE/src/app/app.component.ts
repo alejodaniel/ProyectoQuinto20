@@ -3,19 +3,26 @@ import * as Papa from 'papaparse';
 import {User} from '../app/Models/User';
 import {ImagenesService} from './services/imagenes.service';
 import {Archivo} from './Models/Archivo';
+import {Pipe, PipeTransform} from '@angular/core';
+import {DatePipe} from '@angular/common';
+
 
 let obj: AppComponent;
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
   name = 'Sistema Biometrico';
   dataList: any[];
   activeSelect: any = false;
   data: any[];
+  fechaAcomodada: any;
   user: any = {};
   archivo: Archivo = new Archivo();
   users: any = [];
@@ -111,13 +118,14 @@ export class AppComponent {
     this.users = [];
     this.file = files;
     this.archivo.nombre = this.file[0].name;
+
     if (files[0]) {
       Papa.parse(files[0], {
         header: true,
         skipEmptyLines: true,
         complete: (result, file) => {
           this.dataList = result.data;
-          this.dataList.sort(function(o1, o2) {
+          this.dataList.sort(function (o1, o2) {
             if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
               return 1;
             }
@@ -133,6 +141,9 @@ export class AppComponent {
               if (this.dataList[i].Nombre == this.dataList[i + 1].Nombre) {
                 objeto.Nombre = this.dataList[i].Nombre;
                 objeto.Fecha = this.dataList[i].Fecha;
+                this.fechaAcomodada = new DatePipe(objeto.Fecha);
+                this.fechaAcomodada = objeto.Fecha;
+                console.log(this.fechaAcomodada);
                 objeto.Departamento = this.dataList[i].Departamento;
                 objeto.Hora1 = this.dataList[i].Hora;
                 objeto.Hora2 = this.dataList[i + 1].Hora;
@@ -203,7 +214,7 @@ export class AppComponent {
 
 
   limpiarDatos(array) {
-    this.users = array.sort(function(o1, o2) {
+    this.users = array.sort(function (o1, o2) {
       if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
         return 1;
       }
