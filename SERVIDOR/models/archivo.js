@@ -1,13 +1,14 @@
 'use strict'
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var fileSchema = Schema({
+var Asistentes = mongoose.model('Asistentes');
 
+var fileSchema = Schema({
     nombre: {
         type: String,
         unique: true
     },
-    usuarios: [{}],
+    usuarios: [{type: Schema.ObjectId, ref: "Asistentes"}]
 
 });
 

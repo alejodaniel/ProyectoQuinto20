@@ -18,6 +18,7 @@ exports.create = (req, res) => {
 
 exports.createFile = (req, res) => {
     var archivo = new Archivo(req.body);
+    console.log(req)
     archivo.save().then(data => {
         return res.status(200).json({
             ok: true,
@@ -34,9 +35,11 @@ exports.createFile = (req, res) => {
 
 exports.findAllFiles = (req, res) => {
     Archivo.find().then(data => {
-        return res.status(200).json({
-            ok: true,
-            datos: data
+        Asistente.populate(data, {path: "usuarios"}, function (err, data) {
+            return res.status(200).json({
+                ok: true,
+                datos: data
+            });
         });
     }).catch(err => {
         return res.status(500).json({
@@ -59,15 +62,11 @@ exports.findAll = (req, res) => {
 //encontrar uno solo
 exports.findOneArchivo = (req, res) => {
     Archivo.findById(req.params.archivoId).then(archivo => {
-        if (!archivo) {
-            return res.status(404).json({
-                ok: false,
-                message: 'Error al Buscar el id'
-            })
-        }
-        return res.status(200).json({
-            ok: true,
-            datos: archivo
+        Asistente.populate(archivo, {path: "usuarios"}, function (err, archivo) {
+            return res.status(200).json({
+                ok: true,
+                datos: archivo
+            });
         });
     }).catch(err => {
         if (err.kind === 'ObjectId') {
@@ -100,7 +99,7 @@ exports.findOne = (req, res) => {
 
 //actualizar
 exports.update = (req, res) => {
-    Asistente.findByIdAndUpdate(req.body.id.req.body, {new: true}).then(asistente => {
+    Asistente.findByIdAndUpdate(req.body._id,req.body, {new: true}).then(asistente => {
         if (!asistente) {
             res.status(404).send({message: 'Asistente no se encuentra'});
         }

@@ -16,16 +16,14 @@ export class AppComponent {
   dataList: any[];
   activeSelect: any = false;
   data: any[];
-  user: User;
+  user: any = {};
   archivo: Archivo = new Archivo();
   users: any = [];
   archivoSelected = 'selecione';
-  arr: any = [];
-  nombre: string;
-  fecha1: string;
-  fecha2: string;
+  newArray: any = [];
+  array: any = [];
+  ids: any = [];
   dbFiles: any = [];
-  hora: string;
   file = null;
   timbradas: any = 0;
   uploadFile: Array<File>;
@@ -51,6 +49,7 @@ export class AppComponent {
   }
 
   contTimbradas(data, i) {
+    this.file = null;
     if (this.users[i].Hora1 != undefined) {
       this.users[i].timbradas += 1;
     }
@@ -109,6 +108,7 @@ export class AppComponent {
   }
 
   onChange(files: File[]) {
+    this.users = [];
     this.file = files;
     this.archivo.nombre = this.file[0].name;
     if (files[0]) {
@@ -171,15 +171,21 @@ export class AppComponent {
     });
   }
 
-  cargarArchivoExistente() {
 
+  getArchivoById(id) {
+    this.imagenesService.getOneArchivo(id).subscribe(r => {
+      this.limpiarDatos(r['datos']['usuarios']);
+    });
   }
 
-  guardarArchivoPersonas() {
-    this.archivo.usuarios = this.users as Array<any>;
-    this.imagenesService.guardarArchivoUsuarios(this.archivo).subscribe(res => {
-      this.limpiarDatos(res['datos']['usuarios']);
-    });
+  guardarArchivoPersonas(data?) {
+    if (data.length == this.array.length) {
+      this.archivo.usuarios = data;
+      this.imagenesService.guardarArchivoUsuarios(this.archivo).subscribe(res => {
+        localStorage.setItem('idArchivo', res['datos']['_id']);
+        this.getArchivoById(res['datos']['_id']);
+      });
+    }
   }
 
   obtenerArchivoExistente() {
@@ -207,6 +213,27 @@ export class AppComponent {
       return 0;
     });
     this.file = null;
+  }
+
+  crearUsuario() {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].timbradas != 0 || this.users[i].HoraTrabajada != 0) {
+        this.array.push(this.users[i]);
+        this.imagenesService.createUser(this.users[i]).subscribe(res => {
+          this.newArray.push(res);
+          this.ids.push(res['_id']);
+          this.guardarArchivoPersonas(this.ids);
+        });
+      }
+    }
+    this.limpiarDatos(this.newArray);
+  }
+
+  actualizar() {
+    this.imagenesService.actualizarPersona(this.user).subscribe(res => {
+
+    });
+
   }
 
 }

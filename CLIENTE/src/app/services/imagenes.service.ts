@@ -8,7 +8,7 @@ import {Archivo} from '../Models/Archivo';
 })
 export class ImagenesService {
 
-  url = environment.url + 'guardarArchivo';
+  url = environment.url;
   httpHeaders = new HttpHeaders({'Content-Type': 'multipart/form-data'});
 
   constructor(private http: HttpClient) {
@@ -19,7 +19,7 @@ export class ImagenesService {
     return this.http.post(this.url, formData);
   }
 
-  guardarArchivoUsuarios(archivo: Archivo) {
+  guardarArchivoUsuarios(archivo) {
     return this.http.post(environment.url + 'archivo', archivo);
   }
 
@@ -29,6 +29,14 @@ export class ImagenesService {
 
   getOneArchivo(archivoId) {
     return this.http.get(environment.url + 'archivo/' + archivoId);
+  }
+
+  createUser(usuario) {
+    return this.http.post(this.url + 'asistente', usuario);
+  }
+
+  actualizarPersona(usuario) {
+    return this.http.put(this.url + 'asistente', usuario);
   }
 
 }
