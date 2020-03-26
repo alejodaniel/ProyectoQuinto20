@@ -11,7 +11,6 @@
           <option selected disabled>Seleccione...</option>
           <option value="0">Nombre</option>
           <option value="0">Fecha</option>
-
         </select>
       </div>
       <div class="col-auto my-1">
@@ -60,15 +59,15 @@
     <tbody *ngIf="this.file !=null">
     <tr *ngFor="let record of users;let i = index;">
       <ng-container *ngIf="quitar(i)">
-        <td > {{record.Nombre}} </td>
-        <td > {{record.Fecha |date: "dd/MM/yyyy"}} </td>
+        <td> {{record.Nombre}} </td>
+        <td> {{record.Fecha |date}} </td>
         <td> {{record.Departamento}} </td>
         <td> {{record.Hora1}} </td>
-        <td type="input"> {{record.Hora2}} </td>
-        <td type="input"> {{record.Hora3}} </td>
-        <td type="input"> {{record.Hora4}} </td>
+        <td> {{record.Hora2}} </td>
+        <td> {{record.Hora3}} </td>
+        <td> {{record.Hora4}} </td>
         <td *ngIf="contTimbradas(record,i)"> {{record.timbradas}} </td>
-        <td *ngIf="contHorasTrabajadas(record,i)" >{{record.HoraTrabajada}}</td>
+        <td *ngIf="contHorasTrabajadas(record,i)">{{record.HoraTrabajada}}</td>
 
       </ng-container>
     </tr>
@@ -78,14 +77,14 @@
       <tr [ngClass]="record.timbradas < 4?'color1':''">
         <ng-container *ngIf="quitar(i)">
           <td> {{record.Nombre}}</td>
-          <td> {{record.Fecha}} </td>
+          <td> {{record.Fecha | fechaPipe}} </td>
           <td> {{record.Departamento}} </td>
-          <td> {{record.Hora1}} </td>
-          <td> {{record.Hora2}} </td>
-          <td> {{record.Hora3}} </td>
-          <td> {{record.Hora4}} </td>
+          <td> {{record.Hora1 | hora}} </td>
+          <td> {{record.Hora2 | hora}} </td>
+          <td> {{record.Hora3 | hora}} </td>
+          <td> {{record.Hora4 | hora}} </td>
           <td> {{record.timbradas}} </td>
-          <td>{{record.HoraTrabajada}}</td>
+          <td>{{record.HoraTrabajada  | hora}}</td>
           <td>
             <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
                     class="btn btn-primary">Editar

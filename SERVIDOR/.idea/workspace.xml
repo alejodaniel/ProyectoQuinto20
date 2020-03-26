@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6580ce27-a745-44a3-b976-c4711562e4ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CLIENTE/src/app/services/pipes/hora.pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/services/imagenes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/services/imagenes.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/fecha.pipe.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/fecha.pipe.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/timbrador.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/timbrador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/archivo.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/archivo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/timbrador.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/timbrador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docu/MARZO2020.CSV" beforeDir="false" afterPath="$PROJECT_DIR$/../docu/MARZO2020.CSV" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CLIENTE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -78,7 +75,8 @@
       <updated>1584468243376</updated>
       <workItem from="1584468244753" duration="8389000" />
       <workItem from="1584556458935" duration="9985000" />
-      <workItem from="1584632470030" duration="682000" />
+      <workItem from="1584632470030" duration="684000" />
+      <workItem from="1584723690232" duration="1589000" />
     </task>
     <servers />
   </component>
@@ -94,22 +92,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1584632547902" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584572611308">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1584724376290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584572611308" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584572611308">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1584724376290" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1584724376290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584572611308" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584572611308">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1584724376290" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1584724376290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584572611308" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584572611308">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1584724376290" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1584724376290">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584572611308" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1584724376290" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584556470470">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

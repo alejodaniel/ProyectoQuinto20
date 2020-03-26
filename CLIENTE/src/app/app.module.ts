@@ -3,18 +3,17 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HelloComponent} from './hello.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { FechaPipe } from './fecha.pipe';
-import {DatePipe} from "@angular/common";
-import { PdfComponent } from './pdf/pdf.component';
+import {FechaPipePipe} from './services/pipes/fecha-pipe.pipe';
+import {HoraPipe} from './services/pipes/hora.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    FechaPipe,
-    PdfComponent
+    FechaPipePipe,
+    HoraPipe
   ],
   imports: [
     BrowserModule,
@@ -22,7 +21,7 @@ import { PdfComponent } from './pdf/pdf.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
