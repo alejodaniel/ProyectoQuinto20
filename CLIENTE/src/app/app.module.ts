@@ -7,12 +7,14 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from '@angular/forms';
 import { FechaPipe } from './fecha.pipe';
 import {DatePipe} from "@angular/common";
+import { PdfComponent } from './pdf/pdf.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloComponent,
-    FechaPipe
+    FechaPipe,
+    PdfComponent
   ],
   imports: [
     BrowserModule,
