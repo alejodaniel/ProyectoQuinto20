@@ -10,8 +10,7 @@ export class HoraPipe implements PipeTransform {
   hora: any;
 
   transform(value: any): any {
-    console.log(value);
-    if (value !== undefined) {
+    if (value != undefined) {
       if (value.length > 3) {
         this.horas = value.toString().substr(0, 2);
         this.minutos = value.toString().substr(1, 2);

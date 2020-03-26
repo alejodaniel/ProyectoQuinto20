@@ -6,20 +6,25 @@
   <form>
     <div class="form-row align-items-center">
       <div class="col-auto my-1">
-        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-          <option selected disabled>Seleccione...</option>
-          <option value="0">Nombre</option>
-          <option value="0">Fecha</option>
-        </select>
+
+        <label>Buscar por:</label>
       </div>
       <div class="col-auto my-1">
-        <div class="custom-control custom-checkbox mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-
-        </div>
+        <select [(ngModel)]="busqueda" name="busqueda" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected value="-- selecione --">Seleccione...</option>
+          <option value="Nombre">Nombre</option>
+          <option value="Fecha">Fecha</option>
+        </select>
       </div>
-
+      <div *ngIf="busqueda == 'Nombre'" class="col-auto my-1">
+        <input [(ngModel)]="parametro" type="text" class="form-control" name="Nombre">
+      </div>
+      <div *ngIf="busqueda == 'Fecha'" class="col-auto my-1">
+        <input [(ngModel)]="parametro" type="text" class="form-control" name="Fecha">
+      </div>
+      <button *ngIf="busqueda != '-- selecione --'" (click)="buscarPor()" type="button" class="btn btn-primary"><i
+        class="fas fa-search"></i>
+      </button>
     </div>
   </form>
 </div>
@@ -40,19 +45,19 @@
       Archivo
     </button>
   </div>
-  <table class="table table-bordered table-responsive">
+  <table *ngIf="busqueda == '-- selecione --'" class="table table-bordered table-responsive">
     <thead>
     <tr>
       <td><b>Nombre</b></td>
       <td><b>Fecha</b></td>
       <td><b>Departamento</b></td>
-      <td><b>Fecha1</b></td>
-      <td><b>Fecha2</b></td>
-      <td><b>Fecha3</b></td>
-      <td><b>Fecha4</b></td>
+      <td><b>Hora Entrada</b></td>
+      <td><b>Salida Almuerzo</b></td>
+      <td><b>Regreso Almuerzo</b></td>
+      <td><b>Hora Salida</b></td>
       <td><b>N° Timbradas</b></td>
       <td><b>Horas Trabajadas</b></td>
-      <td *ngIf="this.file == null">Editar</td>
+      <td *ngIf="this.file == null"><b>Editar </b></td>
     </tr>
     </thead>
 
@@ -60,14 +65,14 @@
     <tr *ngFor="let record of users;let i = index;">
       <ng-container *ngIf="quitar(i)">
         <td> {{record.Nombre}} </td>
-        <td> {{record.Fecha |date}} </td>
+        <td> {{record.Fecha | fechaPipe}} </td>
         <td> {{record.Departamento}} </td>
-        <td> {{record.Hora1}} </td>
-        <td> {{record.Hora2}} </td>
-        <td> {{record.Hora3}} </td>
-        <td> {{record.Hora4}} </td>
+        <td> {{record.Hora1| hora}} </td>
+        <td> {{record.Hora2| hora}} </td>
+        <td> {{record.Hora3| hora}} </td>
+        <td> {{record.Hora4| hora}} </td>
         <td *ngIf="contTimbradas(record,i)"> {{record.timbradas}} </td>
-        <td *ngIf="contHorasTrabajadas(record,i)">{{record.HoraTrabajada}}</td>
+        <td *ngIf="contHorasTrabajadas(record,i)">{{record.HoraTrabajada| hora}}</td>
 
       </ng-container>
     </tr>
@@ -76,6 +81,44 @@
     <ng-container *ngFor="let record of users;let i = index;">
       <tr [ngClass]="record.timbradas < 4?'color1':''">
         <ng-container *ngIf="quitar(i)">
+          <td> {{record.Nombre}}</td>
+          <td> {{record.Fecha | fechaPipe}} </td>
+          <td> {{record.Departamento}} </td>
+          <td> {{record.Hora1 | hora}} </td>
+          <td> {{record.Hora2 | hora}} </td>
+          <td> {{record.Hora3 | hora}} </td>
+          <td> {{record.Hora4 | hora}} </td>
+          <td> {{record.timbradas}} </td>
+          <td>{{record.HoraTrabajada  | hora}}</td>
+          <td>
+            <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
+                    class="btn btn-primary">Editar
+            </button>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <table *ngIf="busqueda != '-- selecione --'" class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+      <td><b>Nombre</b></td>
+      <td><b>Fecha</b></td>
+      <td><b>Departamento</b></td>
+      <td><b>Hora Entrada</b></td>
+      <td><b>Salida Almuerzo</b></td>
+      <td><b>Regreso Almuerzo</b></td>
+      <td><b>Hora Salida</b></td>
+      <td><b>N° Timbradas</b></td>
+      <td><b>Horas Trabajadas</b></td>
+      <td><b>Editar</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let record of usersFound;let i = index;">
+      <tr [ngClass]="record.timbradas < 4?'color1':''">
+        <ng-container>
           <td> {{record.Nombre}}</td>
           <td> {{record.Fecha | fechaPipe}} </td>
           <td> {{record.Departamento}} </td>
@@ -154,7 +197,7 @@
         <form>
           <div class="form-group">
             <label for="nombre" class="col-form-label">Nombre:</label>
-            <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Nombre" name="nombre">
+            <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.Nombre" name="nombre">
           </div>
           <div class="form-row">
             <div class="col">
@@ -163,7 +206,8 @@
             </div>
             <div class="col">
               <label for="nombre" class="col-form-label">Departamento:</label>
-              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Departamento" name="departamento">
+              <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.Departamento"
+                     name="departamento">
             </div>
           </div>
           <div class="form-row">
@@ -189,11 +233,13 @@
           <div class="form-row">
             <div class="col">
               <label for="nombre" class="col-form-label">Cantidad Total de Timbradas:</label>
-              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.timbradas" name="timbradas">
+              <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.timbradas"
+                     name="timbradas">
             </div>
             <div class="col">
               <label for="nombre" class="col-form-label">Horas Trabajadas:</label>
-              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.HoraTrabajada" name="HoraTrabajada">
+              <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.HoraTrabajada"
+                     name="HoraTrabajada">
             </div>
           </div>
         </form>

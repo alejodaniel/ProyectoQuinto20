@@ -39,4 +39,12 @@ export class ImagenesService {
     return this.http.put(this.url + 'asistente', usuario);
   }
 
+  findUserByName(nombre) {
+    return this.http.get(this.url + 'asistentes/' + nombre);
+  }
+
+  findByDate(fecha) {
+    return this.http.get(this.url + 'asistentes/fecha/' + fecha);
+  }
+
 }
