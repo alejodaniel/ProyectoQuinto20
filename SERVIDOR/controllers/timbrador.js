@@ -99,7 +99,7 @@ exports.findOne = (req, res) => {
 
 //actualizar
 exports.update = (req, res) => {
-    Asistente.findByIdAndUpdate(req.body._id,req.body, {new: true}).then(asistente => {
+    Asistente.findByIdAndUpdate(req.body._id, req.body, {new: true}).then(asistente => {
         if (!asistente) {
             res.status(404).send({message: 'Asistente no se encuentra'});
         }
@@ -112,6 +112,45 @@ exports.update = (req, res) => {
     });
 }
 
+
+exports.findByDate = (req, res) => {
+    Asistente.find({Fecha: req.params.Fecha}).then(asistentes => {
+        if (!asistentes) {
+            res.status(404).send({message: 'No se encuentra'});
+        } else {
+            return res.status(200).json({
+                ok: true,
+                datos: asistentes
+            });
+        }
+    }).catch(err => {
+        return res.status(500).json({
+            ok: false,
+            message: 'Error al Buscar' + err
+        })
+    })
+};
+
+exports.findByName = (req, res) => {
+    let nombre = req.params.Nombre;
+    nombre = nombre.replace('%20', ' ');
+    console.log(req.params.Nombre)
+    Asistente.find({Nombre: nombre}).then(asistentes => {
+        if (!asistentes) {
+            res.status(404).send({message: 'No se encuentra'});
+        } else {
+            return res.status(200).json({
+                ok: true,
+                datos: asistentes
+            });
+        }
+    }).catch(err => {
+        return res.status(500).json({
+            ok: false,
+            message: 'Error al Buscar' + err
+        })
+    })
+};
 
 // DELETE a Customer
 exports.delete = (req, res) => {

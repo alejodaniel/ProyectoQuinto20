@@ -12,4 +12,6 @@ api.get('/asistente/:asistenteId', asistenteController.findOne);
 api.get('/archivo/:archivoId', asistenteController.findOneArchivo);
 api.put('/asistente', asistenteController.update);
 api.delete('/asistente/:asistentesId', asistenteController.delete);
+api.get('/asistentes/:Nombre', asistenteController.findByName);
+api.get('/asistentes/fecha/:Fecha', asistenteController.findByDate);
 module.exports = api;

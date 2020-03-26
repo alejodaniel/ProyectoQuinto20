@@ -19,7 +19,10 @@ let obj: AppComponent;
 
 export class AppComponent {
   name = 'Sistema Biometrico';
+  parametro: any;
+  usersFound: any = [];
   dataList: any[];
+  busqueda: any = '-- selecione --';
   activeSelect: any = false;
   data: any[];
   fechaAcomodada: any;
@@ -125,7 +128,7 @@ export class AppComponent {
         skipEmptyLines: true,
         complete: (result, file) => {
           this.dataList = result.data;
-          this.dataList.sort(function (o1, o2) {
+          this.dataList.sort(function(o1, o2) {
             if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
               return 1;
             }
@@ -200,6 +203,7 @@ export class AppComponent {
   }
 
   obtenerArchivoExistente() {
+    this.busqueda = '-- selecione --';
     this.activeSelect = true;
     this.imagenesService.getArchivoUsuarios().subscribe(r => {
       this.dbFiles = r['datos'];
@@ -214,7 +218,7 @@ export class AppComponent {
 
 
   limpiarDatos(array) {
-    this.users = array.sort(function (o1, o2) {
+    this.users = array.sort(function(o1, o2) {
       if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
         return 1;
       }
@@ -229,6 +233,7 @@ export class AppComponent {
   crearUsuario() {
     for (let i = 0; i < this.users.length; i++) {
       if (this.users[i].timbradas != 0 || this.users[i].HoraTrabajada != 0) {
+        this.users[i].Nombre = this.users[i].Nombre.toUpperCase();
         this.array.push(this.users[i]);
         this.imagenesService.createUser(this.users[i]).subscribe(res => {
           this.newArray.push(res);
@@ -241,10 +246,50 @@ export class AppComponent {
   }
 
   actualizar() {
+    this.user.timbradas = 0;
+    this.user.HoraTrabajada = 0;
+    if (this.user.Hora1 != '') {
+      this.user.timbradas += 1;
+    }
+    if (this.user.Hora2 != '') {
+      this.user.timbradas += 1;
+    }
+    if (this.user.Hora3 != '') {
+      this.user.timbradas += 1;
+    }
+    if (this.user.Hora4 != '') {
+      this.user.timbradas += 1;
+    }
+    if (this.user.Hora1 != '' && this.user.Hora2 != '' && this.user.Hora3 != '' && this.user.Hora4 != '') {
+      this.user.HoraTrabajada = (this.user.Hora2 - this.user.Hora1) + (this.user.Hora4 - this.user.Hora3);
+    }
+    if (this.user.Hora1 != '' && this.user.Hora2 != '' && this.user.Hora3 == '' && this.user.Hora4 == '') {
+      this.user.HoraTrabajada = (this.user.Hora2 - this.user.Hora1);
+      this.user.Hora3 = undefined;
+      this.user.Hora4 = undefined;
+    }
+    console.log(this.user);
     this.imagenesService.actualizarPersona(this.user).subscribe(res => {
 
     });
 
+  }
+
+  buscarPor() {
+    if (this.busqueda == 'Nombre') {
+      this.imagenesService.findUserByName(this.parametro).subscribe(res => {
+        this.usersFound = res['datos'];
+      }, err => {
+        console.log(err);
+      });
+    }
+    if (this.busqueda == 'Fecha') {
+      this.imagenesService.findByDate(this.parametro).subscribe(res => {
+        this.usersFound = res['datos'];
+      }, err => {
+        console.log(err);
+      });
+    }
   }
 
 }
