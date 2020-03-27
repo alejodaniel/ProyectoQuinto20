@@ -1,5 +1,7 @@
 {
   "name": "BiometricoMovil",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
