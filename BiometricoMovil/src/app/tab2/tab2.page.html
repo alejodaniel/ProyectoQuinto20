@@ -1,17 +1,61 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title color="light">
+            Timbradas
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Entrada</ion-label>
+                    <ion-checkbox disabled="true"></ion-checkbox> &nbsp;
+                    <ion-button shape="round">Timbrar</ion-button>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Almuerzo</ion-label>
+                    <ion-checkbox disabled="true"></ion-checkbox> &nbsp;
+                    <ion-button shape="round">Timbrar</ion-button>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Regreso Almuerzo</ion-label>
+                    <ion-checkbox disabled="true"></ion-checkbox>&nbsp;
+                    <ion-button shape="round">Timbrar</ion-button>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Salida</ion-label>
+                    <ion-checkbox disabled="true"></ion-checkbox> &nbsp;
+                    <ion-button shape="round">Timbrar</ion-button>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            27/03/2020
+            <table class="table table-borderless ">
+                <thead>
+                <tr>
+                    <th width="35" scope="col">Entrada</th>
+                    <th width="35" scope="col">Almuerzo</th>
+                    <th width="35" scope="col">Regreso</th>
+                    <th width="35" scope="col">Salida</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th width="35">7:00</th>
+                    <td width="35">12:30</td>
+                    <td width="35">13:30</td>
+                    <td width="35">16:30</td>
+                </tr>
+                </tbody>
+            </table>
+            <ion-button shape="round" expand="block">Mostrar Mas</ion-button>
+        </ion-card-content>
+    </ion-card>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>

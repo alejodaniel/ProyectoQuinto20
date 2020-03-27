@@ -1,64 +1,64 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title color="light">
-     Mi Ubicación
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title color="light">
+            Mi Ubicación
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card class="card">
-    <ion-card-header>
-      <ion-card-title color="primary">Ubicación Actual</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <br>
-      <ion-item>
-        <ion-label>Calle: Lucha de los Pobres </ion-label>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label>Calle 2 : Mirador Bajo</ion-label>
-      </ion-item>
-      <br>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">Ubicación Actual</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <br>
+            <ion-item>
+                <ion-label>Calle: Lucha de los Pobres</ion-label>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-label>Calle 2 : Mirador Bajo</ion-label>
+            </ion-item>
+            <br>
 
-      <div class="ion-text-center">
-        <img src="/assets/images/mapa.jpg" style="height: 200px">
+            <div class="ion-text-center">
+                <img src="/assets/images/mapa.jpg" style="height: 200px">
 
-      </div>
+            </div>
 
-    </ion-card-content>
-  </ion-card>
-  <ion-card class="card">
-    <ion-card-header>
-      <ion-card-title color="primary">Agregar Descripción</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <br>
-      <ion-item>
-        <ion-label>OBSERVACIÓN: Me encuentro en la empresa haciendo la gestión</ion-label>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-card-title color="primary">AGREGAR IMAGEN DE LA DESCRIPCION</ion-card-title>
-        <br>
-      </ion-item>
-      <br>
-      <div class="container-login100-form-btn p-t-10">
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title color="primary">Agregar Descripción</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <br>
+            <ion-item>
+                <ion-label>OBSERVACIÓN: Me encuentro en la empresa haciendo la gestión</ion-label>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-card-title color="primary">AGREGAR IMAGEN DE LA DESCRIPCION</ion-card-title>
+                <br>
+            </ion-item>
+            <br>
+            <div class="container-login100-form-btn p-t-10">
+                <button class="login100-form-btn" routerLink="/ubicacion">
+                    AGREGAR IMAGEN
+                </button>
+            </div>
+            <div class="ion-text-center">
+                <img src="/assets/images/mapa.jpg" style="height: 200px">
+
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+    <div class="container-login100-form-btn p-t-10">
         <button class="login100-form-btn" routerLink="/ubicacion">
-          AGREGAR IMAGEN
+            GUARDAR
         </button>
-      </div>
-      <div class="ion-text-center">
-        <img src="/assets/images/mapa.jpg" style="height: 200px">
-
-      </div>
-
-    </ion-card-content>
-  </ion-card>
-  <div class="container-login100-form-btn p-t-10">
-    <button class="login100-form-btn" routerLink="/ubicacion">
-     GUARDAR
-    </button>
-  </div>
+    </div>
 </ion-content>
