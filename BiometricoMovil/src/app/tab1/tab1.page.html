@@ -1,17 +1,37 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-title color="light">
+            Datos de Usuario
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card class="card">
+        <ion-card-header>
+            <ion-card-title color="primary">Desarrollo de Software</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <br>
+            <ion-item>
+                <ion-label>Nombre: Lucho</ion-label>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-label>Apellido: Perez</ion-label>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-label>Correo: lperez@yavirac.edu.ec</ion-label>
+            </ion-item>
+            <br>
+            <ion-item>
+                <ion-label>Carrera: Marketing</ion-label>
+            </ion-item>
+            <br>
+            <div class="ion-text-center">
+                <ion-icon class="ion-1x" color="primary" name="finger-print-outline"></ion-icon>
+            </div>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
