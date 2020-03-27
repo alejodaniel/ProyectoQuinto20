@@ -1,0 +1,7 @@
+{
+  "name": "BiometricoMovil",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
