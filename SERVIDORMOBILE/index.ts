@@ -6,7 +6,7 @@ import fileUpload from 'express-fileupload'
 
 import cors from 'cors';
 
-
+import userRoutes from "./routes/usuarioRouter";
 
 
 
@@ -25,7 +25,7 @@ server.app.use(cors({origin:true,credentials:true}));
 
 
 //Rutas de mi app
-//server.app.use('/user',userRoutes );
+server.app.use('/user',userRoutes );
 //server.app.use('/posts',postRoutes );
 
 //Conecgar DB
