@@ -284,7 +284,6 @@ iframe {
   position: relative;
   padding-bottom: 10px;
   width: 100%;
-  z-index: 1;
 }
 
 .input1001 {
@@ -309,7 +308,7 @@ iframe {
   height: 50px;
   border-radius: 25px;
 
-  padding: 0 30px 0 53px;
+  padding: 0 30px 0 25px;
 }
 
 
@@ -374,7 +373,6 @@ iframe {
 
 .input100:focus + .focus-input100 + .symbol-input100 {
   color: #00c6fb;
-  padding-left: 23px;
 }
 
 

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
+import {Usuario} from '../../models/usuario';
 
 @Component({
     selector: 'app-registro',
@@ -10,6 +11,8 @@ import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 export class RegistroPage implements OnInit {
 
 
+    usuario: Usuario = {};
+
     constructor(private platform: Platform, private fingerprint: FingerprintAIO) {
 
     }
@@ -17,13 +20,18 @@ export class RegistroPage implements OnInit {
     ngOnInit() {
     }
 
-    async showFingerPrint() {
+    showFingerPrint() {
         this.fingerprint.show({
             title: 'Escaner de Huella',
-            cliendId: 'BioYav',
-            clientSecret: 'password',
+            disableBackup: true,
         }).then(res => {
-            alert(res);
+            const caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789';
+            let dato = '';
+            for (let i = 0; i < 20; i++) {
+                dato += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+            }
+            this.usuario.huella = dato;
+            alert(this.usuario.huella);
         }).catch(err => {
             alert(err);
         });
