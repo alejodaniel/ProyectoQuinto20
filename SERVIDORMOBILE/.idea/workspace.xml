@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/token.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/autenticacion.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/usuarioModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/models/usuarioModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/usuarioModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
-    </list>
+    <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585593073948</updated>
       <workItem from="1585593075774" duration="626000" />
-      <workItem from="1585678329248" duration="4707000" />
+      <workItem from="1585678329248" duration="5063000" />
     </task>
     <servers />
   </component>
