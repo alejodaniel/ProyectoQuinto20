@@ -25,6 +25,10 @@ const usuarioSchema = new mongoose_1.Schema({
     huella: {
         type: String,
         required: [true, 'La huella dactilar es necesaria']
+    },
+    tema: {
+        type: Boolean,
+        default: true
     }
 });
 exports.Usuario = mongoose_1.model('Usuario', usuarioSchema);

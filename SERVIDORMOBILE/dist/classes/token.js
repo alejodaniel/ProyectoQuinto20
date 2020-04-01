@@ -16,11 +16,9 @@ class Token {
         return new Promise((resolve, reject) => {
             jsonwebtoken_1.default.verify(userToken, this.seed, (err, decoded) => {
                 if (err) {
-                    // no confia
                     reject();
                 }
                 else {
-                    //token valido
                     resolve(decoded);
                 }
             });

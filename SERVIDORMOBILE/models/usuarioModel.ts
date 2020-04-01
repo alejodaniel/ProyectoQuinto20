@@ -26,17 +26,22 @@ const usuarioSchema = new Schema({
     huella: {
         type: String,
         required: [true, 'La huella dactilar es necesaria']
+    },
+    tema: {
+        type: Boolean,
+        default: true
     }
 });
 
-interface IUser extends Document{
-   nombre:string;
-    apellido:string;
-    email:string;
-    carrera:string;
-    ubicacion:string;
-    huella:string;
-    
+interface IUser extends Document {
+    nombre: string;
+    apellido: string;
+    email: string;
+    carrera: string;
+    ubicacion: string;
+    huella: string;
+    tema: boolean;
+
 }
 
-export const  Usuario =  model<IUser>('Usuario',usuarioSchema);
+export const Usuario = model<IUser>('Usuario', usuarioSchema);

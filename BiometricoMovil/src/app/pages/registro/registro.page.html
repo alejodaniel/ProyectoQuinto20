@@ -1,48 +1,48 @@
 <ion-content>
-  <div class="limiter">
-    <div class="container-login100" style="background-image: url('/assets/images/img-01.png');">
-      <div class="wrap-login100 p-t-190 p-b-30">
-        <form class="login100-form">
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/assets/images/img-01.png');">
+            <div class="wrap-login100 p-t-190 p-b-30">
+                <form class="login100-form">
 
-          <ion-avatar class="login100-form-avatar">
-            <img src="/assets/images/img-01.png">
-          </ion-avatar>
+                    <ion-avatar class="login100-form-avatar">
+                        <img src="/assets/images/img-01.png">
+                    </ion-avatar>
 
-          <span class="login100-form-title p-t-20 p-b-45">
+                    <span class="login100-form-title p-t-20 p-b-45">
 						REGISTRO
 					</span>
 
-          <div class="wrap-input100 validate-input m-b-10">
-            <input class="input100" type="email" name="nombre"
-                   placeholder="Nombre">
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <input class="input100" type="email" name="nombre"
+                               placeholder="Nombre">
 
-          </div>
-          <div class="wrap-input100 validate-input m-b-10">
-            <input class="input100" type="email" name="apellido"
-                   placeholder="Apellido">
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <input class="input100" type="email" name="apellido"
+                               placeholder="Apellido">
 
-          </div>
-          <div class="wrap-input100 validate-input m-b-10">
-            <input class="input100" type="email" name="correo"
-                   placeholder="Correo">
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-10">
+                        <input class="input100" type="email" name="correo"
+                               placeholder="Correo">
 
-          </div>
-          <div class="">
-            <ion-label>Ponga aquí su huella dactilar</ion-label>
-          </div>
-          <div class="login100-form-title p-t-20 p-b-45">
-            <ion-icon name="finger-print" style="width: 200px;height: 100px"></ion-icon>
-          </div>
+                    </div>
+                    <div class="">
+                        <ion-label>Ponga aquí su huella dactilar</ion-label>
+                    </div>
+                    <div (click)="showFingerPrint()" class="login100-form-title p-t-20 p-b-45">
+                        <ion-icon name="finger-print" style="width: 200px;height: 100px"></ion-icon>
+                    </div>
 
-          <div class="container-login100-form-btn p-t-10">
-            <button class="login100-form-btn" routerLink="/ubicacion">
-              REGISTRAR PERSONA
-            </button>
-          </div>
+                    <div class="container-login100-form-btn p-t-10">
+                        <button class="login100-form-btn" routerLink="/ubicacion">
+                            REGISTRAR PERSONA
+                        </button>
+                    </div>
 
-        </form>
-      </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 
 </ion-content>

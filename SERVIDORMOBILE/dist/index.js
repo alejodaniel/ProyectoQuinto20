@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const server_1 = __importDefault(require("./classes/server"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const cors_1 = __importDefault(require("cors"));
 const usuarioRouter_1 = __importDefault(require("./routes/usuarioRouter"));
 const server = new server_1.default();
@@ -13,18 +14,21 @@ const server = new server_1.default();
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
 server.app.use(body_parser_1.default.json());
 //FILEUPLOAD
-//server.app.use(fileUpload({useTempFiles:true}));
+server.app.use(express_fileupload_1.default({ useTempFiles: true }));
 //CORS CONFIGURAR
 server.app.use(cors_1.default({ origin: true, credentials: true }));
 //Rutas de mi app
-server.app.use('/user', usuarioRouter_1.default);
-//server.app.use('/posts',postRoutes );
+server.app.use('/server', [usuarioRouter_1.default]);
 //Conecgar DB
-mongoose_1.default.connect('mongodb://localhost:27017/BiometricoMobile', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
+mongoose_1.default.connect('mongodb://localhost:27017/BiometricoMobile', {
+    useNewUrlParser: true,
+    useFindAndModify: false
+}, (err) => {
     if (err)
         throw err;
-    console.log('BASE DE DATOS ONLINE');
+    console.log('Base de datos conectada');
 });
+mongoose_1.default.createConnection('mongodb://localhost:27017/BiometricoMobile', { useNewUrlParser: true });
 //levantar express
 server.start(() => {
     console.log(`servidor Corriendo en puerto ${server.port}`);
