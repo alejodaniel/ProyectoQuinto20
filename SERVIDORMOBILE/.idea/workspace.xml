@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="" />
+    <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/classes/token.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middlewares/autenticacion.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/usuarioModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/models/usuarioModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/usuarioModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,8 +29,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alejo\Desktop\ProyectoQuinto20\SERVIDORMOBILE" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -35,6 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585593073948</updated>
       <workItem from="1585593075774" duration="626000" />
+      <workItem from="1585678329248" duration="4707000" />
     </task>
     <servers />
   </component>

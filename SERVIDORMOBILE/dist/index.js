@@ -7,6 +7,7 @@ const server_1 = __importDefault(require("./classes/server"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
+const usuarioRouter_1 = __importDefault(require("./routes/usuarioRouter"));
 const server = new server_1.default();
 //BodyParser
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
@@ -16,7 +17,7 @@ server.app.use(body_parser_1.default.json());
 //CORS CONFIGURAR
 server.app.use(cors_1.default({ origin: true, credentials: true }));
 //Rutas de mi app
-//server.app.use('/user',userRoutes );
+server.app.use('/user', usuarioRouter_1.default);
 //server.app.use('/posts',postRoutes );
 //Conecgar DB
 mongoose_1.default.connect('mongodb://localhost:27017/BiometricoMobile', { useNewUrlParser: true, useCreateIndex: true }, (err) => {
