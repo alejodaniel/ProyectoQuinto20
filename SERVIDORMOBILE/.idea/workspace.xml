@@ -46,9 +46,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1585593431285" />
+    <state x="294" y="8" key="CommitChangelistDialog2" timestamp="1585766242920">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="294" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585766242920" />
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1585766235555">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1585766235555" />
     <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1585593705183">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585593705183" />
+    <state x="451" y="118" key="VCS.ChangeListViewerDialog" timestamp="1585766231114">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="451" y="118" key="VCS.ChangeListViewerDialog/0.0.1536.824@0.0.1536.824" timestamp="1585766231114" />
+    <state x="441" y="261" key="git4idea.ui.GitUnstashDialog" timestamp="1585766232465">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="441" y="261" key="git4idea.ui.GitUnstashDialog/0.0.1536.824@0.0.1536.824" timestamp="1585766232465" />
   </component>
 </project>
