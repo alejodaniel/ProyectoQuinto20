@@ -13,7 +13,7 @@ export class UiService {
     async alertaInformativa(message: string) {
         const alert = await this.alertController.create({
             message,
-            buttons: ['OK']
+            buttons: ['OK', 'CANCEL']
         });
 
         await alert.present();
