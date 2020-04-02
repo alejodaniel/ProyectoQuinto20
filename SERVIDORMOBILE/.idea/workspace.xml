@@ -27,7 +27,9 @@
       <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/models/usuarioModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/usuarioModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/routes/usuarioRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/routes/usuarioRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/usuarioModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/usuarioModel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -100,7 +102,7 @@
       <updated>1585593073948</updated>
       <workItem from="1585593075774" duration="626000" />
       <workItem from="1585678329248" duration="5063000" />
-      <workItem from="1585845179342" duration="4263000" />
+      <workItem from="1585845179342" duration="5506000" />
     </task>
     <servers />
   </component>
@@ -123,5 +125,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1585593705183" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585859102341">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585859102341" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585859102340">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585859102340" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585859102339">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585859102339" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585859102340">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585859102340" />
   </component>
 </project>
