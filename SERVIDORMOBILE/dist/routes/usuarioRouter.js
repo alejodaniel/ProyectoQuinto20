@@ -15,7 +15,6 @@ userRoutes.post('/user/create', (req, res) => {
         apellido: req.body.apellido,
         email: req.body.email,
         carrera: req.body.carrera,
-        ubicacion: req.body.carrera,
         huella: req.body.huella,
         tema: req.body.tema
     };
@@ -26,7 +25,6 @@ userRoutes.post('/user/create', (req, res) => {
             apellido: userDB.apellido,
             email: userDB.email,
             carrera: userDB.carrera,
-            ubicacion: userDB.ubicacion,
             huella: userDB.huella,
             tema: req.body.tema
         });
@@ -48,7 +46,6 @@ userRoutes.put('/user/update', autenticacion_1.verificaToken, (req, res) => {
         apellido: req.body.apellido,
         email: req.body.email,
         carrera: req.body.carrera,
-        ubicacion: req.body.carrera,
         huella: req.body.huella,
         tema: req.body.tema
     };
@@ -68,7 +65,6 @@ userRoutes.put('/user/update', autenticacion_1.verificaToken, (req, res) => {
                 apellido: userDB.apellido,
                 email: userDB.email,
                 carrera: userDB.carrera,
-                ubicacion: userDB.ubicacion,
                 huella: userDB.huella,
                 tema: req.body.tema
             });

@@ -9,12 +9,15 @@ import {AppComponent} from './app.component';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
+import {IonicStorageModule} from '@ionic/storage';
+import {HttpClientModule} from '@angular/common/http';
 
 // @ts-ignore
 @NgModule({
     declarations: [AppComponent],
     entryComponents: [],
-    imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+    imports: [BrowserModule, IonicModule.forRoot(),
+        AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot()],
     providers: [
         StatusBar,
         SplashScreen,

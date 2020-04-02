@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Platform} from '@ionic/angular';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 import {Usuario} from '../../models/usuario';
+import {NgForm} from '@angular/forms';
+import {UsuarioService} from '../../services/usuario.service';
+import {UiService} from '../../services/ui.service';
 
 @Component({
     selector: 'app-registro',
@@ -10,14 +13,16 @@ import {Usuario} from '../../models/usuario';
 })
 export class RegistroPage implements OnInit {
 
-
+    validacion: any = {};
     usuario: Usuario = {};
 
-    constructor(private platform: Platform, private fingerprint: FingerprintAIO) {
+    constructor(private fingerprint: FingerprintAIO, private userService: UsuarioService, private uiService: UiService) {
 
     }
 
+
     ngOnInit() {
+
     }
 
     showFingerPrint() {
@@ -31,9 +36,16 @@ export class RegistroPage implements OnInit {
                 dato += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
             }
             this.usuario.huella = dato;
-            alert(this.usuario.huella);
-        }).catch(err => {
-            alert(err);
+        });
+    }
+
+    registrarUsuario(regPerson: NgForm) {
+        alert('hola');
+        this.userService.registrarUsuario(this.usuario).then(res => {
+            alert(JSON.stringify(res));
+            if (!res['ok']) {
+                this.validacion = res['err']['errors'];
+            }
         });
     }
 

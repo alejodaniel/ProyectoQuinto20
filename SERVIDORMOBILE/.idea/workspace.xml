@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="" />
+    <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/resources/ios/icon/icon-108@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/resources/ios/splash/Default-1792h~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/resources/ios/splash/Default-2688h~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/resources/ios/splash/Default-Landscape-1792h~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/resources/ios/splash/Default-Landscape-2688h~iphone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/ui.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/resources/android/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/resources/android/xml/network_security_config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/usuario.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/usuario.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/usuario.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/theme.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tabs/tabs.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tabs/tabs.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/models/usuarioModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/models/usuarioModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/usuarioModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/usuarioModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/usuarioRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes/usuarioRouter.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,23 +42,51 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1ZrN61NgYeAo5xjfRVmHa2KADQA" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2019.2.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\alejo\Desktop\ProyectoQuinto20\SERVIDORMOBILE" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -41,13 +100,21 @@
       <updated>1585593073948</updated>
       <workItem from="1585593075774" duration="626000" />
       <workItem from="1585678329248" duration="5063000" />
+      <workItem from="1585845179342" duration="4263000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585845892135">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585845892135" />
     <state x="413" y="114" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585593431285">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

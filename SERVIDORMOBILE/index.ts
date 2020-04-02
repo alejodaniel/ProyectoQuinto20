@@ -19,7 +19,14 @@ server.app.use(bodyParser.json());
 server.app.use(fileUpload({useTempFiles: true}));
 
 //CORS CONFIGURAR
-server.app.use(cors({origin: true, credentials: true}));
+server.app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, PUT, DELETE');
+    res.header('Allow', 'GET, POST, PUT, DELETE');
+    next()
+});
+
 
 
 //Rutas de mi app

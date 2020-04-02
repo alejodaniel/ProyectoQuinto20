@@ -14,7 +14,8 @@
                 <ion-label>
                     Modo Oscuro
                 </ion-label>
-                <ion-toggle id="themeToggle" slot="end" [(ngModel)]="darkMode" (ionChange)="changeTheme()"></ion-toggle>
+                <ion-toggle id="themeToggle" slot="end" name="darkMode" [(ngModel)]="darkMode"
+                            (ionChange)="changeTheme()"></ion-toggle>
             </ion-item>
         </ion-card-content>
     </ion-card>

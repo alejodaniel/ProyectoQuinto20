@@ -4,28 +4,24 @@ import {Schema, model, Document} from 'mongoose';
 const usuarioSchema = new Schema({
     nombre: {
         type: String,
-        required: [true, 'El nomnbre es necesario']
+        required: [true, 'El nombre es requerido']
     },
     apellido: {
         type: String,
-        required: [true, 'El nomnbre es necesario']
+        required: [true, 'El apellido es requerido']
     },
     email: {
         type: String,
         unique: true,
-        required: [true, 'El correo es necesario']
+        required: [true, 'El correo es requerido']
     },
     carrera: {
         type: String,
-        required: [true, 'La carrera es necesaria']
-    },
-    ubicacion: {
-        type: String,
-
+        required: [true, 'La carrera es requerido']
     },
     huella: {
         type: String,
-        required: [true, 'La huella dactilar es necesaria']
+        required: [true, 'La huella dactilar es requerido']
     },
     tema: {
         type: Boolean,
@@ -38,7 +34,6 @@ interface IUser extends Document {
     apellido: string;
     email: string;
     carrera: string;
-    ubicacion: string;
     huella: string;
     tema: boolean;
 

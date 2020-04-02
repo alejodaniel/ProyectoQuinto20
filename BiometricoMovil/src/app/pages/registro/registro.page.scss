@@ -6,18 +6,6 @@ ion-icon {
   font-size: 30px;
 }
 
-.toast-scheme {
-  background-color: rgb(35, 251, 0);
-  color: green;
-
-  .toast-container {
-    background: yellow;
-  }
-
-  .toast-md .toast-message {
-    color: red;
-  }
-}
 
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
@@ -37,7 +25,6 @@ body, html {
 a {
   font-family: Montserrat-Regular;
   font-size: 14px;
-  line-height: 1.7;
   color: #666666;
   margin: 0px;
   transition: all 0.4s;
@@ -193,12 +180,10 @@ iframe {
 
 .limiter {
   width: 100%;
-  margin: 0 auto;
 }
 
 .container-login100 {
   width: 100%;
-  min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -206,11 +191,8 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  padding: 15px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
 
   position: relative;
   z-index: 1;
@@ -248,7 +230,6 @@ iframe {
   display: -webkit-flex;
   display: -moz-box;
   display: -ms-flexbox;
-  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
@@ -270,8 +251,7 @@ iframe {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  overflow: hidden;
-  margin: 30px auto;
+  margin: 10px auto;
 }
 
 .login100-form-avatar img {
@@ -288,10 +268,9 @@ iframe {
 
 .input1001 {
   position: relative;
-  left: -35px;
-  color: #0075a5;
-  background: #fff;
-  height: 50px;
+  color: rgb(255, 254, 240);
+  background: #eb445a;
+  height: 30px;
   border-radius: 25px;
   padding: 0 10px 0 20px;
 }
@@ -361,7 +340,6 @@ iframe {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   padding-left: 30px;
   pointer-events: none;
 
@@ -423,7 +401,6 @@ iframe {
   position: absolute;
   z-index: -1;
   width: 100%;
-  height: 100%;
   border-radius: 25px;
   top: 0;
   left: 0;
@@ -448,120 +425,11 @@ iframe {
   opacity: 1;
 }
 
-/*------------------------------------------------------------------
-[ Button sign in with ]*/
-.btn-face,
-.btn-google {
-  font-family: Raleway-Bold;
-  font-size: 16px;
-  line-height: 1.2;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc((100% - 10px) / 2);
-  height: 40px;
-  border-radius: 3px;
-  border: 1px solid #e6e6e6;
-  background-color: #fff;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-
-.btn-face {
-  color: #3b5998;
-}
-
-.btn-face i {
-  font-size: 20px;
-  margin-right: 10px;
-  padding-bottom: 1px;
-}
-
-.btn-google {
-  color: #555555;
-}
-
-.btn-google img {
-  width: 19px;
-  margin-right: 10px;
-  padding-bottom: 1px;
-}
-
-
-.btn-face:hover,
-.btn-google:hover {
-  border-color: #d33f8d;
-}
-
-
-/*------------------------------------------------------------------
-[ Alert validate ]*/
 
 .validate-input {
   position: relative;
 }
 
-.alert-validate::before {
-  content: attr(data-validate);
-  position: absolute;
-  max-width: 70%;
-  background-color: white;
-  border: 1px solid #c80000;
-  border-radius: 14px;
-  padding: 4px 25px 4px 10px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 8px;
-  pointer-events: none;
-
-  font-family: Montserrat-Bold;
-  color: #c80000;
-  font-size: 13px;
-  line-height: 1.4;
-  text-align: left;
-
-  visibility: hidden;
-  opacity: 0;
-
-  -webkit-transition: opacity 0.4s;
-  -o-transition: opacity 0.4s;
-  -moz-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-}
-
-.alert-validate::after {
-  content: "\f06a";
-  font-family: FontAwesome;
-  display: block;
-  position: absolute;
-  color: #c80000;
-  font-size: 15px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 13px;
-}
-
-.alert-validate:hover:before {
-  visibility: visible;
-  opacity: 1;
-}
 
 @media (max-width: 992px) {
   .alert-validate::before {

@@ -7,7 +7,6 @@ const server_1 = __importDefault(require("./classes/server"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
-const cors_1 = __importDefault(require("cors"));
 const usuarioRouter_1 = __importDefault(require("./routes/usuarioRouter"));
 const server = new server_1.default();
 //BodyParser
@@ -16,7 +15,13 @@ server.app.use(body_parser_1.default.json());
 //FILEUPLOAD
 server.app.use(express_fileupload_1.default({ useTempFiles: true }));
 //CORS CONFIGURAR
-server.app.use(cors_1.default({ origin: true, credentials: true }));
+server.app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
+    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, POST, PUT, DELETE');
+    res.header('Allow', 'GET, POST, PUT, DELETE');
+    next();
+});
 //Rutas de mi app
 server.app.use('/server', [usuarioRouter_1.default]);
 //Conecgar DB

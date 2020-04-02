@@ -5,7 +5,6 @@ export class Usuario {
     apellido?: string;
     email?: string;
     carrera?: string;
-    ubicacion?: string;
     huella?: string;
     tema?: boolean;
 }

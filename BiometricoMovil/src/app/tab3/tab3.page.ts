@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {ThemeService} from '../services/theme.service';
+import {UsuarioService} from '../services/usuario.service';
+import {Usuario} from '../models/usuario';
 
 @Component({
     selector: 'app-tab3',
@@ -8,16 +9,24 @@ import {ThemeService} from '../services/theme.service';
 })
 export class Tab3Page {
 
-    darkMode = this.themeService.themeDark;
+    usuario: Usuario = {};
+    darkMode = this.userService.themeDark;
 
-    constructor(private themeService: ThemeService) {
+    constructor(private userService: UsuarioService) {
 
     }
 
 
-    changeTheme() {
-        this.themeService.changeTheme(this.darkMode);
-        this.darkMode = this.themeService.themeDark;
+    async changeTheme() {
+        this.userService.changeTheme(this.darkMode);
+        this.usuario.tema = this.darkMode;
+        //     const actualizado = await this.userService.actualizarUsuario(this.usuario);
+        //
+        //     if (actualizado) {
+        //         console.log('ok');
+        //     } else {
+        //
+        //     }
     }
 
 }
