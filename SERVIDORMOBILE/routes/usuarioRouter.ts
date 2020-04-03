@@ -40,13 +40,13 @@ userRoutes.post('/user/create', (req: Request, res: Response) => {
 });
 
 //Actualiza usuario
-userRoutes.put('/user/update', verificaToken, (req: any, res: Response) => {
+userRoutes.post('/user/update', [verificaToken], (req: any, res: Response) => {
     const user = {
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        email: req.body.email,
-        carrera: req.body.carrera,
-        huella: req.body.huella,
+        nombre: req.body.nombre || req.usuario.nombre,
+        apellido: req.body.apellido || req.usuario.apellido,
+        email: req.body.email || req.usuario.email,
+        carrera: req.body.carrera || req.usuario.carrera,
+        huella: req.body.huella || req.usuario.huella,
         tema: req.body.tema
 
     };

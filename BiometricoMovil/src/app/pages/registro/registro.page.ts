@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Platform} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 import {Usuario} from '../../models/usuario';
 import {NgForm} from '@angular/forms';
@@ -16,7 +16,7 @@ export class RegistroPage implements OnInit {
     validacion: any = {};
     usuario: Usuario = {};
 
-    constructor(private fingerprint: FingerprintAIO, private userService: UsuarioService, private uiService: UiService) {
+    constructor(private fingerprint: FingerprintAIO, private userService: UsuarioService, private uiService: UiService, private navController: NavController) {
 
     }
 
@@ -39,12 +39,14 @@ export class RegistroPage implements OnInit {
         });
     }
 
-    registrarUsuario(regPerson: NgForm) {
-        alert('hola');
+    async registrarUsuario(regPerson: NgForm) {
+        this.usuario.tema = false;
         this.userService.registrarUsuario(this.usuario).then(res => {
-            alert(JSON.stringify(res));
             if (!res['ok']) {
                 this.validacion = res['err']['errors'];
+            }
+            if (res['ok']) {
+                this.navController.navigateRoot(['/']);
             }
         });
     }

@@ -40,13 +40,13 @@ userRoutes.post('/user/create', (req, res) => {
     });
 });
 //Actualiza usuario
-userRoutes.put('/user/update', autenticacion_1.verificaToken, (req, res) => {
+userRoutes.post('/user/update', [autenticacion_1.verificaToken], (req, res) => {
     const user = {
-        nombre: req.body.nombre,
-        apellido: req.body.apellido,
-        email: req.body.email,
-        carrera: req.body.carrera,
-        huella: req.body.huella,
+        nombre: req.body.nombre || req.usuario.nombre,
+        apellido: req.body.apellido || req.usuario.apellido,
+        email: req.body.email || req.usuario.email,
+        carrera: req.body.carrera || req.usuario.carrera,
+        huella: req.body.huella || req.usuario.huella,
         tema: req.body.tema
     };
     usuarioModel_1.Usuario.findByIdAndUpdate(req.usuario._id, user, { new: true }, (err, userDB) => {

@@ -17,16 +17,10 @@ export class Tab3Page {
     }
 
 
-    async changeTheme() {
+    changeTheme() {
         this.userService.changeTheme(this.darkMode);
         this.usuario.tema = this.darkMode;
-        //     const actualizado = await this.userService.actualizarUsuario(this.usuario);
-        //
-        //     if (actualizado) {
-        //         console.log('ok');
-        //     } else {
-        //
-        //     }
+        const retorno = this.userService.actualizarUsuario(this.usuario);
     }
 
 }

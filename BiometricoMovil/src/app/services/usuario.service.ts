@@ -4,6 +4,7 @@ import {NavController} from '@ionic/angular';
 import {Usuario} from '../models/usuario';
 import {environment} from '../../environments/environment';
 import {Storage} from '@ionic/storage';
+import {UiService} from './ui.service';
 
 @Injectable({
     providedIn: 'root'
@@ -15,16 +16,9 @@ export class UsuarioService {
     _themeDark;
     url = environment.url;
 
-    constructor(private http: HttpClient, private storage: Storage, private nav: NavController) {
+    constructor(private http: HttpClient, private storage: Storage, private nav: NavController, private uiServices: UiService) {
     }
 
-
-    getUsuario() {
-        if (!this.usuario._id) {
-            this.validaToken();
-        }
-        return {...this.usuario};
-    }
 
     async guardarToken(token: string) {
         this.token = token;
@@ -37,12 +31,10 @@ export class UsuarioService {
 
     async validaToken(): Promise<boolean> {
         await this.cargarToken();
-
         if (!this.token) {
-            this.nav.navigateRoot('/login');
+            this.nav.navigateRoot('/registro');
             return Promise.resolve(false);
         }
-
         return new Promise(resolve => {
             const headers = new HttpHeaders({
                 'token': this.token
@@ -51,12 +43,14 @@ export class UsuarioService {
                 if (res['ok']) {
                     this.usuario = res['usuario'];
                     this._themeDark = this.usuario.tema;
+                    this.nav.navigateRoot(['/main/tabs/tab1']);
                     resolve(true);
                 } else {
-                    this.nav.navigateRoot('/login');
-                    console.log(res);
+                    this.nav.navigateRoot('/registro');
                     resolve(false);
                 }
+            }, error => {
+                this.uiServices.presentToast('Algo ha salido mal');
             });
         });
     }
@@ -64,23 +58,39 @@ export class UsuarioService {
     registrarUsuario(usuario: Usuario) {
         return new Promise(resolve => {
             this.http.post(this.url + 'user/create', usuario).subscribe(res => {
-                alert(JSON.stringify(res));
                 if (res['ok']) {
                     this.guardarToken(res['token']);
-                    resolve(true);
+                    resolve(res);
                 } else {
                     this.token = null;
                     this.storage.clear();
                     resolve(res);
                 }
             }, err => {
-                alert(JSON.stringify(err));
+                this.uiServices.presentToast('Algo ha salido mal');
             });
         });
     }
 
     public get themeDark(): boolean {
         return this._themeDark;
+    }
+
+    async actualizarUsuario(usuario: Usuario) {
+        await this.cargarToken();
+        const headers = new HttpHeaders({'token': this.token});
+        return new Promise(resolve => {
+            this.http.post(this.url + 'user/update', usuario, {headers}).subscribe(res => {
+                if (res['ok']) {
+                    this.guardarToken(res['token']);
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            }, err => {
+                this.uiServices.presentToast('Algo ha salido mal');
+            });
+        });
     }
 
     changeTheme(value): void {
@@ -90,5 +100,24 @@ export class UsuarioService {
         } else {
             document.body.classList.remove('dark');
         }
+    }
+
+    // @ts-ignore
+    async buscarUsuarioPorToken() {
+        this.token = await this.storage.get('token');
+        const headers = new HttpHeaders({
+            'token': this.token
+        });
+        return new Promise(resolve => {
+            this.http.get(this.url + 'user/', {headers}).subscribe(res => {
+                if (res['ok']) {
+                    this.usuario = res['usuario'];
+                    this._themeDark = this.usuario.tema;
+                    resolve(res);
+                }
+            }, err => {
+                this.nav.navigateRoot('/registro');
+            });
+        });
     }
 }

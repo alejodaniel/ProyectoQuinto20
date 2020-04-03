@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {UsuarioService} from '../services/usuario.service';
+import {Usuario} from '../models/usuario';
 
 @Component({
     selector: 'app-tabs',
@@ -8,13 +9,18 @@ import {UsuarioService} from '../services/usuario.service';
 })
 export class TabsPage {
 
-    darkMode = this.userService.themeDark;
+    darkMode;
+    usuario: Usuario = {};
 
     constructor(private userService: UsuarioService) {
         this.changeTheme();
     }
 
-    changeTheme(): void {
+    async changeTheme() {
+        await this.userService.buscarUsuarioPorToken().then(res => {
+            this.usuario = res['usuario'];
+        });
+        this.darkMode = this.usuario.tema;
         if (this.darkMode == true) {
             document.body.classList.add('dark');
         } else {
