@@ -10,24 +10,22 @@
     <ion-card>
         <ion-card-content>
             <ion-item lines="none">
-                <ion-label>Nombre: Lucho</ion-label>
+                <ion-label>Nombre: {{usuario.nombre}}  {{usuario.apellido}}</ion-label>
             </ion-item>
-            <br>
             <ion-item lines="none">
-                <ion-label>Apellido: Perez</ion-label>
+                <ion-label>Correo: {{usuario.email}}</ion-label>
             </ion-item>
-            <br>
             <ion-item lines="none">
-                <ion-label>Correo: lperez@yavirac.edu.ec</ion-label>
+                <ion-label>Carrera: {{usuario.carrera}}</ion-label>
             </ion-item>
-            <br>
-            <ion-item lines="none">
-                <ion-label>Carrera: Marketing</ion-label>
-            </ion-item>
-            <br>
             <div class="ion-text-center">
                 <ion-icon class="ion-1x" color="primary" name="finger-print-outline"></ion-icon>
             </div>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <div id='map'></div>
         </ion-card-content>
     </ion-card>
 </ion-content>
