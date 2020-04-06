@@ -8,6 +8,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const usuarioRouter_1 = __importDefault(require("./routes/usuarioRouter"));
+const timbrarRoutes_1 = __importDefault(require("./routes/timbrarRoutes"));
 const server = new server_1.default();
 //BodyParser
 server.app.use(body_parser_1.default.urlencoded({ extended: true }));
@@ -23,7 +24,7 @@ server.app.use((req, res, next) => {
     next();
 });
 //Rutas de mi app
-server.app.use('/server', [usuarioRouter_1.default]);
+server.app.use('/server', [usuarioRouter_1.default, timbrarRoutes_1.default]);
 //Conecgar DB
 mongoose_1.default.connect('mongodb://localhost:27017/BiometricoMobile', {
     useNewUrlParser: true,

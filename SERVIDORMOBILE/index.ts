@@ -6,6 +6,7 @@ import fileUpload from 'express-fileupload'
 
 import cors from 'cors';
 import userRoutes from "./routes/usuarioRouter";
+import timbrarRoutes from "./routes/timbrarRoutes";
 
 
 const server = new Server();
@@ -29,7 +30,7 @@ server.app.use((req, res, next) => {
 
 
 //Rutas de mi app
-server.app.use('/server', [userRoutes]);
+server.app.use('/server', [userRoutes, timbrarRoutes]);
 
 //Conecgar DB
 mongoose.connect('mongodb://localhost:27017/BiometricoMobile', {

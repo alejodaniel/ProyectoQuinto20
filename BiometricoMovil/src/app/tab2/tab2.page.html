@@ -12,30 +12,30 @@
             <ion-list>
                 <ion-item>
                     <ion-label>Entrada</ion-label>
-                    <ion-checkbox disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round">Timbrar</ion-button>
+                    <ion-checkbox [checked]="isTimbrado.entrada" disabled="true"></ion-checkbox> &nbsp;
+                    <ion-button shape="round" (click)="showFingerPrint('entrada')">Timbrar</ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Almuerzo</ion-label>
-                    <ion-checkbox disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round">Timbrar</ion-button>
+                    <ion-checkbox [checked]="isTimbrado.almuerzo" disabled="true"></ion-checkbox> &nbsp;
+                    <ion-button shape="round" (click)="showFingerPrint('almuerzo')">Timbrar</ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Regreso Almuerzo</ion-label>
-                    <ion-checkbox disabled="true"></ion-checkbox>&nbsp;
-                    <ion-button shape="round">Timbrar</ion-button>
+                    <ion-checkbox [checked]="isTimbrado.regreso" disabled="true"></ion-checkbox>&nbsp;
+                    <ion-button shape="round" (click)="showFingerPrint('regreso')">Timbrar</ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Salida</ion-label>
-                    <ion-checkbox disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round">Timbrar</ion-button>
+                    <ion-checkbox [checked]="isTimbrado.salida" disabled="true"></ion-checkbox> &nbsp;
+                    <ion-button shape="round" (click)="showFingerPrint('salida')">Timbrar</ion-button>
                 </ion-item>
             </ion-list>
         </ion-card-content>
     </ion-card>
     <ion-card>
         <ion-card-content>
-            27/03/2020
+            {{timbrar.fecha | date:'M/d/yy'}}
             <table class="table table-borderless ">
                 <thead>
                 <tr>
@@ -47,10 +47,10 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <th width="35">7:00</th>
-                    <td width="35">12:30</td>
-                    <td width="35">13:30</td>
-                    <td width="35">16:30</td>
+                    <th width="35">{{timbrar.entrada}}</th>
+                    <td width="35">{{timbrar.almuerzo}}</td>
+                    <td width="35">{{timbrar.regreso}}</td>
+                    <td width="35">{{timbrar.salida}}</td>
                 </tr>
                 </tbody>
             </table>
