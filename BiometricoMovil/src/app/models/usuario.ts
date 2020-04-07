@@ -9,4 +9,5 @@ export class Usuario {
     avatar?: string;
     huella?: string;
     tema?: boolean;
+
 }

@@ -3,6 +3,10 @@ import {verificaToken} from "../middlewares/autenticacion";
 // @ts-ignore
 import {Timbrar} from "../models/timbraModel";
 
+import FileSystem from "../classes/FileSystem";
+
+const fileSystem = new FileSystem();
+
 const timbrarRoutes = Router();
 
 //'-password'
@@ -55,4 +59,7 @@ timbrarRoutes.get('/user/obtener/timbrar/:fecha', [verificaToken], (req: any, re
         res.json(err);
     });
 });
+
+
+
 export default timbrarRoutes;

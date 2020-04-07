@@ -35,7 +35,8 @@ const usuarioSchema = new Schema({
     tema: {
         type: Boolean,
         default: true
-    }
+    },
+
 });
 
 usuarioSchema.method('compararPassword', function (password: string = ""): boolean {

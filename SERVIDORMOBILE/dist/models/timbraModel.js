@@ -37,6 +37,14 @@ const timbrarSchema = new mongoose_1.Schema({
     fecha: {
         type: String
     },
+    ubicacion: {
+        type: String,
+        default: null
+    },
+    observacion: {
+        type: String,
+        default: null
+    },
     usuario: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'Usuario',

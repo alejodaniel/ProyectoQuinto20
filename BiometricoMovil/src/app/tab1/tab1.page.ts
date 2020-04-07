@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UsuarioService} from '../services/usuario.service';
 import {Usuario} from '../models/usuario';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
@@ -16,7 +16,7 @@ declare var mapboxgl: any;
     templateUrl: 'tab1.page.html',
     styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
     usuario: Usuario = {};
     img: any = '';
@@ -30,6 +30,9 @@ export class Tab1Page {
         this.cargarUsuario();
         this.dibujarMapa();
         this.obtenerImagen();
+    }
+    ngOnInit() {
+
     }
 
     async cargarUsuario() {
