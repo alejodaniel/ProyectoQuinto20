@@ -1,112 +1,187 @@
 <ion-content>
-    <div class="limiter">
+    <div class="limiter container">
         <div class="container-login100" style="background-image: url('/assets/images/img-01.png');">
             <div class="wrap-login100 ">
-                <form class="login100-form" #regPerson="ngForm">
+                <ion-slides class="mainSlide" #slidePrincipal>
+                    <ion-slide>
+                        <form class="login100-form" #regPerson="ngForm">
 
-                    <ion-avatar class="login100-form-avatar">
-                        <img src="/assets/images/img-01.png">
-                    </ion-avatar>
+                            <ion-avatar class="login100-form-avatar">
+                                <img src="/assets/images/img-01.png">
+                            </ion-avatar>
+                            <div class="wrap-input100 validate-input m-b-5">
+                                <input [(ngModel)]="usuario.nombre" class="input100" type="email"
+                                       name="nombre"
+                                       #nombre="ngModel" required minlength="4" placeholder="Nombre">
+                                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="input1001"
+                                     role="alert">
+                                    <div *ngIf="nombre.errors.required">
+                                        El nombre es Requerido
+                                    </div>
+                                    <div *ngIf="nombre.errors.minlength">
+                                        El nombre debe tener almenos 4 letras
+                                    </div>
+                                </div>
+                                <div *ngIf="validacion.nombre" class="input1001"
+                                     role="alert">
+                                    <div>
+                                        {{validacion.nombre.message}}
+                                    </div>
 
-                    <span class="login100-form-title p-t-20 p-b-45">
-						REGISTRO
-					</span>
+                                </div>
+                            </div>
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="usuario.apellido" class="input100" type="email" name="apellido"
+                                       required minlength="4" placeholder="Apellido" #apellido="ngModel">
+                                <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="input1001"
+                                     role="alert">
+                                    <div *ngIf="apellido.errors.required">
+                                        El apellido es Requerido
+                                    </div>
+                                    <div *ngIf="apellido.errors.minlength">
+                                        El apellido debe tener almenos 4 letras
+                                    </div>
+                                </div>
+                                <div *ngIf="validacion.apellido" class="input1001"
+                                     role="alert">
+                                    <div>
+                                        {{validacion.apellido.message}}
+                                    </div>
 
-                    <div class="wrap-input100 validate-input m-b-5">
-                        <input autofocus [(ngModel)]="usuario.nombre" class="input100" type="email"
-                               name="nombre"
-                               #nombre="ngModel" required minlength="4" placeholder="Nombre">
-                        <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="input1001"
-                             role="alert">
-                            <div *ngIf="nombre.errors.required">
-                                El nombre es Requerido
+                                </div>
                             </div>
-                            <div *ngIf="nombre.errors.minlength">
-                                El nombre debe tener almenos 4 letras
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="usuario.email" class="input100" type="email" name="email"
+                                       required email placeholder="Correo" #email="ngModel">
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="input1001"
+                                     role="alert">
+                                    <div *ngIf="email.errors.required">
+                                        El email es Requerido
+                                    </div>
+                                    <div *ngIf="email.errors.email">
+                                        Debe ingresar un email valido
+                                    </div>
+                                </div>
+                                <div *ngIf="validacion.email" class="input1001"
+                                     role="alert">
+                                    <div>
+                                        {{validacion.email.message}}
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
-                        <div *ngIf="validacion.nombre" class="input1001"
-                             role="alert">
-                            <div>
-                                {{validacion.nombre.message}}
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="usuario.password" class="input100" type="password" name="password"
+                                       required placeholder="Ingrese Contraseña" #password="ngModel">
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="input1001"
+                                     role="alert">
+                                    <div *ngIf="password.errors.required">
+                                        La contraseña es requerida
+                                    </div>
+                                </div>
+                                <div *ngIf="validacion.password" class="input1001"
+                                     role="alert">
+                                    <div>
+                                        {{validacion.password.message}}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="passwordRep" class="input100" type="password" name="passwordRep"
+                                       required placeholder="Repita la Contraseña" #rep="ngModel">
+                                <div *ngIf="rep.invalid && (rep.dirty || rep.touched)" class="input1001"
+                                     role="alert">
+                                    <div *ngIf="rep.errors.required">
+                                        La contraseña es requerida
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="usuario.carrera" class="input100" type="email" name="carrera"
+                                       required placeholder="Carrera" #carrera="ngModel">
+                                <div *ngIf="carrera.invalid && (carrera.dirty || carrera.touched)" class="input1001"
+                                     role="alert">
+                                    <div *ngIf="carrera.errors.required">
+                                        La carrera es requerida
+                                    </div>
+                                </div>
+                                <div *ngIf="validacion.carrera" class="input1001"
+                                     role="alert">
+                                    <div>
+                                        {{validacion.carrera.message}}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="login100-form-title">
+                                <ion-icon (click)="showFingerPrint()" name="finger-print"
+                                          style="width: 130px;height: 75px"></ion-icon>
+                            </div>
+                            <div *ngIf="validacion.huella" class=" wrap-input100 validate-input m-b-10 input1001"
+                                 role="alert">
+                                <div>
+                                    {{validacion.huella.message}}
+                                </div>
+                            </div>
+                            <div class="container-login100-form-btn p-t-10">
+                                <button (click)="registrarUsuario(regPerson)" type="submit" class="login100-form-btn">
+                                    REGISTRAR USUARIO
+                                </button>
+                            </div>
+                        </form>
+                    </ion-slide>
+                    <ion-slide>
+                        <form class="login100-form" #flogin="ngForm">
+
+                            <ion-avatar class="login100-form-avatar">
+                                <img src="/assets/images/img-01.png">
+                            </ion-avatar>
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="loginUSer.email" class="input100" type="email" name="email"
+                                       required email placeholder="Ingrese su Correo" #email="ngModel">
+
+                            </div>
+                            <div class="wrap-input100 validate-input m-b-10">
+                                <input [(ngModel)]="loginUSer.password" class="input100" type="password" name="password"
+                                       placeholder="Ingrese Contraseña" #password="ngModel">
                             </div>
 
-                        </div>
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-10">
-                        <input [(ngModel)]="usuario.apellido" class="input100" type="email" name="apellido"
-                               required minlength="4" placeholder="Apellido" #apellido="ngModel">
-                        <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="input1001"
-                             role="alert">
-                            <div *ngIf="apellido.errors.required">
-                                El apellido es Requerido
-                            </div>
-                            <div *ngIf="apellido.errors.minlength">
-                                El apellido debe tener almenos 4 letras
-                            </div>
-                        </div>
-                        <div *ngIf="validacion.apellido" class="input1001"
-                             role="alert">
-                            <div>
-                                {{validacion.apellido.message}}
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-10">
-                        <input [(ngModel)]="usuario.email" class="input100" type="email" name="email"
-                               required email placeholder="Correo" #email="ngModel">
-                        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="input1001"
-                             role="alert">
-                            <div *ngIf="email.errors.required">
-                                El email es Requerido
+                            <div class="container-login100-form-btn p-t-10">
+                                <button (click)="login(flogin)" type="submit" class="login100-form-btn">
+                                    INICIAR SESION
+                                </button>
                             </div>
-                            <div *ngIf="email.errors.email">
-                                Debe ingresar un email valido
-                            </div>
-                        </div>
-                        <div *ngIf="validacion.email" class="input1001"
-                             role="alert">
-                            <div>
-                                {{validacion.email.message}}
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="wrap-input100 validate-input m-b-10">
-                        <input [(ngModel)]="usuario.carrera" class="input100" type="email" name="carrera"
-                               required placeholder="Carrera" #carrera="ngModel">
-                        <div *ngIf="carrera.invalid && (carrera.dirty || carrera.touched)" class="input1001"
-                             role="alert">
-                            <div *ngIf="carrera.errors.required">
-                                La carrera es requerida
-                            </div>
-                        </div>
-                        <div *ngIf="validacion.carrera" class="input1001"
-                             role="alert">
-                            <div>
-                                {{validacion.carrera.message}}
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="login100-form-title p-t-20 p-b-45">
-                        <ion-icon (click)="showFingerPrint()" name="finger-print"
-                                  style="width: 200px;height: 100px"></ion-icon>
-                    </div>
-                    <div *ngIf="validacion.huella" class=" wrap-input100 validate-input m-b-10 input1001" role="alert">
-                        <div>
-                            {{validacion.huella.message}}
-                        </div>
-                    </div>
-                    <div class="container-login100-form-btn p-t-10">
-                        <button (click)="registrarUsuario(regPerson)" type="submit" class="login100-form-btn">
-                            REGISTRAR USUARIO
-                        </button>
-                    </div>
-                </form>
+                        </form>
+                    </ion-slide>
+                </ion-slides>
             </div>
         </div>
     </div>
 
 </ion-content>
+<ion-footer class="ion-no-border">
+    <ion-row>
+        <ion-col class="footerForm">
+            <ion-button shape="round"
+                        expand="full"
+                        size="small"
+                        fill="outline"
+                        color="light"
+                        (click)="mostrarRegistro()">No tienes cuenta?
+            </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button shape="round"
+                        expand="full"
+                        size="small"
+                        fill="outline"
+                        color="light"
+                        (click)="mostrarLogin()">Ya tienes cuenta
+            </ion-button>
+        </ion-col>
+
+
+    </ion-row>
+</ion-footer>

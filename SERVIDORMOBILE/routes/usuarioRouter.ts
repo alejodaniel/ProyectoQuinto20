@@ -2,7 +2,11 @@ import {Router, Request, Response} from "express";
 import {Usuario} from "../models/usuarioModel";
 import Token from "../classes/token";
 import {verificaToken} from "../middlewares/autenticacion";
+import bcrypt from "bcrypt";
+import {IFileUpload} from "../interfaces/file-upload";
+import FileSystem from "../classes/FileSystem";
 
+const fileSystem = new FileSystem();
 
 const userRoutes = Router();
 //Crear un usuario
@@ -11,6 +15,8 @@ userRoutes.post('/user/create', (req: Request, res: Response) => {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         email: req.body.email,
+        avatar: req.body.avatar,
+        password: bcrypt.hashSync(req.body.password, 10),
         carrera: req.body.carrera,
         huella: req.body.huella,
         tema: req.body.tema
@@ -23,6 +29,7 @@ userRoutes.post('/user/create', (req: Request, res: Response) => {
             apellido: userDB.apellido,
             email: userDB.email,
             carrera: userDB.carrera,
+            avatar: userDB.avatar,
             huella: userDB.huella,
             tema: req.body.tema
 
@@ -47,6 +54,7 @@ userRoutes.post('/user/update', [verificaToken], (req: any, res: Response) => {
         email: req.body.email || req.usuario.email,
         carrera: req.body.carrera || req.usuario.carrera,
         huella: req.body.huella || req.usuario.huella,
+        avatar: req.body.avatar,
         tema: req.body.tema
 
     };
@@ -65,6 +73,7 @@ userRoutes.post('/user/update', [verificaToken], (req: any, res: Response) => {
                 email: userDB.email,
                 carrera: userDB.carrera,
                 huella: userDB.huella,
+                avatar: userDB.avatar,
                 tema: req.body.tema
 
             });
@@ -77,12 +86,93 @@ userRoutes.post('/user/update', [verificaToken], (req: any, res: Response) => {
     });
 });
 
+userRoutes.post('/user/login', (req: Request, res: Response) => {
+
+    const body = req.body;
+
+    Usuario.findOne({email: body.email}, (err, usuario) => {
+        if (err) throw err;
+        if (!usuario) {
+            return res.json({
+                ok: false,
+                mensaje: 'Usuario o Contraseña no son correctos'
+            });
+        }
+        if (usuario.compararPassword(body.password)) {
+            const token = Token.getJwtToken({
+                _id: usuario._id,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                email: usuario.email,
+                avatar: usuario.avatar,
+                carrera: usuario.carrera,
+                tema: usuario.tema
+            });
+            return res.json({
+                ok: true,
+                token: token
+            });
+        }
+        return res.json({
+            ok: false,
+            mensaje: 'Usuario o Contraseña no son correctos'
+        });
+    });
+
+});
+
 userRoutes.get('/user', [verificaToken], (req: any, res: Response) => {
     const usuario = req.usuario;
     res.json({
         ok: true,
         usuario
     })
+});
+
+
+//Subir Archivo
+userRoutes.post('/user/imagen', [verificaToken], async (req: any, res: Response) => {
+
+    if (!req.files) {
+        return res.status(400).json({
+            ok: false,
+            mensaje: 'No se subio ningun archivo'
+        });
+    }
+
+    const file: IFileUpload = req.files.image;
+
+    if (!file) {
+        return res.status(400).json({
+            ok: false,
+            mensaje: 'No se subio ningun archivo'
+        });
+    }
+    if (!file.mimetype.includes('image')) {
+        return res.status(400).json({
+            ok: false,
+            mensaje: 'Debes subir una imagen'
+        });
+    }
+
+
+    await fileSystem.guardarImagen(file, req.usuario._id, req.usuario.avatar).then(img => {
+        return res.json({
+            ok: true,
+            img
+        });
+    });
+
+
+});
+
+userRoutes.get('/user/imagen/:userId/:img', (req: any, res: Response) => {
+    const userId = req.params.userId;
+    const img = req.params.img;
+
+    const pathFoto = fileSystem.getFotoUrl(userId, img);
+
+    res.sendFile(pathFoto);
 });
 
 export default userRoutes;

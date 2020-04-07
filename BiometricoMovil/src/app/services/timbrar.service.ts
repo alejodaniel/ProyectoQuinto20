@@ -44,4 +44,19 @@ export class TimbrarService {
             });
         });
     }
+
+    async obtener(fecha) {
+        await this.obtenerToken();
+        fecha = fecha.replace('/', '-');
+        fecha = fecha.replace('/', '-');
+        const headers = new HttpHeaders({'token': this.token});
+        return new Promise(resolve => {
+            this.http.get(this.url + 'user/obtener/timbrar/' + fecha, {headers}).subscribe(res => {
+                resolve(res);
+            }, err => {
+                alert(JSON.stringify(err));
+            });
+        });
+    }
+
 }

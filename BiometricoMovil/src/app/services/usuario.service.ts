@@ -5,6 +5,7 @@ import {Usuario} from '../models/usuario';
 import {environment} from '../../environments/environment';
 import {Storage} from '@ionic/storage';
 import {UiService} from './ui.service';
+import {FileTransfer, FileUploadOptions, FileTransferObject} from '@ionic-native/file-transfer/ngx';
 
 @Injectable({
     providedIn: 'root'
@@ -16,7 +17,7 @@ export class UsuarioService {
     _themeDark;
     url = environment.url;
 
-    constructor(private http: HttpClient, private storage: Storage, private nav: NavController, private uiServices: UiService) {
+    constructor(private transfer: FileTransfer, private http: HttpClient, private storage: Storage, private nav: NavController, private uiServices: UiService) {
     }
 
 
@@ -43,7 +44,7 @@ export class UsuarioService {
                 if (res['ok']) {
                     this.usuario = res['usuario'];
                     this._themeDark = this.usuario.tema;
-                    this.nav.navigateRoot(['/main/tabs/tab1']);
+                    this.nav.navigateRoot(['/']);
                     resolve(true);
                 } else {
                     this.nav.navigateRoot('/registro');
@@ -56,6 +57,7 @@ export class UsuarioService {
     }
 
     registrarUsuario(usuario: Usuario) {
+        alert(JSON.stringify(usuario));
         return new Promise(resolve => {
             this.http.post(this.url + 'user/create', usuario).subscribe(res => {
                 if (res['ok']) {
@@ -67,6 +69,7 @@ export class UsuarioService {
                     resolve(res);
                 }
             }, err => {
+                alert(JSON.stringify(err));
                 this.uiServices.presentToast('Algo ha salido mal');
             });
         });
@@ -120,4 +123,41 @@ export class UsuarioService {
             });
         });
     }
+
+    login(email: string, password: string) {
+        const data = {email, password};
+        return new Promise(resolve => {
+            this.http.post(this.url + 'user/login', data).subscribe(res => {
+                if (res['ok']) {
+                    this.guardarToken(res['token']);
+                    resolve(true);
+                } else {
+                    this.token = null;
+                    this.storage.clear();
+                    resolve(false);
+                }
+            });
+        });
+
+    }
+
+    async subirImagen(img: string) {
+        await this.cargarToken();
+        const options: FileUploadOptions = {
+            fileKey: 'image',
+            headers: {
+                'token': this.token
+            }
+        };
+        const fileTransfer: FileTransferObject = this.transfer.create();
+        fileTransfer.upload(img, this.url + 'user/imagen', options).then(data => {
+            JSON.parse(data['response']);
+            this.usuario.avatar = JSON.parse(data['response']).img;
+            this.actualizarUsuario(this.usuario);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+
 }

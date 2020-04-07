@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6580ce27-a745-44a3-b976-c4711562e4ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/services/imagenes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/services/imagenes.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/services/pipes/fecha-pipe.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/services/pipes/fecha-pipe.pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/services/pipes/hora.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/services/pipes/hora.pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/timbrar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/timbrar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/timbrar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/timbrar.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/timbrador.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/timbrador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/timbradores.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/timbradores.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/models/timbraModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/models/timbraModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/models/timbraModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/models/timbraModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/timbrarRoutes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/timbrarRoutes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Personal/AngularSpring/Server" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -89,6 +87,7 @@
       <workItem from="1584982322072" duration="1211000" />
       <workItem from="1585067841704" duration="4557000" />
       <workItem from="1585156572567" duration="130000" />
+      <workItem from="1586208960022" duration="1234000" />
     </task>
     <servers />
   </component>

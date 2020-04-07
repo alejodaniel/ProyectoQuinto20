@@ -5,20 +5,36 @@ const timbrarSchema = new Schema({
         type: String,
         default: '00:00'
     },
+    coordEntrada: {
+        type: String,
+        default: null
+    },
     almuerzo: {
         type: String,
         default: '00:00'
+    },
+    coordAlmuerzo: {
+        type: String,
+        default: null
     },
     regreso: {
         type: String,
         default: '00:00'
     },
+    coordRegreso: {
+        type: String,
+        default: null
+    },
     salida: {
         type: String,
         default: '00:00'
     },
+    coordSalida: {
+        type: String,
+        default: null
+    },
     fecha: {
-        type: Date
+        type: String
     },
     usuario: {
         type: Schema.Types.ObjectId,
@@ -29,11 +45,15 @@ const timbrarSchema = new Schema({
 
 interface ITimbrar extends Document {
     entrada: string;
+    coordEntrada: string;
     almuerzo: string;
-    regreso: string;
+    coordAlmuerzo: string;
+    regreso: string
+    coordRegreso: string;
     salida: string;
-    fecha: Date;
+    coordSalida: string;
+    fecha: string;
     usuario: string;
 }
 
-export const Timbrar = model<ITimbrar>('Timbrar', timbrarSchema);
+export const Timbrar = model<ITimbrar>('Timbrada', timbrarSchema);

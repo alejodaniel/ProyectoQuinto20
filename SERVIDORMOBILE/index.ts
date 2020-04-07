@@ -33,14 +33,14 @@ server.app.use((req, res, next) => {
 server.app.use('/server', [userRoutes, timbrarRoutes]);
 
 //Conecgar DB
-mongoose.connect('mongodb://localhost:27017/BiometricoMobile', {
+mongoose.connect('mongodb://localhost:27017/BioDB', {
     useNewUrlParser: true,
     useFindAndModify: false
 }, (err) => {
     if (err) throw err;
     console.log('Base de datos conectada')
 });
-mongoose.createConnection('mongodb://localhost:27017/BiometricoMobile', {useNewUrlParser: true});
+mongoose.createConnection('mongodb://localhost:27017/BioDB', {useNewUrlParser: true});
 
 
 //levantar express

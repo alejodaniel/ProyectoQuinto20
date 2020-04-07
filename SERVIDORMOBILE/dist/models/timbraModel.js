@@ -6,20 +6,36 @@ const timbrarSchema = new mongoose_1.Schema({
         type: String,
         default: '00:00'
     },
+    coordEntrada: {
+        type: String,
+        default: null
+    },
     almuerzo: {
         type: String,
         default: '00:00'
+    },
+    coordAlmuerzo: {
+        type: String,
+        default: null
     },
     regreso: {
         type: String,
         default: '00:00'
     },
+    coordRegreso: {
+        type: String,
+        default: null
+    },
     salida: {
         type: String,
         default: '00:00'
     },
+    coordSalida: {
+        type: String,
+        default: null
+    },
     fecha: {
-        type: Date
+        type: String
     },
     usuario: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -27,4 +43,4 @@ const timbrarSchema = new mongoose_1.Schema({
         required: [true, 'Debe de existir una relacion con usuario']
     }
 });
-exports.Timbrar = mongoose_1.model('Timbrar', timbrarSchema);
+exports.Timbrar = mongoose_1.model('Timbrada', timbrarSchema);

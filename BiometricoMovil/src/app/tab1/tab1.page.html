@@ -9,6 +9,11 @@
 <ion-content [fullscreen]="true">
     <ion-card>
         <ion-card-content>
+            <div class="text-center">
+                <ion-avatar class="login100-form-avatar">
+                    <img [src]="img" (click)="presentActionSheet()">
+                </ion-avatar>
+            </div>
             <ion-item lines="none">
                 <ion-label>Nombre: {{usuario.nombre}}  {{usuario.apellido}}</ion-label>
             </ion-item>

@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NavController, Platform} from '@ionic/angular';
+import {IonSlides, NavController, Platform} from '@ionic/angular';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 import {Usuario} from '../../models/usuario';
 import {NgForm} from '@angular/forms';
@@ -15,6 +15,9 @@ export class RegistroPage implements OnInit {
 
     validacion: any = {};
     usuario: Usuario = {};
+    loginUSer: Usuario = {};
+    passwordRep: string;
+    @ViewChild('slidePrincipal', {static: true}) slides: IonSlides;
 
     constructor(private fingerprint: FingerprintAIO, private userService: UsuarioService, private uiService: UiService, private navController: NavController) {
 
@@ -22,7 +25,7 @@ export class RegistroPage implements OnInit {
 
 
     ngOnInit() {
-
+        this.slides.slideTo(1);
     }
 
     showFingerPrint() {
@@ -40,15 +43,41 @@ export class RegistroPage implements OnInit {
     }
 
     async registrarUsuario(regPerson: NgForm) {
-        this.usuario.tema = false;
-        this.userService.registrarUsuario(this.usuario).then(res => {
-            if (!res['ok']) {
-                this.validacion = res['err']['errors'];
-            }
-            if (res['ok']) {
-                this.navController.navigateRoot(['/']);
-            }
-        });
+        if (this.usuario.password == this.passwordRep) {
+            this.usuario.tema = false;
+            this.userService.registrarUsuario(this.usuario).then(res => {
+                if (!res['ok']) {
+                    this.validacion = res['err']['errors'];
+                }
+                if (res['ok']) {
+                    this.navController.navigateRoot(['/'], {animated: true});
+                }
+            });
+        } else {
+            this.uiService.presentToast('Las contraseñas no coinciden');
+        }
     }
 
+    mostrarLogin() {
+        this.slides.slideTo(1);
+
+    }
+
+    mostrarRegistro() {
+        this.slides.slideTo(0);
+    }
+
+
+    async login(flogin: NgForm) {
+        if (flogin.invalid) {
+            return;
+        }
+        const valido = await this.userService.login(this.loginUSer.email, this.loginUSer.password);
+        // @ts-ignore
+        if (valido) {
+            this.navController.navigateRoot('/', {animated: true});
+        } else {
+            this.uiService.alertaInformativa('Usuario o contraseña no son correctos');
+        }
+    }
 }
