@@ -7,7 +7,7 @@ export default class FileSystem {
     constructor() {
     }
 
-    guardarImagen(file: IFileUpload, userId: string, avatar: string) {
+     guardarImagen(file: IFileUpload, userId: string, avatar: string) {
         return new Promise((resolve, reject) => {
             this.eliminarAnterior(userId, avatar);
 

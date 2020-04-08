@@ -36,6 +36,14 @@ const timbrarSchema = new Schema({
     fecha: {
         type: String
     },
+    ubicacion: {
+        type: String,
+        default: null
+    },
+    observacion: {
+        type: String,
+        default: null
+    },
     usuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
@@ -54,6 +62,7 @@ interface ITimbrar extends Document {
     coordSalida: string;
     fecha: string;
     usuario: string;
+   
 }
 
 export const Timbrar = model<ITimbrar>('Timbrada', timbrarSchema);

@@ -38,7 +38,7 @@ const usuarioSchema = new mongoose_1.Schema({
     tema: {
         type: Boolean,
         default: true
-    }
+    },
 });
 usuarioSchema.method('compararPassword', function (password = "") {
     if (bcrypt_1.default.compareSync(password, this.password)) {
