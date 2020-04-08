@@ -60,6 +60,21 @@ timbrarRoutes.get('/user/obtener/timbrar/:fecha', [verificaToken], (req: any, re
     });
 });
 
+timbrarRoutes.get('/user/obtener/userTimbradas', [verificaToken], (req: any, res: Response) => {
 
+    Timbrar.find({usuario: req.usuario._id}).then(async (timbrar: any) => {
+        if (!timbrar) {
+            return res.json({
+                ok: false,
+            });
+        }
+        res.json({
+            ok: true,
+            timbrar
+        });
+    }).catch((err: any) => {
+        res.json(err);
+    });
+});
 
 export default timbrarRoutes;

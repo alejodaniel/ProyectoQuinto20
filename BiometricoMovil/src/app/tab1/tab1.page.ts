@@ -5,6 +5,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
 import {ActionSheetController} from '@ionic/angular';
 import {environment} from '../../environments/environment';
+import {TimbrarService} from '../services/timbrar.service';
 
 declare var window: any;
 
@@ -19,18 +20,20 @@ declare var mapboxgl: any;
 export class Tab1Page implements OnInit {
 
     usuario: Usuario = {};
+    timbradas: any[] = [];
     img: any = '';
     url = environment.url;
+    mostrarTabla = false;
 
     // @ts-ignore
     @ViewChild('mapa') mapa;
 
     constructor(private camera: Camera, private usuarioService: UsuarioService, private geolocation: Geolocation,
-                private actionSheetController: ActionSheetController) {
+                private actionSheetController: ActionSheetController, private timbrarService: TimbrarService) {
         this.cargarUsuario();
-        this.dibujarMapa();
         this.obtenerImagen();
     }
+
     ngOnInit() {
 
     }
@@ -43,25 +46,6 @@ export class Tab1Page implements OnInit {
         }
     }
 
-    dibujarMapa() {
-        this.geolocation.getCurrentPosition().then((data) => {
-            // resp.coords.latitude
-            // resp.coords.longitude
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY2tlcnJhZXoiLCJhIjoiY2s4a3BvNWp5MDRlMDNlcGhsbXViZjYwMCJ9.XHOX6C8xw-bqbov8ZYur6A';
-            const map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [data.coords.longitude, data.coords.latitude],
-                zoom: 16
-            });
-            const marker = new mapboxgl.Marker().setLngLat([data.coords.longitude, data.coords.latitude])
-                .addTo(map);
-
-            map.addControl(new mapboxgl.NavigationControl());
-        }).catch((error) => {
-            console.log('Error getting location', error);
-        });
-    }
 
     camara() {
 
@@ -133,6 +117,17 @@ export class Tab1Page implements OnInit {
     async obtenerImagen() {
         await this.cargarUsuario();
         this.img = this.url + 'user/imagen/' + this.usuario._id + '/' + this.usuario.avatar;
+    }
+
+    async cargarTimbradas() {
+        this.timbrarService.obtenerTimbradas().then(res => {
+            if (res['ok']) {
+                this.mostrarTabla = true;
+                this.timbradas = res['timbrar'];
+            }
+
+        }).catch(err => {
+        });
     }
 
 }

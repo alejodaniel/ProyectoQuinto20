@@ -59,4 +59,16 @@ export class TimbrarService {
         });
     }
 
+    async obtenerTimbradas() {
+        await this.obtenerToken();
+        const headers = new HttpHeaders({'token': this.token});
+        return new Promise(resolve => {
+            this.http.get(this.url + 'user/obtener/userTimbradas', {headers}).subscribe(res => {
+                resolve(res);
+            }, err => {
+                alert(JSON.stringify(err));
+            });
+        });
+    }
+
 }

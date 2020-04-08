@@ -4,8 +4,7 @@
   "description": "API REST",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/"
+    "start": "node index.js"
   },
   "author": "ALEJO",
   "license": "ISC",

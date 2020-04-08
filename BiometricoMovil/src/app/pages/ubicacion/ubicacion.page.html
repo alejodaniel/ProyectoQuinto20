@@ -1,5 +1,10 @@
 <ion-header [translucent]="true">
     <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]="['tabs/tab2']" (click)="dismiss()">
+                <ion-icon name=""></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
         <ion-title color="light">
             Mi Ubicación
         </ion-title>
@@ -8,45 +13,9 @@
 
 <ion-content [fullscreen]="true">
     <ion-card>
-        <ion-card-header>
-            <ion-card-title color="primary">Ubicación Actual</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-                    <div id='map'></div>
-        </ion-card-content>
+        <div id='map'></div>
+        <div id="almuerzo"></div>
+        <div id="regreso"></div>
+        <div id="salida"></div>
     </ion-card>
-    <ion-card>
-        <ion-card-header>
-            <ion-card-title color="primary">Agregar Descripción</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <br>
-            <ion-item>
-                <ion-label position="floating">Observación</ion-label>
-                <ion-textarea></ion-textarea>
-            </ion-item>
-            <ion-item>
-                <ion-col size="">
-                    <ion-button expand="full"
-                                shape="round">
-                        <ion-icon slot="start" name="camera"></ion-icon>
-                        Tomar Foto
-                    </ion-button>
-                </ion-col>
-            </ion-item>
-            <br>
-            <div class="ion-text-center">
-
-            </div>
-
-        </ion-card-content>
-        <ion-row>
-            <ion-col size="3" >
-                <ion-card>
-
-                </ion-card>
-            </ion-col>
-        </ion-row>
-    </ion-card>
-
 </ion-content>

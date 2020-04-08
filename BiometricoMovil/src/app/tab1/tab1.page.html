@@ -24,10 +24,36 @@
                 <ion-label>Carrera: {{usuario.carrera}}</ion-label>
             </ion-item>
 
+            <ion-button *ngIf="!mostrarTabla" shape="round" expand="block" (click)="cargarTimbradas()">Ver Historial
+            </ion-button>
+            <ion-button *ngIf="mostrarTabla" color="danger" shape="round" expand="block" (click)="mostrarTabla = false">
+                Cancelar
+            </ion-button>
         </ion-card-content>
-
     </ion-card>
-    <ion-item lines="none">
-        <ion-button routerLink="/ubicacion">VER MI UBICACIÓN</ion-button>
-    </ion-item>
+
+    <ion-card *ngIf="mostrarTabla">
+        <ion-card-content *ngFor="let timbrar of timbradas">
+            <b>{{timbrar.fecha}}</b>
+            <table class="table table-striped ">
+                <thead>
+                <tr>
+                    <th width="35" scope="col">Entrada</th>
+                    <th width="35" scope="col">Almuerzo</th>
+                    <th width="35" scope="col">Regreso</th>
+                    <th width="35" scope="col">Salida</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th width="35">{{timbrar.entrada}}</th>
+                    <td width="35">{{timbrar.almuerzo}}</td>
+                    <td width="35">{{timbrar.regreso}}</td>
+                    <td width="35">{{timbrar.salida}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>

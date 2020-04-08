@@ -20,6 +20,11 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const FileSystem_1 = __importDefault(require("../classes/FileSystem"));
 const fileSystem = new FileSystem_1.default();
 const userRoutes = express_1.Router();
+userRoutes.get('/', (req, res) => {
+    res.json({
+        ok: true,
+    });
+});
 //Crear un usuario
 userRoutes.post('/user/create', (req, res) => {
     const user = {

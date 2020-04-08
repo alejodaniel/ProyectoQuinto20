@@ -35,11 +35,6 @@
     </ion-card>
     <ion-card>
         <ion-card-content>
-                <div id='map'></div>
-        </ion-card-content>
-    </ion-card>
-    <ion-card>
-        <ion-card-content>
             {{timbrar.fecha | date:'M/d/yy'}}
             <table class="table table-borderless ">
                 <thead>
@@ -59,8 +54,17 @@
                 </tr>
                 </tbody>
             </table>
-            <ion-button shape="round" expand="block">Mostrar Mas</ion-button>
+            <ion-button *ngIf="!mostrarMapa" shape="round" expand="block" (click)="mostrarMas(timbrar)" #boton>Mostrar
+                Mas
+            </ion-button>
+            <ion-button *ngIf="mostrarMapa" color="danger" shape="round" expand="block" (click)="mostrarMapa = false">
+                Cancelar
+            </ion-button>
         </ion-card-content>
     </ion-card>
+
+    <div class="container">
+        <div *ngIf="mostrarMapa" id='map'></div>
+    </div>
 
 </ion-content>

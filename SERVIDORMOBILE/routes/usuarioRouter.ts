@@ -9,6 +9,13 @@ import FileSystem from "../classes/FileSystem";
 const fileSystem = new FileSystem();
 
 const userRoutes = Router();
+userRoutes.get('/', (req: any, res: Response) => {
+
+    res.json({
+        ok: true,
+    })
+});
+
 //Crear un usuario
 userRoutes.post('/user/create', (req: Request, res: Response) => {
     const user = {

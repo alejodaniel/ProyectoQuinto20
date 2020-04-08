@@ -26,7 +26,7 @@ server.app.use((req, res, next) => {
 //Rutas de mi app
 server.app.use('/server', [usuarioRouter_1.default, timbrarRoutes_1.default]);
 //Conecgar DB
-mongoose_1.default.connect('mongodb://localhost:27017/BioDB', {
+mongoose_1.default.connect('mongodb+srv://prueba:yav12345@cluster0-bpftk.mongodb.net/BioDB', {
     useNewUrlParser: true,
     useFindAndModify: false
 }, (err) => {
@@ -34,8 +34,8 @@ mongoose_1.default.connect('mongodb://localhost:27017/BioDB', {
         throw err;
     console.log('Base de datos conectada');
 });
-mongoose_1.default.createConnection('mongodb://localhost:27017/BioDB', { useNewUrlParser: true });
+mongoose_1.default.createConnection('mongodb+srv://prueba:yav12345@cluster0-bpftk.mongodb.net/BioDB', { useNewUrlParser: true });
 //levantar express
 server.start(() => {
-    console.log(`servidor Corriendo en puerto ${server.port}`);
+    console.log(`servidor Corriendo  puerto ${server.port}`);
 });

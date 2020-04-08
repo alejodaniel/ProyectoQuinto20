@@ -8,11 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const autenticacion_1 = require("../middlewares/autenticacion");
 // @ts-ignore
 const timbraModel_1 = require("../models/timbraModel");
+const FileSystem_1 = __importDefault(require("../classes/FileSystem"));
+const fileSystem = new FileSystem_1.default();
 const timbrarRoutes = express_1.Router();
 //'-password'
 timbrarRoutes.post('/user/create/timbrar', [autenticacion_1.verificaToken], (req, res) => {
@@ -53,6 +58,21 @@ timbrarRoutes.get('/user/obtener/timbrar/:fecha', [autenticacion_1.verificaToken
         }
         // @ts-ignore
         yield timbrar.populate('usuario', '-password').execPopulate();
+        res.json({
+            ok: true,
+            timbrar
+        });
+    })).catch((err) => {
+        res.json(err);
+    });
+});
+timbrarRoutes.get('/user/obtener/userTimbradas', [autenticacion_1.verificaToken], (req, res) => {
+    timbraModel_1.Timbrar.find({ usuario: req.usuario._id }).then((timbrar) => __awaiter(void 0, void 0, void 0, function* () {
+        if (!timbrar) {
+            return res.json({
+                ok: false,
+            });
+        }
         res.json({
             ok: true,
             timbrar

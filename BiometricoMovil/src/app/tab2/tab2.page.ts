@@ -4,8 +4,11 @@ import {Timbrar} from '../models/timbrar';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 import {Storage} from '@ionic/storage';
 
-import {UsuarioService} from "../services/usuario.service";
-import {Geolocation} from "@ionic-native/geolocation/ngx";
+import {UsuarioService} from '../services/usuario.service';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {UiService} from '../services/ui.service';
+import {ModalController} from '@ionic/angular';
+import {UbicacionPage} from '../pages/ubicacion/ubicacion.page';
 
 
 declare var mapboxgl: any;
@@ -18,12 +21,13 @@ declare var mapboxgl: any;
 export class Tab2Page implements OnInit {
     coordenadas: any;
     // @ts-ignore
-    @ViewChild('mapa') mapa;
 
     timbrar: Timbrar = new Timbrar();
     isTimbrado: any = {};
+    mostrarMapa = false;
 
-    constructor(private geolocation: Geolocation, private timbrarService: TimbrarService, private fingerprint: FingerprintAIO, private storage: Storage) {
+    constructor(private  uiService: UiService, private geolocation: Geolocation, private timbrarService: TimbrarService,
+                private fingerprint: FingerprintAIO, private storage: Storage, public modalController: ModalController) {
         this.dibujarMapa();
     }
 
@@ -50,7 +54,7 @@ export class Tab2Page implements OnInit {
             this.timbrar = res['timbrar'];
             this.storage.set('timbrar', this.timbrar);
         }).catch(err => {
-            alert(JSON.stringify(err));
+
         });
     }
 
@@ -58,28 +62,14 @@ export class Tab2Page implements OnInit {
         this.geolocation.getCurrentPosition().then((data) => {
             // resp.coords.latitude
             // resp.coords.longitude
-
-            const long = data.coords.longitude;
-            const lat = data.coords.latitude;
             this.coordenadas = `${data.coords.longitude},${data.coords.latitude}`;
-            mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY2tlcnJhZXoiLCJhIjoiY2s4a3BvNWp5MDRlMDNlcGhsbXViZjYwMCJ9.XHOX6C8xw-bqbov8ZYur6A';
-            const map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v11',
-                center: [long, lat],
-                zoom: 16
-            });
-            const marker = new mapboxgl.Marker().setLngLat([long, lat])
-                .addTo(map);
-            console.log(this.coordenadas);
-            map.addControl(new mapboxgl.NavigationControl());
+
         }).catch((error) => {
             console.log('Error getting location', error);
         });
     }
 
     showFingerPrint(dato) {
-        console.log(this.coordenadas);
         const fecha = new Date();
         this.fingerprint.show({
             title: 'Escaner de Huella',
@@ -93,7 +83,7 @@ export class Tab2Page implements OnInit {
             if (dato == 'almuerzo') {
                 this.timbrar.almuerzo = fecha.getHours() + ':' + fecha.getMinutes();
                 this.isTimbrado.almuerzo = true;
-                this.timbrar.coordAlmuerzo = this.coordenadas
+                this.timbrar.coordAlmuerzo = this.coordenadas;
             }
             if (dato == 'regreso') {
                 this.timbrar.regreso = fecha.getHours() + ':' + fecha.getMinutes();
@@ -108,6 +98,7 @@ export class Tab2Page implements OnInit {
             this.timbrarService.actualizar(this.timbrar).then(result => {
 
             }).catch(err => {
+                this.uiService.presentToast('Ha ocurrido un error al timbrar');
             });
         });
     }
@@ -127,8 +118,63 @@ export class Tab2Page implements OnInit {
         }
     }
 
+    mostrarMas(timbrar) {
+        this.mostrarMapa = true;
+        this.geolocation.getCurrentPosition().then((data) => {
+            // resp.coords.latitude
+            // resp.coords.longitude
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpY2tlcnJhZXoiLCJhIjoiY2s4a3BvNWp5MDRlMDNlcGhsbXViZjYwMCJ9.XHOX6C8xw-bqbov8ZYur6A';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [data.coords.longitude, data.coords.latitude],
+                zoom: 22
+            });
 
+            if (timbrar.coordEntrada != null) {
+                const latLng = timbrar.coordEntrada.split(',');
+                const lat = Number(latLng[1]);
+                const lng = Number(latLng[0]);
+                new mapboxgl.Marker({color: 'green'}).setLngLat([lng, lat]).setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+                    .setHTML('<span> Entrada</span>'))
+                    .addTo(map);
+
+            }
+
+            if (timbrar.coordAlmuerzo != null) {
+                const latLng = timbrar.coordAlmuerzo.split(',');
+                const lat = Number(latLng[1]);
+                const lng = Number(latLng[0]);
+                new mapboxgl.Marker({color: 'yellow'}).setLngLat([lng, lat]).setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+                    .setHTML('<span> Almuerzo</span>'))
+                    .addTo(map);
+
+            }
+
+            if (timbrar.coordRegreso != null) {
+                const latLng = timbrar.coordRegreso.split(',');
+                const lat = Number(latLng[1]);
+                const lng = Number(latLng[0]);
+                new mapboxgl.Marker().setLngLat([lng, lat]).setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+                    .setHTML('<span> Regreso Almuerzo</span>'))
+                    .addTo(map);
+
+            }
+
+            if (timbrar.coordSalida != null) {
+                const latLng = timbrar.coordSalida.split(',');
+                const lat = Number(latLng[1]);
+                const lng = Number(latLng[0]);
+                new mapboxgl.Marker({color: 'red'}).setLngLat([lng, lat]).setPopup(new mapboxgl.Popup({offset: 25}) // add popups
+                    .setHTML('<span> Salida</span>'))
+                    .addTo(map);
+
+            }
+
+            map.addControl(new mapboxgl.NavigationControl());
+        }).catch((error) => {
+            console.log('Error getting location', error);
+        });
+    }
 }
-
-
 

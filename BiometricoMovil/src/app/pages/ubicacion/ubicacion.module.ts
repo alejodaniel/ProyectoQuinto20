@@ -1,13 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import {IonicModule} from '@ionic/angular';
 
-import { UbicacionPageRoutingModule } from './ubicacion-routing.module';
+import {UbicacionPageRoutingModule} from './ubicacion-routing.module';
 
-import { UbicacionPage } from './ubicacion.page';
-
+import {UbicacionPage} from './ubicacion.page';
 
 
 @NgModule({
@@ -15,8 +14,11 @@ import { UbicacionPage } from './ubicacion.page';
         CommonModule,
         FormsModule,
         IonicModule,
-        UbicacionPageRoutingModule,
+        UbicacionPageRoutingModule
     ],
+    exports: [UbicacionPage],
+
     declarations: [UbicacionPage]
 })
-export class UbicacionPageModule {}
+export class UbicacionPageModule {
+}

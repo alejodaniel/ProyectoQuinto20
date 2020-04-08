@@ -13,13 +13,14 @@ import {IonicStorageModule} from '@ionic/storage';
 import {HttpClientModule} from '@angular/common/http';
 import {Camera} from '@ionic-native/camera/ngx';
 import {FileTransfer} from '@ionic-native/file-transfer/ngx';
-import { ImagePipe } from './services/image.pipe';
+import {ImagePipe} from './services/image.pipe';
+import {UbicacionPage} from './pages/ubicacion/ubicacion.page';
 
 
 // @ts-ignore
 @NgModule({
-    declarations: [AppComponent, ImagePipe],
-    entryComponents: [],
+    declarations: [AppComponent, ImagePipe, UbicacionPage],
+    entryComponents: [UbicacionPage],
     imports: [BrowserModule, IonicModule.forRoot(),
         AppRoutingModule, HttpClientModule, IonicStorageModule.forRoot()],
     providers: [
