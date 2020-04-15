@@ -1,0 +1,41 @@
+﻿<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+    <div class="col-lg-4">
+      <img src="assets/images/logo.png" class="user-avatar" width="70px"/>
+      <br>
+      <h3>INICIAR SESIÓN</h3>
+      <form role="form">
+
+        <div class="form-group">
+          <label for="userName">
+            <i class="fa fa-envelope">
+              Correo Electrónico
+            </i>
+          </label>
+          <div class="form-group input-group">
+            <input type="text"
+                   class="form-control input-underline input-lg text-right text-lowercase"
+                   id="userName">
+            <div class="input-group-prepend">
+              <label for="userName" class="input-group-text  input-underline input-lg"
+                     id="basic-addon1">@yavirac.edu.ec</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">
+            <i class="fa fa-key">Contraseña
+              <i class="fa fa-question btn"
+                 title="Su contraseña por defecto es su número de cédula"></i>
+            </i>
+          </label>
+          <input type="password" class="form-control input-underline input-lg"
+                 id="password"
+                 name="password">
+        </div>
+        <a class="btn rounded-btn">INICIAR SESIÓN</a>
+
+      </form>
+    </div>
+  </div>
+</div>
