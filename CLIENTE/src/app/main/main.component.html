@@ -1,0 +1,259 @@
+<br>
+<div class="container">
+  <h1 class="alert alert-success">{{name}}</h1>
+
+</div>
+<div class="container">
+  <form>
+    <div class="form-row align-items-center">
+      <div class="col-auto my-1">
+
+        <label>Buscar por:</label>
+      </div>
+      <div class="col-auto my-1">
+        <select [(ngModel)]="busqueda" name="busqueda" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected value="-- selecione --">Seleccione...</option>
+          <option value="Nombre">Nombre</option>
+          <option value="Fecha">Fecha</option>
+        </select>
+      </div>
+      <div *ngIf="busqueda == 'Nombre'" class="col-auto my-1">
+        <input [(ngModel)]="parametro" type="text" class="form-control" name="Nombre">
+      </div>
+      <div *ngIf="busqueda == 'Fecha'" class="col-auto my-1">
+        <input [(ngModel)]="parametro" type="text" class="form-control" name="Fecha">
+      </div>
+      <button *ngIf="busqueda != '-- selecione --'" (click)="buscarPor()" type="button" class="btn btn-primary"><i
+        class="fas fa-search"></i>
+      </button>
+    </div>
+  </form>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <br>
+    <input hidden type="file" name="files" class="form-control" #uploads (change)="onChange(uploads.files)"
+           multiplec xclkvsdlk
+           value="process"/>
+    <br>
+    <button (click)="obtenerArchivoExistente()" data-toggle="modal" data-target="#searchFile" type="button"
+            class="btn btn-warning">Cargar Archivo Existente
+    </button>
+
+    <button (click)="uploads.click()" type="button" class="btn btn-primary">Cargar Archivo Nuevo</button>
+    <button data-toggle="modal" data-target="#searchFile" *ngIf="file!=null" (click)="activeSelect =false"
+            type="button" class="btn btn-success">Guardar
+      Archivo
+    </button>
+  </div>
+  <br>
+  <table *ngIf="busqueda == '-- selecione --'" class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+      <td><b>Nombre</b></td>
+      <td><b>Fecha</b></td>
+      <td><b>Departamento</b></td>
+      <td><b>Hora Entrada</b></td>
+      <td><b>Salida Almuerzo</b></td>
+      <td><b>Regreso Almuerzo</b></td>
+      <td><b>Hora Salida</b></td>
+      <td><b>N° Timbradas</b></td>
+      <td><b>Horas Trabajadas</b></td>
+      <td *ngIf="this.file == null"><b>Editar </b></td>
+    </tr>
+    </thead>
+
+    <tbody *ngIf="this.file !=null">
+    <tr *ngFor="let record of users;let i = index;">
+      <ng-container *ngIf="quitar(i)">
+        <td> {{record.Nombre}} </td>
+        <td> {{record.Fecha | fechaPipe}} </td>
+        <td> {{record.Departamento}} </td>
+        <td> {{record.Hora1| hora}} </td>
+        <td> {{record.Hora2| hora}} </td>
+        <td> {{record.Hora3| hora}} </td>
+        <td> {{record.Hora4| hora}} </td>
+        <td *ngIf="contTimbradas(record,i)"> {{record.timbradas}} </td>
+        <td *ngIf="contHorasTrabajadas(record,i)">{{record.HoraTrabajada| hora}}</td>
+
+      </ng-container>
+    </tr>
+    </tbody>
+    <tbody *ngIf="this.file ==null">
+    <ng-container *ngFor="let record of users;let i = index;">
+      <tr [ngClass]="record.timbradas < 4?'color1':''">
+        <ng-container *ngIf="quitar(i)">
+          <td> {{record.Nombre}}</td>
+          <td> {{record.Fecha | fechaPipe}} </td>
+          <td> {{record.Departamento}} </td>
+          <td> {{record.Hora1 | hora}} </td>
+          <td> {{record.Hora2 | hora}} </td>
+          <td> {{record.Hora3 | hora}} </td>
+          <td> {{record.Hora4 | hora}} </td>
+          <td> {{record.timbradas}} </td>
+          <td>{{record.HoraTrabajada  | hora}}</td>
+          <td>
+            <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
+                    class="btn btn-primary">Editar
+            </button>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <table *ngIf="busqueda != '-- selecione --'" class="table table-bordered table-responsive">
+    <thead>
+    <tr>
+      <td><b>Nombre</b></td>
+      <td><b>Fecha</b></td>
+      <td><b>Departamento</b></td>
+      <td><b>Hora Entrada</b></td>
+      <td><b>Salida Almuerzo</b></td>
+      <td><b>Regreso Almuerzo</b></td>
+      <td><b>Hora Salida</b></td>
+      <td><b>N° Timbradas</b></td>
+      <td><b>Horas Trabajadas</b></td>
+      <td><b>Editar</b></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let record of usersFound;let i = index;">
+      <tr [ngClass]="record.timbradas < 4?'color1':''">
+        <ng-container>
+          <td> {{record.Nombre}}</td>
+          <td> {{record.Fecha | fechaPipe}} </td>
+          <td> {{record.Departamento}} </td>
+          <td> {{record.Hora1 | hora}} </td>
+          <td> {{record.Hora2 | hora}} </td>
+          <td> {{record.Hora3 | hora}} </td>
+          <td> {{record.Hora4 | hora}} </td>
+          <td> {{record.timbradas}} </td>
+          <td>{{record.HoraTrabajada  | hora}}</td>
+          <td>
+            <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
+                    class="btn btn-primary">Editar
+            </button>
+          </td>
+        </ng-container>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="modal fade" id="searchFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Biometrico</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="activeSelect">
+        <select [(ngModel)]="archivoSelected" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected value="selecione">Seleccione</option>
+          <option *ngFor="let item of dbFiles" value="{{item._id}}">{{item.nombre}}</option>
+        </select>
+      </div>
+      <div class="modal-body" *ngIf="!activeSelect">
+        <form>
+          <div class="form-group">
+            <label for="nombre" class="col-form-label">Nombre del Archivo:</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="this.archivo.nombre" name="nombre">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        <button *ngIf="activeSelect" [disabled]="archivoSelected == 'selecione'" data-dismiss="modal"
+                (click)="loadData(archivoSelected)"
+                type="button" class="btn btn-primary">Abrir
+        </button>
+        <button *ngIf="!activeSelect" data-dismiss="modal" (click)="crearUsuario()" type="button"
+                class="btn btn-primary">Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="editPerson" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Biometrico</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="nombre" class="col-form-label">Nombre:</label>
+            <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.Nombre" name="nombre">
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="nombre" class="col-form-label">Fecha:</label>
+              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Fecha" name="fecha">
+            </div>
+            <div class="col">
+              <label for="nombre" class="col-form-label">Departamento:</label>
+              <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.Departamento"
+                     name="departamento">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="nombre" class="col-form-label">Hora1:</label>
+              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Hora1" name="hora1">
+            </div>
+            <div class="col">
+              <label for="nombre" class="col-form-label">Hora2:</label>
+              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Hora2" name="hora2">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="nombre" class="col-form-label">Hora3:</label>
+              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Hora3" name="hora3">
+            </div>
+            <div class="col">
+              <label for="nombre" class="col-form-label">Hora4:</label>
+              <input type="text" class="form-control" id="nombre" [(ngModel)]="user.Hora4" name="hora4">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="nombre" class="col-form-label">Cantidad Total de Timbradas:</label>
+              <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.timbradas"
+                     name="timbradas">
+            </div>
+            <div class="col">
+              <label for="nombre" class="col-form-label">Horas Trabajadas:</label>
+              <input disabled type="text" class="form-control" id="nombre" [(ngModel)]="user.HoraTrabajada"
+                     name="HoraTrabajada">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+        <button data-dismiss="modal" type="button" (click)="actualizar()"
+                class="btn btn-primary">Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
