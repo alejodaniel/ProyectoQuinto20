@@ -35,6 +35,7 @@ userRoutes.post('/user/create', (req, res) => {
         password: bcrypt_1.default.hashSync(req.body.password, 10),
         carrera: req.body.carrera,
         huella: req.body.huella,
+        rol: req.body.rol,
         tema: req.body.tema
     };
     usuarioModel_1.Usuario.create(user).then(userDB => {
@@ -46,6 +47,7 @@ userRoutes.post('/user/create', (req, res) => {
             carrera: userDB.carrera,
             avatar: userDB.avatar,
             huella: userDB.huella,
+            rol: userDB.rol,
             tema: req.body.tema
         });
         res.json({
@@ -68,6 +70,7 @@ userRoutes.post('/user/update', [autenticacion_1.verificaToken], (req, res) => {
         carrera: req.body.carrera || req.usuario.carrera,
         huella: req.body.huella || req.usuario.huella,
         avatar: req.body.avatar,
+        rol: req.body.rol,
         tema: req.body.tema
     };
     usuarioModel_1.Usuario.findByIdAndUpdate(req.usuario._id, user, { new: true }, (err, userDB) => {
@@ -88,6 +91,7 @@ userRoutes.post('/user/update', [autenticacion_1.verificaToken], (req, res) => {
                 carrera: userDB.carrera,
                 huella: userDB.huella,
                 avatar: userDB.avatar,
+                rol: userDB.rol,
                 tema: req.body.tema
             });
             return res.json({
@@ -116,6 +120,7 @@ userRoutes.post('/user/login', (req, res) => {
                 email: usuario.email,
                 avatar: usuario.avatar,
                 carrera: usuario.carrera,
+                rol: usuario.rol,
                 tema: usuario.tema
             });
             return res.json({

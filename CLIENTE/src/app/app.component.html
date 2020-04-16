@@ -57,7 +57,7 @@
       <td><b>Hora Salida</b></td>
       <td><b>N° Timbradas</b></td>
       <td><b>Horas Trabajadas</b></td>
-      <td *ngIf="this.file == null"><b>Editar </b></td>
+      <td *ngIf="this.file == null"><b>Justificar </b></td>
     </tr>
     </thead>
 
@@ -92,7 +92,7 @@
           <td>{{record.HoraTrabajada  | hora}}</td>
           <td>
             <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
-                    class="btn btn-primary">Editar
+                    class="btn btn-primary">Justificar
             </button>
           </td>
         </ng-container>
@@ -112,7 +112,7 @@
       <td><b>Hora Salida</b></td>
       <td><b>N° Timbradas</b></td>
       <td><b>Horas Trabajadas</b></td>
-      <td><b>Editar</b></td>
+      <td><b>Justificar</b></td>
     </tr>
     </thead>
     <tbody>
@@ -130,7 +130,7 @@
           <td>{{record.HoraTrabajada  | hora}}</td>
           <td>
             <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
-                    class="btn btn-primary">Editar
+                    class="btn btn-primary">Justificar
             </button>
           </td>
         </ng-container>

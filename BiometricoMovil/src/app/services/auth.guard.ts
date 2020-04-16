@@ -16,15 +16,8 @@ export class AuthGuard implements CanActivate {
     }
 
     // @ts-ignore
-    canActivate() {
-        this.value = this.userService.cargarToken();
-        if (this.value != null) {
-            return true;
-        } else {
-            this.router.navigateRoot(['/registro']);
-            return false;
-        }
-
+    canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+        return this.userService.validaToken();
     }
 
 }

@@ -60,10 +60,7 @@ export class Tab2Page implements OnInit {
 
     dibujarMapa() {
         this.geolocation.getCurrentPosition().then((data) => {
-            // resp.coords.latitude
-            // resp.coords.longitude
             this.coordenadas = `${data.coords.longitude},${data.coords.latitude}`;
-
         }).catch((error) => {
             console.log('Error getting location', error);
         });

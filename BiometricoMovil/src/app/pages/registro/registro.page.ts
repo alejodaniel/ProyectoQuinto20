@@ -43,8 +43,14 @@ export class RegistroPage implements OnInit {
     }
 
     async registrarUsuario(regPerson: NgForm) {
+
+        if (regPerson.invalid) {
+            this.uiService.alertaInformativa('Hay campos invalidos');
+            return regPerson.form;
+        }
         if (this.usuario.password == this.passwordRep) {
             this.usuario.tema = false;
+            this.usuario.rol = 'usuario';
             this.userService.registrarUsuario(this.usuario).then(res => {
                 if (!res['ok']) {
                     this.validacion = res['err']['errors'];

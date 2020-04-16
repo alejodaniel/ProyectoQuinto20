@@ -59,7 +59,7 @@ export class TimbrarService {
         });
     }
 
-    async obtenerTimbradas() {
+    async obtenerTimbradas(pull: boolean = false) {
         await this.obtenerToken();
         const headers = new HttpHeaders({'token': this.token});
         return new Promise(resolve => {
@@ -71,4 +71,15 @@ export class TimbrarService {
         });
     }
 
+    async generarReporte(fecha) {
+        await this.obtenerToken();
+        const headers = new HttpHeaders({'token': this.token});
+        return new Promise(resolve => {
+            this.http.get(this.url + 'user/obtener/timbrar/reporte/' + fecha, {headers}).subscribe(res => {
+                resolve(res);
+            }, err => {
+                alert(JSON.stringify(err));
+            });
+        });
+    }
 }

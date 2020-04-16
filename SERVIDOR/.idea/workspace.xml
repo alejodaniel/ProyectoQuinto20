@@ -2,16 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6580ce27-a745-44a3-b976-c4711562e4ed" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/timbrar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/models/timbrar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/timbrar.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/timbrar.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab1/tab1.page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/models/timbraModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/models/timbraModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/models/timbraModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/models/timbraModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/timbrarRoutes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/timbrarRoutes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/FileSystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/FileSystem.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/Procfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/FileSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/FileSystem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/usuarioRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/usuarioRouter.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SERVIDORMOBILE" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -88,11 +102,17 @@
       <workItem from="1585067841704" duration="4557000" />
       <workItem from="1585156572567" duration="130000" />
       <workItem from="1586208960022" duration="1234000" />
+      <workItem from="1586966921243" duration="606000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../CLIENTE/node_modules/karma/config.tpl.js" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -102,26 +122,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1584468899520" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1585156700938">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1586968397461">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585156700938" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1585085690931">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586968397461" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1586968399365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585085690931" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1585085690931">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586968399365" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1586968399365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585085690931" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1585085690931">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586968399365" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1586968399365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585085690931" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1585085690931">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586968399365" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1586968399365">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585085690931" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586968399365" />
     <state x="578" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584556470470">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

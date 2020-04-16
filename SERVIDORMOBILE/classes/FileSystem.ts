@@ -7,10 +7,11 @@ export default class FileSystem {
     constructor() {
     }
 
-     guardarImagen(file: IFileUpload, userId: string, avatar: string) {
+    guardarImagen(file: IFileUpload, userId: string, avatar: string) {
         return new Promise((resolve, reject) => {
-            this.eliminarAnterior(userId, avatar);
-
+            if (avatar) {
+                this.eliminarAnterior(userId, avatar);
+            }
             const path = this.crearCarpetaUsuario(userId);
             const nombreArchivo = this.generarNombreArchivo(file.name);
 

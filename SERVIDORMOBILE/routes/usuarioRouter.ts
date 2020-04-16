@@ -10,7 +10,6 @@ const fileSystem = new FileSystem();
 
 const userRoutes = Router();
 userRoutes.get('/', (req: any, res: Response) => {
-
     res.json({
         ok: true,
     })
@@ -18,6 +17,7 @@ userRoutes.get('/', (req: any, res: Response) => {
 
 //Crear un usuario
 userRoutes.post('/user/create', (req: Request, res: Response) => {
+
     const user = {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
@@ -26,6 +26,7 @@ userRoutes.post('/user/create', (req: Request, res: Response) => {
         password: bcrypt.hashSync(req.body.password, 10),
         carrera: req.body.carrera,
         huella: req.body.huella,
+        rol: req.body.rol,
         tema: req.body.tema
 
     };
@@ -38,6 +39,7 @@ userRoutes.post('/user/create', (req: Request, res: Response) => {
             carrera: userDB.carrera,
             avatar: userDB.avatar,
             huella: userDB.huella,
+            rol: userDB.rol,
             tema: req.body.tema
 
         });
@@ -62,6 +64,7 @@ userRoutes.post('/user/update', [verificaToken], (req: any, res: Response) => {
         carrera: req.body.carrera || req.usuario.carrera,
         huella: req.body.huella || req.usuario.huella,
         avatar: req.body.avatar,
+        rol: req.body.rol,
         tema: req.body.tema
 
     };
@@ -81,6 +84,7 @@ userRoutes.post('/user/update', [verificaToken], (req: any, res: Response) => {
                 carrera: userDB.carrera,
                 huella: userDB.huella,
                 avatar: userDB.avatar,
+                rol: userDB.rol,
                 tema: req.body.tema
 
             });
@@ -113,6 +117,7 @@ userRoutes.post('/user/login', (req: Request, res: Response) => {
                 email: usuario.email,
                 avatar: usuario.avatar,
                 carrera: usuario.carrera,
+                rol: usuario.rol,
                 tema: usuario.tema
             });
             return res.json({

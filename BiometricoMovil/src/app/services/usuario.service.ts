@@ -21,6 +21,14 @@ export class UsuarioService {
     }
 
 
+    async getUsuario() {
+        if (!this.usuario._id) {
+            await this.validaToken();
+        }
+
+        return this.usuario;
+    }
+
     async guardarToken(token: string) {
         this.token = token;
         this.storage.set('token', token);
@@ -28,6 +36,10 @@ export class UsuarioService {
 
     async cargarToken() {
         this.token = await this.storage.get('token') || null;
+    }
+
+    obtenerToken() {
+        return this.token;
     }
 
     async validaToken(): Promise<boolean> {
@@ -57,7 +69,6 @@ export class UsuarioService {
     }
 
     registrarUsuario(usuario: Usuario) {
-        alert(JSON.stringify(usuario));
         return new Promise(resolve => {
             this.http.post(this.url + 'user/create', usuario).subscribe(res => {
                 if (res['ok']) {
@@ -69,7 +80,6 @@ export class UsuarioService {
                     resolve(res);
                 }
             }, err => {
-                alert(JSON.stringify(err));
                 this.uiServices.presentToast('Algo ha salido mal');
             });
         });

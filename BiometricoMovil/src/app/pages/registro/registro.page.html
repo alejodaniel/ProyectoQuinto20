@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="limiter container">
+    <div class="limiter">
         <div class="container-login100" style="background-image: url('/assets/images/img-01.png');">
             <div class="wrap-login100 ">
                 <ion-slides class="mainSlide" #slidePrincipal>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="container-login100-form-btn p-t-10">
-                                <button (click)="registrarUsuario(regPerson)" type="submit" class="login100-form-btn">
+                                <button (click)="registrarUsuario(regPerson,email)" type="submit" class="login100-form-btn">
                                     REGISTRAR USUARIO
                                 </button>
                             </div>
@@ -133,18 +133,17 @@
                     </ion-slide>
                     <ion-slide>
                         <form class="login100-form" #flogin="ngForm">
-
                             <ion-avatar class="login100-form-avatar">
                                 <img src="/assets/images/img-01.png">
                             </ion-avatar>
                             <div class="wrap-input100 validate-input m-b-10">
                                 <input [(ngModel)]="loginUSer.email" class="input100" type="email" name="email"
-                                       required email placeholder="Ingrese su Correo" #email="ngModel">
+                                       required email placeholder="Ingrese su Correo">
 
                             </div>
                             <div class="wrap-input100 validate-input m-b-10">
                                 <input [(ngModel)]="loginUSer.password" class="input100" type="password" name="password"
-                                       placeholder="Ingrese Contraseña" #password="ngModel">
+                                       placeholder="Ingrese Contraseña" >
                             </div>
 
 

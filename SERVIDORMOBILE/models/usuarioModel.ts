@@ -32,6 +32,10 @@ const usuarioSchema = new Schema({
         type: String,
         required: [true, 'La huella dactilar es requerido']
     },
+    rol: {
+        type: String,
+        default: 'usuario'
+    },
     tema: {
         type: Boolean,
         default: true
@@ -55,6 +59,7 @@ interface IUser extends Document {
     carrera: string;
     avatar: string;
     huella: string;
+    rol: string;
     tema: boolean;
 
     compararPassword(password: string): boolean;

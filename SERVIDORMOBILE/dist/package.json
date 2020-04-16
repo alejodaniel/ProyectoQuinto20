@@ -1,12 +1,12 @@
 {
-  "name": "fotosgramserver",
+  "name": "bioServer",
   "version": "1.0.0",
   "description": "API REST",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "ALEJO",
+  "author": "YAV",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",

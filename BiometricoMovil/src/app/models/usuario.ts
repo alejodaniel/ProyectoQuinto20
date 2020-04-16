@@ -8,6 +8,7 @@ export class Usuario {
     carrera?: string;
     avatar?: string;
     huella?: string;
+    rol?: string;
     tema?: boolean;
 
 }

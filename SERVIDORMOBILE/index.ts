@@ -31,16 +31,19 @@ server.app.use((req, res, next) => {
 
 //Rutas de mi app
 server.app.use('/server', [userRoutes, timbrarRoutes]);
+server.app.use('/', (req, res) => {
+    return 'Servidor En Linea'
+})
 
 //Conecgar DB
-mongoose.connect('mongodb+srv://prueba:yav12345@cluster0-bpftk.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://prueba:prueba12345@cluster0-bpftk.mongodb.net/BioDB', {
     useNewUrlParser: true,
     useFindAndModify: false
 }, (err) => {
     if (err) throw err;
     console.log('Base de datos conectada')
 });
-mongoose.createConnection('mongodb+srv://prueba:yav12345@cluster0-bpftk.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true});
+mongoose.createConnection('mongodb+srv://prueba:prueba12345@cluster0-bpftk.mongodb.net/BioDB', {useNewUrlParser: true});
 
 
 //levantar express

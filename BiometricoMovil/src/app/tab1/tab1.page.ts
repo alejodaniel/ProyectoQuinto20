@@ -39,11 +39,7 @@ export class Tab1Page implements OnInit {
     }
 
     async cargarUsuario() {
-        const validado = await this.usuarioService.validaToken();
-        if (validado) {
-            const result = await this.usuarioService.buscarUsuarioPorToken();
-            this.usuario = result['usuario'];
-        }
+        this.usuario = await this.usuarioService.getUsuario();
     }
 
 

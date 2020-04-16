@@ -35,6 +35,10 @@ const usuarioSchema = new mongoose_1.Schema({
         type: String,
         required: [true, 'La huella dactilar es requerido']
     },
+    rol: {
+        type: String,
+        default: 'usuario'
+    },
     tema: {
         type: Boolean,
         default: true

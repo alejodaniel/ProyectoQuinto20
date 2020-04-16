@@ -24,4 +24,20 @@
             </ion-item>
         </ion-card-content>
     </ion-card>
+    <ion-card *ngIf="usuario.rol =='usuario'">
+        <ion-card-content>
+            <form>
+                <ion-item lines="none">
+                    <ion-label position="floating">Fecha</ion-label>
+                    <ion-datetime displayFormat="DD/MM/YYYY" min="2020-01-11"
+                                  (ionChange)=" this.fecha = $event.detail.value;"></ion-datetime>
+                </ion-item>
+                {{this.fecha}}
+                <ion-item lines="none">
+                    <ion-button (click)="reporte()" expand="full" shape="round" expand="block">Generar Reporte
+                    </ion-button>
+                </ion-item>
+            </form>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
