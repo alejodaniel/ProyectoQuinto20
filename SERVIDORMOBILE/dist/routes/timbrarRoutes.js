@@ -66,20 +66,19 @@ timbrarRoutes.get('/user/obtener/timbrar/:fecha', [autenticacion_1.verificaToken
         res.json(err);
     });
 });
-timbrarRoutes.get('/user/obtener/timbrar/reporte/:fecha', [autenticacion_1.verificaToken], (req, res) => {
-    let fecha = req.params.fecha;
-    fecha = fecha.replace('-', '/');
-    fecha = fecha.replace('-', '/');
-    console.log(fecha);
-    timbraModel_1.Timbrar.find({ fecha: fecha }).exec().then((timbrar) => {
-        console.log(timbrar);
+timbrarRoutes.get('/user/obtener/timbrar/reporte/:fecha1/:fecha2', (req, res) => {
+    let fecha1 = req.params.fecha1;
+    fecha1 = fecha1.replace('-', '/');
+    fecha1 = fecha1.replace('-', '/');
+    let fecha2 = req.params.fecha2;
+    fecha2 = fecha2.replace('-', '/');
+    fecha2 = fecha2.replace('-', '/');
+    timbraModel_1.Timbrar.find({ fecha: { $gte: fecha1, $lte: fecha2 } }).then((timbrar) => {
         if (!timbrar) {
             return res.json({
                 ok: false,
             });
         }
-        // @ts-ignore
-        timbrar.populate('usuario', '-password').execPopulate();
         res.json({
             ok: true,
             timbrar

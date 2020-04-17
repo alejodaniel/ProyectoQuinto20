@@ -28,13 +28,18 @@
         <ion-card-content>
             <form>
                 <ion-item lines="none">
-                    <ion-label position="floating">Fecha</ion-label>
+                    <ion-label position="floating">Fecha Inicial</ion-label>
                     <ion-datetime displayFormat="DD/MM/YYYY" min="2020-01-11"
                                   (ionChange)=" this.fecha = $event.detail.value;"></ion-datetime>
                 </ion-item>
-                {{this.fecha}}
                 <ion-item lines="none">
-                    <ion-button (click)="reporte()" expand="full" shape="round" expand="block">Generar Reporte
+                    <ion-label position="floating">Fecha Secundaria</ion-label>
+                    <ion-datetime displayFormat="DD/MM/YYYY" min="2020-01-11"
+                                  (ionChange)=" this.fechaFin = $event.detail.value; this.reporte()"></ion-datetime>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-button [disabled]="activar()" (click)="ordenarDatos()" expand="full" shape="round"
+                                expand="block">Generar Reporte
                     </ion-button>
                 </ion-item>
             </form>

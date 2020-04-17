@@ -25,6 +25,22 @@ userRoutes.get('/', (req, res) => {
         ok: true,
     });
 });
+userRoutes.get('/user/obtenerPorId/:id', (req, res) => {
+    const id = req.params.id;
+    usuarioModel_1.Usuario.findById(id).then((usuario) => __awaiter(void 0, void 0, void 0, function* () {
+        if (!usuario) {
+            return res.json({
+                ok: false,
+            });
+        }
+        res.json({
+            ok: true,
+            usuario
+        });
+    })).catch((err) => {
+        res.json(err);
+    });
+});
 //Crear un usuario
 userRoutes.post('/user/create', (req, res) => {
     const user = {

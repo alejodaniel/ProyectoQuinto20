@@ -169,5 +169,9 @@ export class UsuarioService {
         });
     }
 
+    obtenerUsuarioPorId(id) {
+        return this.http.get(this.url + 'user/obtenerPorId/' + id);
+    }
+
 
 }

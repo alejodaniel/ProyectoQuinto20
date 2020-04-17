@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6580ce27-a745-44a3-b976-c4711562e4ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab1/tab1.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab1/tab1.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../CLIENTE/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/FileSystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/FileSystem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/classes/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/Procfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/FileSystem.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/FileSystem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/classes/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/usuarioRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/usuarioRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/routes/timbrarRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/dist/routes/timbrarRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/timbrarRoutes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../SERVIDORMOBILE/routes/timbrarRoutes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SERVIDORMOBILE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
@@ -103,6 +84,8 @@
       <workItem from="1585156572567" duration="130000" />
       <workItem from="1586208960022" duration="1234000" />
       <workItem from="1586966921243" duration="606000" />
+      <workItem from="1587070868615" duration="198000" />
+      <workItem from="1587071186505" duration="452000" />
     </task>
     <servers />
   </component>

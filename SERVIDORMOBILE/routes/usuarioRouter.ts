@@ -15,6 +15,23 @@ userRoutes.get('/', (req: any, res: Response) => {
     })
 });
 
+userRoutes.get('/user/obtenerPorId/:id', (req: any, res: Response) => {
+    const id = req.params.id;
+    Usuario.findById(id).then(async (usuario: any) => {
+        if (!usuario) {
+            return res.json({
+                ok: false,
+            });
+        }
+        res.json({
+            ok: true,
+            usuario
+        });
+    }).catch((err: any) => {
+        res.json(err);
+    });
+});
+
 //Crear un usuario
 userRoutes.post('/user/create', (req: Request, res: Response) => {
 
