@@ -4,6 +4,9 @@ import {Usuario} from '../models/usuario';
 import {Storage} from '@ionic/storage';
 import {NavController} from '@ionic/angular';
 import {TimbrarService} from '../services/timbrar.service';
+import {HttpClient} from '@angular/common/http';
+import * as papa from 'papaparse';
+import {json} from "@angular-devkit/core";
 
 @Component({
     selector: 'app-tab3',
@@ -11,20 +14,23 @@ import {TimbrarService} from '../services/timbrar.service';
     styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-
+    csvData = [];
+    headerRow = [];
     usuario: Usuario = {};
     darkMode = this.userService.themeDark;
     fecha = null;
     fechaFin = null;
     dataReporte: any = [];
 
-    constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController, private timbrarServices: TimbrarService) {
+    constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController, private timbrarServices: TimbrarService, private http: HttpClient) {
         this.cargarUsuario();
+        console.log(this.usuario);
     }
 
 
     async cargarUsuario() {
         this.usuario = await this.userService.getUsuario();
+        console.log(this.usuario);
     }
 
     changeTheme() {
@@ -75,7 +81,7 @@ export class Tab3Page {
     }
 
     async ordenarDatos() {
-        this.dataReporte.sort(function(a, b) {
+        this.dataReporte.sort(function (a, b) {
             if (a.usuario.nombre > b.usuario.nombre) {
                 return 1;
             }
@@ -84,7 +90,7 @@ export class Tab3Page {
             }
             return 0;
         });
-        console.log(this.dataReporte);
+
     }
 
     activar() {
@@ -93,5 +99,6 @@ export class Tab3Page {
         }
         return false;
     }
+
 
 }
