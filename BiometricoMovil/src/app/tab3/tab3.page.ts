@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 import {UsuarioService} from '../services/usuario.service';
 import {Usuario} from '../models/usuario';
 import {Storage} from '@ionic/storage';
-import {NavController, Platform} from '@ionic/angular';
+import {ActionSheetController, NavController, Platform} from '@ionic/angular';
 import {TimbrarService} from '../services/timbrar.service';
 import {HttpClient} from '@angular/common/http';
 import * as papa from 'papaparse';
-import {json} from "@angular-devkit/core";
+import {json} from '@angular-devkit/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {File} from '@ionic-native/file/ngx';
@@ -29,19 +29,14 @@ export class Tab3Page {
     fechaFin = null;
     dataReporte: any = [];
 
-    constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController,
-                private timbrarServices: TimbrarService,
-                private file: File,
-                private fileOpener: FileOpener,
-                private platform: Platform) {
+    constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController, private timbrarServices: TimbrarService,
+                private file: File, private fileOpener: FileOpener, private platform: Platform, private actionSheetController: ActionSheetController) {
         this.cargarUsuario();
-        console.log(this.usuario);
     }
 
 
     async cargarUsuario() {
         this.usuario = await this.userService.getUsuario();
-        console.log(this.usuario);
     }
 
     changeTheme() {
@@ -84,7 +79,7 @@ export class Tab3Page {
                 this.dataReporte = res['timbrar'];
                 for (let i = 0; i < this.dataReporte.length; i++) {
                     this.userService.obtenerUsuarioPorId(this.dataReporte[i].usuario).subscribe(usuario => {
-                        this.dataReporte[i].usuario = usuario['usuario'];
+                        this.dataReporte[i].usuario = usuario['usuario'].nombre + ' ' + usuario['usuario'].apellido;
                     });
                 }
             }
@@ -92,17 +87,30 @@ export class Tab3Page {
     }
 
     async ordenarDatos() {
-        this.dataReporte.sort(function (a, b) {
-            if (a.usuario.nombre > b.usuario.nombre) {
+        this.dataReporte.sort(function(a, b) {
+            if (a.usuario > b.usuario) {
                 return 1;
             }
-            if (a.usuario.nombre < b.usuario.nombre) {
+            if (a.usuario < b.usuario) {
                 return -1;
             }
             return 0;
         });
 
+        const csv = papa.unparse(this.dataReporte);
+        this.downloadCSV(csv);
     }
+
+    downloadCSV(csv) {
+        const blob = new Blob([csv]);
+        const a = window.document.createElement('a');
+        a.href = window.URL.createObjectURL(blob);
+        a.download = 'informe.csv';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+
 
     activar() {
         if (this.fechaFin == null || this.fecha == null) {
@@ -112,6 +120,20 @@ export class Tab3Page {
     }
 
     generarPdf() {
+        this.dataReporte.sort(function(a, b) {
+            if (a.usuario > b.usuario) {
+                return 1;
+            }
+            if (a.usuario < b.usuario) {
+                return -1;
+            }
+            return 0;
+        });
+        const data = [];
+        data.push(['Nombre', 'Entrada', 'Almuerzo', 'Regreso', 'Salida']);
+        for (let i = 0; i < this.dataReporte.length; i++) {
+            data.push([this.dataReporte[i].usuario, this.dataReporte[i].entrada, this.dataReporte[i].almuerzo, this.dataReporte[i].regreso, this.dataReporte[i].salida]);
+        }
 
         const genPdf = {
             content: [
@@ -121,95 +143,41 @@ export class Tab3Page {
                 {
                     style: 'tableExample',
                     table: {
-                        body: [
-                            [
-
-                                {
-                                    fillColor: '#F4FA58',
-                                    text: 'NOMBRE'
-                                },
-                                {
-                                    fillColor: '#F4FA58',
-                                    text: 'APELLIDO'
-                                },
-                                {
-                                    fillColor: '#F4FA58',
-                                    text: 'ENTRADA'
-                                },
-                                {
-                                    fillColor: '#F4FA58',
-                                    text: 'ALMUERZO'
-                                },
-                                {
-                                    fillColor: '#F4FA58',
-                                    text: 'REGRESADA ALMUERZO'
-                                },
-                                {
-                                    fillColor: '#F4FA58',
-                                    text: 'SALIDA'
-                                },
-                            ],
-                            [
-
-                                {
-                                    fillColor: '#FBFBEF',
-                                    text: `${this.usuario.nombre}`
-                                },
-                                {
-                                    fillColor: '#FBFBEF',
-                                    text: `${this.usuario.apellido}`
-                                },
-                                {
-                                    fillColor: '#FBFBEF',
-                                    text: `${this.usuario.carrera}`
-                                },
-                                {
-                                    fillColor: '#FBFBEF',
-                                    text: `${this.usuario.avatar}`
-                                }, {
-                                fillColor: '#FBFBEF',
-                                text: `${this.usuario.nombre}`
-                            },
-                                {
-                                    fillColor: '#FBFBEF',
-                                    text: '17:00'
-                                },
-
-
-                            ]
-                        ]
+                        body: data
                     }
                 },
             ],
             styles:
-        {
-            header: {
-                fontSize: 18,
-                    bold: true,
-                    margin: [0, 0, 0, 10]
-            },
-            subheader: {
-                fontSize: 16,
-                    bold: true,
-                    margin: [0, 10, 0, 5]
-            },
-            tableExample: {
-                margin: [0, 5, 0, 15]
-            },
-            tableHeader: {
-                bold: true,
-                    fontSize: 13,
-                    color: 'black'
+                {
+                    header: {
+                        fontSize: 18,
+                        bold: true,
+                        margin: [0, 0, 0, 10]
+                    },
+                    subheader: {
+                        fontSize: 16,
+                        bold: true,
+                        margin: [0, 10, 0, 5]
+                    },
+                    tableExample: {
+                        margin: [0, 5, 0, 15],
+                        color: 'black',
+                        bold: true,
+                        fontSize: 13,
+                        cssClass: 'Table'
+                    },
+                    tableHeader: {
+                        bold: true,
+                        fontSize: 13,
+                        color: 'black'
+                    }
+                },
+            defaultStyle: {
+                // alignment: 'justify'
             }
-        },
-        defaultStyle: {
-            // alignment: 'justify'
-        }
 
-    };
+        };
         this.pdfObject = pdfMake.createPdf(genPdf);
-
-        alert('pdfGenerado');
         this.pdfObject.download();
     }
 
@@ -227,5 +195,34 @@ export class Tab3Page {
         }
         this.pdfObject.download();
     }
+
+
+    async presentActionSheet() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Seleccione foto',
+            buttons: [{
+                text: 'Generar PDF',
+                icon: 'document-outline',
+                handler: () => {
+                    this.generarPdf();
+                }
+            }, {
+                text: 'Generar CSV',
+                icon: 'clipboard-outline',
+                handler: () => {
+                    this.ordenarDatos();
+                }
+            }, {
+                text: 'Cancel',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        });
+        await actionSheet.present();
+    }
+
 
 }

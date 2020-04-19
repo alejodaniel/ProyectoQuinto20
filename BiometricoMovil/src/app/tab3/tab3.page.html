@@ -38,7 +38,7 @@
                                   (ionChange)=" this.fechaFin = $event.detail.value; this.reporte()"></ion-datetime>
                 </ion-item>
                 <ion-item lines="none">
-                    <ion-button [disabled]="activar()" (click)="generarPdf()" expand="full" shape="round"
+                    <ion-button [disabled]="activar()" (click)="presentActionSheet()" expand="full" shape="round"
                                 expand="block">Generar Reporte
                     </ion-button>
                 </ion-item>
