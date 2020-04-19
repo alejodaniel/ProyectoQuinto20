@@ -15,7 +15,8 @@ import {Camera} from '@ionic-native/camera/ngx';
 import {FileTransfer} from '@ionic-native/file-transfer/ngx';
 import {ImagePipe} from './services/image.pipe';
 import {UbicacionPage} from './pages/ubicacion/ubicacion.page';
-
+import {File} from '@ionic-native/file/ngx';
+import {FileOpener} from '@ionic-native/file-opener/ngx';
 
 // @ts-ignore
 @NgModule({
@@ -29,8 +30,11 @@ import {UbicacionPage} from './pages/ubicacion/ubicacion.page';
         Geolocation,
         Camera,
         FileTransfer,
+        File,
+        FileOpener,
         NativeGeocoder,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+
         FingerprintAIO
     ],
     bootstrap: [AppComponent]

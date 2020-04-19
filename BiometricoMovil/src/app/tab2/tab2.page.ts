@@ -9,6 +9,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {UiService} from '../services/ui.service';
 import {ModalController} from '@ionic/angular';
 import {UbicacionPage} from '../pages/ubicacion/ubicacion.page';
+import {timeout} from "rxjs/operators";
 
 
 declare var mapboxgl: any;
@@ -115,6 +116,7 @@ export class Tab2Page implements OnInit {
         }
     }
 
+
     mostrarMas(timbrar) {
         this.mostrarMapa = true;
         this.geolocation.getCurrentPosition().then((data) => {
@@ -173,5 +175,17 @@ export class Tab2Page implements OnInit {
             console.log('Error getting location', error);
         });
     }
+
+    loadData(event) {
+        console.log('cargando mas ');
+        setTimeout(() => {
+            if (this.timbrar.entrada.length > 5 && this.timbrar.almuerzo.length > 5
+                && this.timbrar.regreso.length > 5 && this.timbrar.salida.length > 5) {
+                event.target.complete();
+                return;
+            }
+        }, 1000);
+    }
+
 }
 

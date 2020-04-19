@@ -52,6 +52,13 @@
                     <td width="35">{{timbrar.regreso}}</td>
                     <td width="35">{{timbrar.salida}}</td>
                 </tr>
+                <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content
+                            loadingSpinner="crescent"
+                            loadingText="Cargando más...">
+
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll>
                 </tbody>
             </table>
             <ion-button *ngIf="!mostrarMapa" shape="round" expand="block" (click)="mostrarMas(timbrar)" #boton>Mostrar

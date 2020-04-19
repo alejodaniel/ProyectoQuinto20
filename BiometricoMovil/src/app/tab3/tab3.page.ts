@@ -2,11 +2,17 @@ import {Component} from '@angular/core';
 import {UsuarioService} from '../services/usuario.service';
 import {Usuario} from '../models/usuario';
 import {Storage} from '@ionic/storage';
-import {NavController} from '@ionic/angular';
+import {NavController, Platform} from '@ionic/angular';
 import {TimbrarService} from '../services/timbrar.service';
 import {HttpClient} from '@angular/common/http';
 import * as papa from 'papaparse';
 import {json} from "@angular-devkit/core";
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import {File} from '@ionic-native/file/ngx';
+import {FileOpener} from '@ionic-native/file-opener/ngx';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
     selector: 'app-tab3',
@@ -16,13 +22,18 @@ import {json} from "@angular-devkit/core";
 export class Tab3Page {
     csvData = [];
     headerRow = [];
+    pdfObject: any;
     usuario: Usuario = {};
     darkMode = this.userService.themeDark;
     fecha = null;
     fechaFin = null;
     dataReporte: any = [];
 
-    constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController, private timbrarServices: TimbrarService, private http: HttpClient) {
+    constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController,
+                private timbrarServices: TimbrarService,
+                private file: File,
+                private fileOpener: FileOpener,
+                private platform: Platform) {
         this.cargarUsuario();
         console.log(this.usuario);
     }
@@ -100,5 +111,121 @@ export class Tab3Page {
         return false;
     }
 
+    generarPdf() {
+
+        const genPdf = {
+            content: [
+                {text: 'INSTITUTO TECNOLÓGICO SUPERIOR "YAVIRAC"', style: 'header'},
+                'Informes semanales de asistencias del instituto.',
+                {text: 'Semana 1', style: 'subheader'},
+                {
+                    style: 'tableExample',
+                    table: {
+                        body: [
+                            [
+
+                                {
+                                    fillColor: '#F4FA58',
+                                    text: 'NOMBRE'
+                                },
+                                {
+                                    fillColor: '#F4FA58',
+                                    text: 'APELLIDO'
+                                },
+                                {
+                                    fillColor: '#F4FA58',
+                                    text: 'ENTRADA'
+                                },
+                                {
+                                    fillColor: '#F4FA58',
+                                    text: 'ALMUERZO'
+                                },
+                                {
+                                    fillColor: '#F4FA58',
+                                    text: 'REGRESADA ALMUERZO'
+                                },
+                                {
+                                    fillColor: '#F4FA58',
+                                    text: 'SALIDA'
+                                },
+                            ],
+                            [
+
+                                {
+                                    fillColor: '#FBFBEF',
+                                    text: `${this.usuario.nombre}`
+                                },
+                                {
+                                    fillColor: '#FBFBEF',
+                                    text: `${this.usuario.apellido}`
+                                },
+                                {
+                                    fillColor: '#FBFBEF',
+                                    text: `${this.usuario.carrera}`
+                                },
+                                {
+                                    fillColor: '#FBFBEF',
+                                    text: `${this.usuario.avatar}`
+                                }, {
+                                fillColor: '#FBFBEF',
+                                text: `${this.usuario.nombre}`
+                            },
+                                {
+                                    fillColor: '#FBFBEF',
+                                    text: '17:00'
+                                },
+
+
+                            ]
+                        ]
+                    }
+                },
+            ],
+            styles:
+        {
+            header: {
+                fontSize: 18,
+                    bold: true,
+                    margin: [0, 0, 0, 10]
+            },
+            subheader: {
+                fontSize: 16,
+                    bold: true,
+                    margin: [0, 10, 0, 5]
+            },
+            tableExample: {
+                margin: [0, 5, 0, 15]
+            },
+            tableHeader: {
+                bold: true,
+                    fontSize: 13,
+                    color: 'black'
+            }
+        },
+        defaultStyle: {
+            // alignment: 'justify'
+        }
+
+    };
+        this.pdfObject = pdfMake.createPdf(genPdf);
+
+        alert('pdfGenerado');
+        this.pdfObject.download();
+    }
+
+    openPdf() {
+        if (this.platform.is('cordova')) {
+            this.pdfObject.getBuffer((buffer) => {
+                const blob = new Blob([buffer], {type: 'application/pdf'});
+                // Se genera el pdf desde el celu
+                this.file.writeFile(this.file.dataDirectory, 'reporte.pdf', blob, {replace: true}).then(
+                    fileEntry => {
+                        this.fileOpener.open(this.file.dataDirectory + 'reporte.pdf', 'application/pdf');
+                    });
+            });
+            return true;
+        }
+        this.pdfObject.download();
+    }
 
 }
