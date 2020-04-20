@@ -17,6 +17,7 @@ import {ImagePipe} from './services/image.pipe';
 import {UbicacionPage} from './pages/ubicacion/ubicacion.page';
 import {File} from '@ionic-native/file/ngx';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 // @ts-ignore
 @NgModule({
@@ -34,7 +35,7 @@ import {FileOpener} from '@ionic-native/file-opener/ngx';
         FileOpener,
         NativeGeocoder,
         {provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-
+        SocialSharing,
         FingerprintAIO
     ],
     bootstrap: [AppComponent]

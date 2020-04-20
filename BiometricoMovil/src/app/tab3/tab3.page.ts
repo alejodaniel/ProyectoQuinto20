@@ -11,6 +11,7 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {File} from '@ionic-native/file/ngx';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -30,7 +31,7 @@ export class Tab3Page {
     dataReporte: any = [];
 
     constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController, private timbrarServices: TimbrarService,
-                private file: File, private fileOpener: FileOpener, private platform: Platform, private actionSheetController: ActionSheetController) {
+                private file: File, private fileOpener: FileOpener, private social: SocialSharing, private platform: Platform, private actionSheetController: ActionSheetController) {
         this.cargarUsuario();
     }
 
@@ -102,13 +103,28 @@ export class Tab3Page {
     }
 
     downloadCSV(csv) {
-        const blob = new Blob([csv]);
-        const a = window.document.createElement('a');
-        a.href = window.URL.createObjectURL(blob);
-        a.download = 'informe.csv';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        if (this.platform.is('cordova')) {
+            console.log('csv: ', csv);
+            this.file.writeFile(this.file.dataDirectory, 'informe.csv', csv, {replace: true}).then(res => {
+                this.social.share(null, null, res.nativeURL, null);
+            });
+        } else {
+            const blob = new Blob([csv]);
+            const a = window.document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.download = 'informe.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
+
+    trackByFn(index: any, item: any) {
+        return index;
+    }
+
+    handleError(err) {
+
     }
 
 
@@ -178,7 +194,7 @@ export class Tab3Page {
 
         };
         this.pdfObject = pdfMake.createPdf(genPdf);
-        this.pdfObject.download();
+        this.openPdf();
     }
 
     openPdf() {
