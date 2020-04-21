@@ -60,6 +60,7 @@ export class TimbrarService {
     }
 
     async obtenerTimbradas(pull: boolean = false) {
+
         await this.obtenerToken();
         const headers = new HttpHeaders({'token': this.token});
         return new Promise(resolve => {

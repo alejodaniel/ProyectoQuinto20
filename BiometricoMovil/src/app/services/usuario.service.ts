@@ -134,6 +134,21 @@ export class UsuarioService {
         });
     }
 
+    password(email: string, password: string) {
+        const data = {email, password};
+        return new Promise(resolve => {
+            this.http.post(this.url + 'user/login', data).subscribe(res => {
+                if (res['ok']) {
+                    resolve(true);
+                    console.log('ok');
+                } else {
+                    resolve(false);
+                    console.log('false');
+                }
+            });
+        });
+    }
+
     login(email: string, password: string) {
         const data = {email, password};
         return new Promise(resolve => {

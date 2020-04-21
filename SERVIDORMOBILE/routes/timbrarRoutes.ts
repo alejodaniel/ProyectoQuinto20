@@ -83,8 +83,15 @@ timbrarRoutes.get('/user/obtener/timbrar/reporte/:fecha1/:fecha2', (req: any, re
 });
 
 timbrarRoutes.get('/user/obtener/userTimbradas', [verificaToken], (req: any, res: Response) => {
+    let pagina = Number(req.query.pagina) || 1
+    let skip = pagina - 1;
+    skip = skip * 10;
 
-    Timbrar.find({usuario: req.usuario._id}).then(async (timbrar: any) => {
+    Timbrar.find({usuario: req.usuario._id})
+        .sort({_id: -1})
+        .skip(skip)
+        .limit(10)
+        .then(async (timbrar: any) => {
         if (!timbrar) {
             return res.json({
                 ok: false,
@@ -92,7 +99,8 @@ timbrarRoutes.get('/user/obtener/userTimbradas', [verificaToken], (req: any, res
         }
         res.json({
             ok: true,
-            timbrar
+            timbrar,
+            pagina
         });
     }).catch((err: any) => {
         res.json(err);

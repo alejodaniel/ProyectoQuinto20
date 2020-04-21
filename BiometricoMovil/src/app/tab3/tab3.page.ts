@@ -88,7 +88,7 @@ export class Tab3Page {
     }
 
     async ordenarDatos() {
-        this.dataReporte.sort(function(a, b) {
+        this.dataReporte.sort(function (a, b) {
             if (a.usuario > b.usuario) {
                 return 1;
             }
@@ -136,7 +136,7 @@ export class Tab3Page {
     }
 
     generarPdf() {
-        this.dataReporte.sort(function(a, b) {
+        this.dataReporte.sort(function (a, b) {
             if (a.usuario > b.usuario) {
                 return 1;
             }

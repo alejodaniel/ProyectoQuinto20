@@ -13,22 +13,22 @@
                 <ion-item>
                     <ion-label>Entrada</ion-label>
                     <ion-checkbox [checked]="isTimbrado.entrada" disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round" (click)="showFingerPrint('entrada')">Timbrar</ion-button>
+                    <ion-button shape="round" (click)="entrada()">Timbrar</ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Almuerzo</ion-label>
                     <ion-checkbox [checked]="isTimbrado.almuerzo" disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round" (click)="showFingerPrint('almuerzo')">Timbrar</ion-button>
+                    <ion-button shape="round" (click)="almuerzo()">Timbrar</ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Regreso Almuerzo</ion-label>
                     <ion-checkbox [checked]="isTimbrado.regreso" disabled="true"></ion-checkbox>&nbsp;
-                    <ion-button shape="round" (click)="showFingerPrint('regreso')">Timbrar</ion-button>
+                    <ion-button shape="round" (click)="regreso()">Timbrar</ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Salida</ion-label>
                     <ion-checkbox [checked]="isTimbrado.salida" disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round" (click)="showFingerPrint('salida')">Timbrar</ion-button>
+                    <ion-button shape="round" (click)="salida()">Timbrar</ion-button>
                 </ion-item>
             </ion-list>
         </ion-card-content>
@@ -52,13 +52,7 @@
                     <td width="35">{{timbrar.regreso}}</td>
                     <td width="35">{{timbrar.salida}}</td>
                 </tr>
-                <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
-                    <ion-infinite-scroll-content
-                            loadingSpinner="crescent"
-                            loadingText="Cargando más...">
 
-                    </ion-infinite-scroll-content>
-                </ion-infinite-scroll>
                 </tbody>
             </table>
             <ion-button *ngIf="!mostrarMapa" shape="round" expand="block" (click)="mostrarMas(timbrar)" #boton>Mostrar

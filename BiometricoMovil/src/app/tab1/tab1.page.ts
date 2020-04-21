@@ -21,6 +21,8 @@ export class Tab1Page implements OnInit {
 
     usuario: Usuario = {};
     timbradas: any[] = [];
+
+    habilitado = true;
     img: any = '';
     url = environment.url;
     mostrarTabla = false;
@@ -126,6 +128,17 @@ export class Tab1Page implements OnInit {
         });
     }
 
+    doInfinite(infiniteScroll) {
+        console.log('Begin async operation');
+
+        if (infiniteScroll) {
+            infiniteScroll.target.complete();
+            if (this.timbradas.length === 0) {
+                this.habilitado = false;
+            }
+        }
+
+    }
 }
 
 

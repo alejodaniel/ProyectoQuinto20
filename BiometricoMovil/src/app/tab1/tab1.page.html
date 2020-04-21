@@ -34,6 +34,7 @@
 
     <ion-card class="light" *ngIf="mostrarTabla">
         <ion-card-content *ngFor="let timbrar of timbradas">
+
             <b>{{timbrar.fecha}}</b>
             <table style="color: #3880ff" class="table table-striped ">
                 <thead>
@@ -52,7 +53,9 @@
                     <td width="35">{{timbrar.salida}}</td>
                 </tr>
                 </tbody>
+
             </table>
+
         </ion-card-content>
     </ion-card>
 
