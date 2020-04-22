@@ -24,39 +24,38 @@
                 <ion-label>Carrera: {{usuario.carrera}}</ion-label>
             </ion-item>
 
-            <ion-button *ngIf="!mostrarTabla" shape="round" expand="block" (click)="cargarTimbradas()">Ver Historial
+            <ion-button *ngIf="!mostrarTabla" shape="round" expand="block" (click)="escribirFecha()">Ver Historial
             </ion-button>
             <ion-button *ngIf="mostrarTabla" color="danger" shape="round" expand="block" (click)="mostrarTabla = false">
                 Cancelar
             </ion-button>
         </ion-card-content>
     </ion-card>
-
     <ion-card class="light" *ngIf="mostrarTabla">
-        <ion-card-content *ngFor="let timbrar of timbradas">
 
-            <b>{{timbrar.fecha}}</b>
-            <table style="color: #3880ff" class="table table-striped ">
-                <thead>
-                <tr>
-                    <th width="35" scope="col">Entrada</th>
-                    <th width="35" scope="col">Almuerzo</th>
-                    <th width="35" scope="col">Regreso</th>
-                    <th width="35" scope="col">Salida</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th width="35">{{timbrar.entrada}}</th>
-                    <td width="35">{{timbrar.almuerzo}}</td>
-                    <td width="35">{{timbrar.regreso}}</td>
-                    <td width="35">{{timbrar.salida}}</td>
-                </tr>
-                </tbody>
-
-            </table>
-
-        </ion-card-content>
+        <ng-container *ngFor="let timbrar of timbradas">
+            <ion-card-content *ngIf="timbrar.usuario ==usuario._id">
+                <b>{{timbrar.fecha}}</b>
+                <table style="color: #3880ff" class="table table-striped ">
+                    <thead>
+                    <tr>
+                        <th width="35" scope="col">Entrada</th>
+                        <th width="35" scope="col">Almuerzo</th>
+                        <th width="35" scope="col">Regreso</th>
+                        <th width="35" scope="col">Salida</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th width="35">{{timbrar.entrada}}</th>
+                        <td width="35">{{timbrar.almuerzo}}</td>
+                        <td width="35">{{timbrar.regreso}}</td>
+                        <td width="35">{{timbrar.salida}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </ion-card-content>
+        </ng-container>
     </ion-card>
 
 </ion-content>

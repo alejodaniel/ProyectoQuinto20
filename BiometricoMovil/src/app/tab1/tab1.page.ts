@@ -3,9 +3,10 @@ import {UsuarioService} from '../services/usuario.service';
 import {Usuario} from '../models/usuario';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {Camera, CameraOptions} from '@ionic-native/camera/ngx';
-import {ActionSheetController} from '@ionic/angular';
+import {ActionSheetController, AlertController} from '@ionic/angular';
 import {environment} from '../../environments/environment';
 import {TimbrarService} from '../services/timbrar.service';
+import {Timbrar} from "../models/timbrar";
 
 declare var window: any;
 
@@ -21,7 +22,8 @@ export class Tab1Page implements OnInit {
 
     usuario: Usuario = {};
     timbradas: any[] = [];
-
+    fecha = null;
+    fechaFin = null;
     habilitado = true;
     img: any = '';
     url = environment.url;
@@ -31,7 +33,7 @@ export class Tab1Page implements OnInit {
     @ViewChild('mapa') mapa;
 
     constructor(private camera: Camera, private usuarioService: UsuarioService, private geolocation: Geolocation,
-                private actionSheetController: ActionSheetController, private timbrarService: TimbrarService) {
+                private alert: AlertController, private actionSheetController: ActionSheetController, private timbrarService: TimbrarService) {
         this.cargarUsuario();
         this.obtenerImagen();
     }
@@ -128,16 +130,66 @@ export class Tab1Page implements OnInit {
         });
     }
 
-    doInfinite(infiniteScroll) {
-        console.log('Begin async operation');
-
-        if (infiniteScroll) {
-            infiniteScroll.target.complete();
-            if (this.timbradas.length === 0) {
-                this.habilitado = false;
-            }
+    activar() {
+        if (this.fechaFin == null || this.fecha == null) {
+            return true;
         }
+        return false;
+    }
 
+    async reporte(data) {
+        const dia1 = data.fecha1.substr(8, 2);
+        let mes1 = data.fecha1.substr(5, 2);
+        const anio1 = data.fecha1.substr(0, 4);
+
+        data.fecha1 = dia1 + '-' + mes1 + '-' + anio1;
+
+        const dia = data.fecha2.substr(8, 2);
+        let mes = data.fecha2.substr(5, 2);
+        const anio = data.fecha2.substr(0, 4);
+
+        data.fecha2 = dia + '-' + mes + '-' + anio;
+
+
+        await this.timbrarService.generarReporte(data.fecha1, data.fecha2).subscribe(res => {
+            if (res['ok']) {
+                this.timbradas = res['timbrar'];
+                this.mostrarTabla = true;
+            }
+        });
+    }
+
+    async escribirFecha() {
+        const alert = await this.alert.create({
+            inputs: [
+                {
+                    name: 'fecha1',
+                    placeholder: 'fecha Inicial',
+                    type: 'date'
+                },
+                {
+                    name: 'fecha2',
+                    placeholder: 'fecha Secundaria',
+                    type: 'date'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Buscar',
+                    handler: data => {
+                        this.reporte(data);
+                    }
+                },
+            ]
+        });
+        await alert.present();
     }
 }
 
