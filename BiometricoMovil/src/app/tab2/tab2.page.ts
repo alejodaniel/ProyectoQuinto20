@@ -3,12 +3,13 @@ import {TimbrarService} from '../services/timbrar.service';
 import {Timbrar} from '../models/timbrar';
 import {FingerprintAIO} from '@ionic-native/fingerprint-aio/ngx';
 import {Storage} from '@ionic/storage';
-
 import {UsuarioService} from '../services/usuario.service';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {UiService} from '../services/ui.service';
 import {ActionSheetController, AlertController, ModalController} from '@ionic/angular';
 import {UbicacionPage} from '../pages/ubicacion/ubicacion.page';
+import {timeout} from "rxjs/operators";
+import {Usuario} from '../models/usuario';
 
 
 declare var mapboxgl: any;
@@ -20,15 +21,13 @@ declare var mapboxgl: any;
 })
 export class Tab2Page implements OnInit {
     coordenadas: any;
-    // @ts-ignore
-
+    usuario: Usuario = {};
     timbrar: Timbrar = new Timbrar();
     isTimbrado: any = {};
     mostrarMapa = false;
 
-    constructor(private  uiService: UiService, private geolocation: Geolocation, private timbrarService: TimbrarService, private alert: AlertController,
-                private fingerprint: FingerprintAIO, private storage: Storage, public modalController: ModalController, private userService: UsuarioService,
-                private actionSheet: ActionSheetController) {
+    constructor(private  uiService: UiService, private geolocation: Geolocation, private timbrarService: TimbrarService,
+                private userService: UsuarioService, private alertCtrl: AlertController, private actionSheetController: ActionSheetController, private fingerprint: FingerprintAIO, private storage: Storage, public modalController: ModalController) {
         this.dibujarMapa();
     }
 
@@ -67,12 +66,67 @@ export class Tab2Page implements OnInit {
         });
     }
 
+
     showFingerPrint(dato) {
+        const fecha = new Date();
         this.fingerprint.show({
             title: 'Escaner de Huella',
             disableBackup: true,
         }).then(res => {
-            this.updateTimbrada(dato);
+            if (dato == 'entrada') {
+                this.timbrar.entrada = fecha.getHours() + ':' + fecha.getMinutes();
+                this.isTimbrado.entrada = true;
+                this.timbrar.coordEntrada = this.coordenadas;
+            }
+            if (dato == 'almuerzo') {
+                this.timbrar.almuerzo = fecha.getHours() + ':' + fecha.getMinutes();
+                this.isTimbrado.almuerzo = true;
+                this.timbrar.coordAlmuerzo = this.coordenadas;
+            }
+            if (dato == 'regreso') {
+                this.timbrar.regreso = fecha.getHours() + ':' + fecha.getMinutes();
+                this.isTimbrado.regreso = true;
+                this.timbrar.coordRegreso = this.coordenadas;
+            }
+            if (dato == 'salida') {
+                this.timbrar.salida = fecha.getHours() + ':' + fecha.getMinutes();
+                this.isTimbrado.salida = true;
+                this.timbrar.coordSalida = this.coordenadas;
+            }
+            this.timbrarService.actualizar(this.timbrar).then(result => {
+
+            }).catch(err => {
+                this.uiService.presentToast('Ha ocurrido un error al timbrar');
+            });
+        });
+    }
+
+    passTimbrar(dato) {
+        const fecha = new Date();
+        if (dato == 'entrada') {
+            this.timbrar.entrada = fecha.getHours() + ':' + fecha.getMinutes();
+            this.isTimbrado.entrada = true;
+            this.timbrar.coordEntrada = this.coordenadas;
+        }
+        if (dato == 'almuerzo') {
+            this.timbrar.almuerzo = fecha.getHours() + ':' + fecha.getMinutes();
+            this.isTimbrado.almuerzo = true;
+            this.timbrar.coordAlmuerzo = this.coordenadas;
+        }
+        if (dato == 'regreso') {
+            this.timbrar.regreso = fecha.getHours() + ':' + fecha.getMinutes();
+            this.isTimbrado.regreso = true;
+            this.timbrar.coordRegreso = this.coordenadas;
+        }
+        if (dato == 'salida') {
+            this.timbrar.salida = fecha.getHours() + ':' + fecha.getMinutes();
+            this.isTimbrado.salida = true;
+            this.timbrar.coordSalida = this.coordenadas;
+        }
+        this.timbrarService.actualizar(this.timbrar).then(result => {
+
+        }).catch(err => {
+            this.uiService.presentToast('Ha ocurrido un error al timbrar');
         });
     }
 
@@ -89,6 +143,274 @@ export class Tab2Page implements OnInit {
         if (this.timbrar.salida != '00:00') {
             this.isTimbrado.salida = true;
         }
+    }
+
+    async TimbEntrada() {
+        const alert = await this.alertCtrl.create({
+            inputs: [
+                {
+                    name: 'email',
+                    placeholder: 'email',
+                    type: 'email'
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
+                    type: 'password'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Timbrar',
+                    handler: data => {
+                        const login = this.userService.password(data.email, data.password);
+                        console.log(data.email);
+                        console.log(data.password);
+                        if (login) {
+                            this.passTimbrar('entrada');
+                        } else {
+                            console.log('falseHTML');
+                        }
+
+                    }
+                },
+            ]
+        });
+        await alert.present();
+    }
+
+    async TimbAlmuerzo() {
+        const alert = await this.alertCtrl.create({
+            inputs: [
+                {
+                    name: 'email',
+                    placeholder: 'email',
+                    type: 'email'
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
+                    type: 'password'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Timbrar',
+                    handler: data => {
+                        const login = this.userService.password(data.email, data.password);
+                        console.log(data.email);
+                        console.log(data.password);
+                        if (login) {
+                            this.passTimbrar('almuerzo');
+                        } else {
+                        }
+                    }
+                },
+            ]
+        });
+        await alert.present();
+    }
+
+    async TimbRegreso() {
+        const alert = await this.alertCtrl.create({
+            inputs: [
+                {
+                    name: 'email',
+                    placeholder: 'email',
+                    type: 'email'
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
+                    type: 'password'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Timbrar',
+                    handler: data => {
+                        const login = this.userService.password(data.email, data.password);
+                        console.log(data.email);
+                        console.log(data.password);
+                        if (login) {
+                            this.passTimbrar('regreso');
+                        } else {
+                        }
+                    }
+                },
+            ]
+        });
+        await alert.present();
+    }
+
+    async TimbSalida() {
+        const alert = await this.alertCtrl.create({
+            inputs: [
+                {
+                    name: 'email',
+                    placeholder: 'email',
+                    type: 'email'
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
+                    type: 'password'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: data => {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Timbrar',
+                    handler: data => {
+                        const login = this.userService.password(data.email, data.password);
+                        console.log(data.email);
+                        console.log(data.password);
+                        if (login) {
+                            this.passTimbrar('salida');
+                        } else {
+                        }
+                    }
+                },
+            ]
+        });
+        await alert.present();
+    }
+
+    async entrada() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Seleccione el tipo de timbrada',
+            buttons: [{
+                text: 'Huella Dactilar',
+                icon: 'finger-print',
+                handler: () => {
+                    this.showFingerPrint('entrada');
+                }
+            }, {
+                text: 'Por contraseña',
+                icon: 'clipboard-outline',
+                handler: () => {
+                    this.TimbEntrada();
+                }
+            }, {
+                text: 'Cancel',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        });
+        await actionSheet.present();
+    }
+
+    async almuerzo() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Seleccione el tipo de timbrada',
+            buttons: [{
+                text: 'Huella Dactilar',
+                icon: 'finger-print',
+                handler: () => {
+                    this.showFingerPrint('almuerzo');
+                }
+            }, {
+                text: 'Por contraseña',
+                icon: 'clipboard-outline',
+                handler: () => {
+                    this.TimbAlmuerzo();
+                }
+            }, {
+                text: 'Cancel',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        });
+        await actionSheet.present();
+    }
+
+    async regreso() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Seleccione el tipo de timbrada',
+            buttons: [{
+                text: 'Huella Dactilar',
+                icon: 'finger-print',
+                handler: () => {
+                    this.showFingerPrint('regreso');
+                }
+            }, {
+                text: 'Por contraseña',
+                icon: 'clipboard-outline',
+                handler: () => {
+                    //  this.ordenarDatos();
+                    this.TimbRegreso();
+                }
+            }, {
+                text: 'Cancel',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        });
+        await actionSheet.present();
+    }
+
+    async salida() {
+        const actionSheet = await this.actionSheetController.create({
+            header: 'Seleccione el tipo de timbrada',
+            buttons: [{
+                text: 'Huella Dactilar',
+                icon: 'finger-print',
+                handler: () => {
+                    this.showFingerPrint('salida');
+                }
+            }, {
+                text: 'Por contraseña',
+                icon: 'clipboard-outline',
+                handler: () => {
+                    //  this.ordenarDatos();
+                    this.TimbSalida();
+                }
+            }, {
+                text: 'Cancel',
+                icon: 'close',
+                role: 'cancel',
+                handler: () => {
+                    console.log('Cancel clicked');
+                }
+            }]
+        });
+        await actionSheet.present();
     }
 
     mostrarMas(timbrar) {
@@ -150,99 +472,16 @@ export class Tab2Page implements OnInit {
         });
     }
 
-    async showOptions(dato) {
-        this.dibujarMapa();
-        const actionSheet = await this.actionSheet.create({
-            header: 'Seleccione el tipo de timbrada',
-            buttons: [{
-                text: 'Huella Dactilar',
-                icon: 'finger-print',
-                handler: () => {
-                    this.showFingerPrint(dato);
-                }
-            }, {
-                text: 'Contraseña',
-                icon: 'clipboard-outline',
-                handler: () => {
-                    this.escribirPass(dato);
-                }
-            }, {
-                text: 'Cancel',
-                icon: 'close',
-                role: 'cancel',
-                handler: () => {
-                    console.log('Cancel clicked');
-                }
-            }]
-        });
-        await actionSheet.present();
-    }
 
-    timbrarPass(dato, password) {
-        this.userService.timbrarPass(password).subscribe(res => {
-            if (res['ok']) {
-                this.updateTimbrada(dato);
-            } else {
-                this.uiService.alertaInformativa(res['mensaje']);
+    loadData(event) {
+        console.log('cargando mas ');
+        setTimeout(() => {
+            if (this.timbrar.entrada.length > 5 && this.timbrar.almuerzo.length > 5
+                && this.timbrar.regreso.length > 5 && this.timbrar.salida.length > 5) {
+                event.target.complete();
+                return;
             }
-        });
+        }, 1000);
     }
-
-    async escribirPass(dato) {
-        const alert = await this.alert.create({
-            inputs: [
-                {
-                    name: 'password',
-                    placeholder: 'Password',
-                    type: 'password'
-                }
-            ],
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: data => {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Timbrar',
-                    handler: data => {
-                        this.timbrarPass(dato, data.password);
-                    }
-                },
-            ]
-        });
-        await alert.present();
-    }
-
-    updateTimbrada(dato) {
-        const fecha = new Date();
-        if (dato == 'entrada') {
-            this.timbrar.entrada = fecha.getHours() + ':' + fecha.getMinutes();
-            this.isTimbrado.entrada = true;
-            this.timbrar.coordEntrada = this.coordenadas;
-        }
-        if (dato == 'almuerzo') {
-            this.timbrar.almuerzo = fecha.getHours() + ':' + fecha.getMinutes();
-            this.isTimbrado.almuerzo = true;
-            this.timbrar.coordAlmuerzo = this.coordenadas;
-        }
-        if (dato == 'regreso') {
-            this.timbrar.regreso = fecha.getHours() + ':' + fecha.getMinutes();
-            this.isTimbrado.regreso = true;
-            this.timbrar.coordRegreso = this.coordenadas;
-        }
-        if (dato == 'salida') {
-            this.timbrar.salida = fecha.getHours() + ':' + fecha.getMinutes();
-            this.isTimbrado.salida = true;
-            this.timbrar.coordSalida = this.coordenadas;
-        }
-        this.timbrarService.actualizar(this.timbrar).then(result => {
-
-        }).catch(err => {
-            this.uiService.presentToast('Ha ocurrido un error al timbrar');
-        });
-    }
-
 }
+
