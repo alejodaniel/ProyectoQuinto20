@@ -150,36 +150,25 @@ userRoutes.post('/user/login', (req, res) => {
         });
     });
 });
-userRoutes.post('/user/pass', (req, res) => {
-    const body = req.body;
-    usuarioModel_1.Usuario.findOne({ password: body.password }, (err, usuario) => {
+userRoutes.post('/user/pass', [autenticacion_1.verificaToken], (req, res) => {
+    const pass = req.body.password;
+    usuarioModel_1.Usuario.findOne({ _id: req.usuario._id }, (err, usuario) => {
         if (err)
             throw err;
         if (!usuario) {
             return res.json({
                 ok: false,
-                mensaje: 'Usuario o Contraseña no son correctos'
+                mensaje: 'Contraseña no es correcta'
             });
         }
-        if (usuario.compararPassword(body.password)) {
-            const user = {
-                _id: usuario._id,
-                nombre: usuario.nombre,
-                apellido: usuario.apellido,
-                email: usuario.email,
-                avatar: usuario.avatar,
-                carrera: usuario.carrera,
-                rol: usuario.rol,
-                tema: usuario.tema
-            };
+        if (usuario.compararPassword(pass)) {
             return res.json({
                 ok: true,
-                user: user
             });
         }
         return res.json({
             ok: false,
-            mensaje: 'Contraseña no es correcto'
+            mensaje: 'Contraseña no es correcta'
         });
     });
 });

@@ -150,37 +150,26 @@ userRoutes.post('/user/login', (req: Request, res: Response) => {
 
 });
 
-userRoutes.post('/user/pass', (req: Request, res: Response) => {
+userRoutes.post('/user/pass', [verificaToken], (req: any, res: Response) => {
 
-    const body = req.body;
+    const pass = req.body.password;
 
-    Usuario.findOne({email: body.email}, (err, usuario) => {
+    Usuario.findOne({_id: req.usuario._id}, (err, usuario) => {
         if (err) throw err;
         if (!usuario) {
             return res.json({
                 ok: false,
-                mensaje: 'Usuario o Contraseña no son correctos'
+                mensaje: 'Contraseña no es correcta'
             });
         }
-        if (usuario.compararPassword(body.password)) {
-            const user = Token.getJwtToken({
-                _id: usuario._id,
-                nombre: usuario.nombre,
-                apellido: usuario.apellido,
-                email: usuario.email,
-                avatar: usuario.avatar,
-                carrera: usuario.carrera,
-                rol: usuario.rol,
-                tema: usuario.tema
-            });
+        if (usuario.compararPassword(pass)) {
             return res.json({
                 ok: true,
-                user: user
             });
         }
         return res.json({
             ok: false,
-            mensaje: 'Contraseña no es correcto'
+            mensaje: 'Contraseña no es correcta'
         });
     });
 

@@ -114,16 +114,7 @@
 
                                 </div>
                             </div>
-                            <div class="login100-form-title">
-                                <ion-icon (click)="showFingerPrint()" name="finger-print"
-                                          style="width: 130px;height: 75px"></ion-icon>
-                            </div>
-                            <div *ngIf="validacion.huella" class=" wrap-input100 validate-input m-b-10 input1001"
-                                 role="alert">
-                                <div>
-                                    {{validacion.huella.message}}
-                                </div>
-                            </div>
+
                             <div class="container-login100-form-btn p-t-10">
                                 <button (click)="registrarUsuario(regPerson)" type="submit" class="login100-form-btn">
                                     REGISTRAR USUARIO

@@ -27,35 +27,20 @@ export class RegistroPage implements OnInit {
     validacion: any = {};
     usuario: Usuario = {};
     loginUSer: Usuario = {};
-    location: any
-    pdf = 'pdf';
-    pdfObject: any;
+    location: any;
     passwordRep: string;
     @ViewChild('slidePrincipal', {static: true}) slides: IonSlides;
 
     constructor(private fingerprint: FingerprintAIO, private userService: UsuarioService, private uiService: UiService,
                 private navController: NavController,
     ) {
-       // this.csvDato();
+        // this.csvDato();
     }
 
     ngOnInit() {
         this.slides.slideTo(1);
     }
 
-    showFingerPrint() {
-        this.fingerprint.show({
-            title: 'Escaner de Huella',
-            disableBackup: true,
-        }).then(res => {
-            const caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789';
-            let dato = '';
-            for (let i = 0; i < 20; i++) {
-                dato += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-            }
-            this.usuario.huella = dato;
-        });
-    }
 
     async registrarUsuario(regPerson: NgForm) {
 
@@ -63,6 +48,12 @@ export class RegistroPage implements OnInit {
             this.uiService.alertaInformativa('Hay campos invalidos');
             return regPerson.form;
         }
+        const caracteres = 'abcdefghijkmnpqrtuvwxyzABCDEFGHJKMNPQRTUVWXYZ2346789';
+        let dato = '';
+        for (let i = 0; i < 20; i++) {
+            dato += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        this.usuario.huella = dato;
         if (this.usuario.password == this.passwordRep) {
             this.usuario.tema = false;
             this.usuario.rol = 'usuario';
