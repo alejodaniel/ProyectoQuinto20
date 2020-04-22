@@ -13,22 +13,27 @@
                 <ion-item>
                     <ion-label>Entrada</ion-label>
                     <ion-checkbox [checked]="isTimbrado.entrada" disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round" (click)="showOptions('entrada')">Timbrar</ion-button>
+                    <ion-button shape="round" [disabled]="isTimbrado.entrada" (click)="showOptions('entrada')">Timbrar
+                    </ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Almuerzo</ion-label>
                     <ion-checkbox [checked]="isTimbrado.almuerzo" disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round" (click)="showOptions('almuerzo')">Timbrar</ion-button>
+                    <ion-button shape="round" [disabled]="isTimbrado.almuerzo" (click)="showOptions('almuerzo')">
+                        Timbrar
+                    </ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Regreso Almuerzo</ion-label>
                     <ion-checkbox [checked]="isTimbrado.regreso" disabled="true"></ion-checkbox>&nbsp;
-                    <ion-button shape="round" (click)="showOptions('regreso')">Timbrar</ion-button>
+                    <ion-button shape="round" [disabled]="isTimbrado.regreso" (click)="showOptions('regreso')">Timbrar
+                    </ion-button>
                 </ion-item>
                 <ion-item>
                     <ion-label>Salida</ion-label>
                     <ion-checkbox [checked]="isTimbrado.salida" disabled="true"></ion-checkbox> &nbsp;
-                    <ion-button shape="round" (click)="showOptions('salida')">Timbrar</ion-button>
+                    <ion-button shape="round" [disabled]="isTimbrado.salida" (click)="showOptions('salida')">Timbrar
+                    </ion-button>
                 </ion-item>
             </ion-list>
         </ion-card-content>

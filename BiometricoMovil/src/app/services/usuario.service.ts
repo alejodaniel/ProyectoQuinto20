@@ -181,5 +181,12 @@ export class UsuarioService {
         return this.http.get(this.url + 'user/obtenerPorId/' + id);
     }
 
+    updatePassword(newPass) {
+        const data = {password: newPass};
+        const headers = new HttpHeaders({
+            'token': this.token
+        });
+        return this.http.post(this.url + 'user/updatePass', data, {headers});
+    }
 
 }

@@ -98,8 +98,15 @@
                                 </div>
                             </div>
                             <div class="wrap-input100 validate-input m-b-10">
-                                <input [(ngModel)]="usuario.carrera" class="input100" type="email" name="carrera"
-                                       required placeholder="Carrera" #carrera="ngModel">
+                                <select class="input100" [(ngModel)]="usuario.carrera"
+                                        name="carrera" #carrera="ngModel" required>
+                                    <option value="brown">Arte Culinario</option>
+                                    <option value="blonde">Control de Incendios</option>
+                                    <option value="red">Diseño de Modas</option>
+                                    <option value="red">Guia Nacional de Turismo</option>
+                                    <option value="black">Desarrollo de Software</option>
+                                    <option value="red">Marketing</option>
+                                </select>
                                 <div *ngIf="carrera.invalid && (carrera.dirty || carrera.touched)" class="input1001"
                                      role="alert">
                                     <div *ngIf="carrera.errors.required">
@@ -111,7 +118,6 @@
                                     <div>
                                         {{validacion.carrera.message}}
                                     </div>
-
                                 </div>
                             </div>
 
@@ -134,7 +140,7 @@
                             </div>
                             <div class="wrap-input100 validate-input m-b-10">
                                 <input [(ngModel)]="loginUSer.password" class="input100" type="password" name="password"
-                                       placeholder="Ingrese Contraseña" >
+                                       placeholder="Ingrese Contraseña">
                             </div>
 
                             <table border="1" class="data-table">
