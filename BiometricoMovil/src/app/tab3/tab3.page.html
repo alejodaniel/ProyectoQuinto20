@@ -24,6 +24,30 @@
             </ion-item>
         </ion-card-content>
     </ion-card>
+
+    <ion-card>
+        <ion-card-content>
+            <ion-item *ngIf="!isChanged" lines="none">
+                <ion-button shape="round" (click)="isChanged = true">Cambiar contraseña</ion-button>
+            </ion-item>
+            <div *ngIf="isChanged">
+                <ion-item lines="none">
+                    <ion-label position="floating">Contraseña Anterior</ion-label>
+                    <ion-input type="password" [(ngModel)]="changePass.oldPass"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label position="floating">Nueva Contraseña</ion-label>
+                    <ion-input type="password" [(ngModel)]="changePass.newPass"></ion-input>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label position="floating">Repetir Contraseña</ion-label>
+                    <ion-input type="password" [(ngModel)]="changePass.repPass"></ion-input>
+                </ion-item>
+            </div>
+            <ion-button *ngIf="isChanged" shape="round" (click)="updatePass()">Guardar</ion-button>
+            <ion-button *ngIf="isChanged" color="danger" shape="round" (click)="cancelar()">Cancelar</ion-button>
+        </ion-card-content>
+    </ion-card>
     <ion-card *ngIf="usuario.rol =='usuario'">
         <ion-card-content>
             <form>

@@ -117,6 +117,35 @@ userRoutes.post('/user/update', [autenticacion_1.verificaToken], (req, res) => {
         }
     });
 });
+userRoutes.post('/user/updatePass', [autenticacion_1.verificaToken], (req, res) => {
+    const user = {
+        nombre: req.usuario.nombre,
+        apellido: req.usuario.apellido,
+        email: req.usuario.email,
+        password: bcrypt_1.default.hashSync(req.body.password, 10),
+        carrera: req.usuario.carrera,
+        huella: req.usuario.huella,
+        avatar: req.usuario.avatar,
+        rol: req.usuario.rol,
+        tema: req.usuario.tema
+    };
+    usuarioModel_1.Usuario.findByIdAndUpdate(req.usuario._id, user, { new: true }, (err, userDB) => {
+        if (err)
+            throw err;
+        if (!userDB) {
+            res.json({
+                ok: false,
+                mensaje: 'No se pudo actualizar la contraseña'
+            });
+        }
+        else {
+            return res.json({
+                ok: true,
+                mensaje: 'Contraseña Actualizada con Exito'
+            });
+        }
+    });
+});
 userRoutes.post('/user/login', (req, res) => {
     const body = req.body;
     usuarioModel_1.Usuario.findOne({ email: body.email }, (err, usuario) => {

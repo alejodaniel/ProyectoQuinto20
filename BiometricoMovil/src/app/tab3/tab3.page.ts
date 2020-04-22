@@ -12,6 +12,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import {File} from '@ionic-native/file/ngx';
 import {FileOpener} from '@ionic-native/file-opener/ngx';
 import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+import {UiService} from '../services/ui.service';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -23,18 +24,34 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class Tab3Page {
     csvData = [];
     headerRow = [];
+    isChanged = false;
     pdfObject: any;
     usuario: Usuario = {};
     darkMode = this.userService.themeDark;
     fecha = null;
+    changePass = {
+        oldPass: '',
+        newPass: '',
+        repPass: '',
+    };
     fechaFin = null;
     dataReporte: any = [];
 
     constructor(private userService: UsuarioService, private storage: Storage, private nav: NavController, private timbrarServices: TimbrarService,
-                private file: File, private fileOpener: FileOpener, private social: SocialSharing, private platform: Platform, private actionSheetController: ActionSheetController) {
+                private file: File, private fileOpener: FileOpener, private social: SocialSharing, private platform: Platform,
+                private actionSheetController: ActionSheetController, private uiService: UiService) {
         this.cargarUsuario();
     }
 
+
+    cancelar() {
+        this.isChanged = false;
+        this.changePass = {
+            oldPass: '',
+            newPass: '',
+            repPass: '',
+        };
+    }
 
     async cargarUsuario() {
         this.usuario = await this.userService.getUsuario();
@@ -88,7 +105,7 @@ export class Tab3Page {
     }
 
     async ordenarDatos() {
-        this.dataReporte.sort(function (a, b) {
+        this.dataReporte.sort(function(a, b) {
             if (a.usuario > b.usuario) {
                 return 1;
             }
@@ -119,14 +136,26 @@ export class Tab3Page {
         }
     }
 
-    trackByFn(index: any, item: any) {
-        return index;
+    updatePass() {
+        if (this.changePass.newPass == this.changePass.repPass) {
+            this.userService.timbrarPass(this.changePass.oldPass).subscribe(res => {
+                if (res['ok']) {
+                    this.userService.updatePassword(this.changePass.newPass).subscribe(changePassword => {
+                        if (changePassword['ok']) {
+                            this.uiService.alertaInformativa(changePassword['mensaje']);
+                            this.cancelar();
+                        } else {
+                            this.uiService.alertaInformativa(changePassword['mensaje']);
+                        }
+                    });
+                } else {
+                    this.uiService.alertaInformativa(res['mensaje']);
+                }
+            });
+        } else {
+            this.uiService.alertaInformativa('Las contraseñas no coinciden');
+        }
     }
-
-    handleError(err) {
-
-    }
-
 
     activar() {
         if (this.fechaFin == null || this.fecha == null) {
@@ -136,7 +165,7 @@ export class Tab3Page {
     }
 
     generarPdf() {
-        this.dataReporte.sort(function (a, b) {
+        this.dataReporte.sort(function(a, b) {
             if (a.usuario > b.usuario) {
                 return 1;
             }
