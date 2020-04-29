@@ -3,7 +3,7 @@
   <h1 class="alert alert-success">{{name}}</h1>
 
 </div>
-<div class="container">
+<div class="container" *ngIf="users.length > 0 && file ==null">
   <form>
     <div class="form-row align-items-center">
       <div class="col-auto my-1">
@@ -18,15 +18,27 @@
         </select>
       </div>
       <div *ngIf="busqueda == 'Nombre'" class="col-auto my-1">
-        <input [(ngModel)]="parametro" type="text" class="form-control" name="Nombre">
+        <select [(ngModel)]="parametro" name="Nombre" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected value="selecione">Seleccione</option>
+          <option *ngFor="let item of usersSearch | uniqueName" value="{{item}}">{{item}}</option>
+        </select>
       </div>
       <div *ngIf="busqueda == 'Fecha'" class="col-auto my-1">
-        <input [(ngModel)]="parametro" type="text" class="form-control" name="Fecha">
+        <select [(ngModel)]="parametro" name="Nombre" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+          <option selected value="selecione">Seleccione</option>
+          <option *ngFor="let item of usersSearch | uniqueDate"
+                  value="{{item}}">{{item | fechaPipe}}</option>
+        </select>
       </div>
       <button *ngIf="busqueda != '-- selecione --'" (click)="buscarPor()" type="button" class="btn btn-primary"><i
         class="fas fa-search"></i>
       </button>
+      <button *ngIf="busqueda != '-- selecione --' && usersFound.length >0" (click)=" cancelarBusqueda() " type="button"
+              class="btn btn-danger"><i
+        class="fas fa-times-circle"></i>
+      </button>
     </div>
+
   </form>
 </div>
 <br>
@@ -46,6 +58,9 @@
             type="button" class="btn btn-success">Guardar
       Archivo
     </button>
+    <button data-toggle="modal" data-target="#deleteFile" *ngIf="file==null && users.length>0"
+            type="button" class="btn btn-danger">Eliminar Archivo
+    </button>
   </div>
   <br>
   <table *ngIf="busqueda == '-- selecione --'" class="table table-bordered table-responsive">
@@ -60,7 +75,7 @@
       <td><b>Hora Salida</b></td>
       <td><b>N° Timbradas</b></td>
       <td><b>Horas Trabajadas</b></td>
-      <td *ngIf="this.file == null"><b>Editar </b></td>
+      <td *ngIf="this.file == null"><b>Justificar </b></td>
     </tr>
     </thead>
 
@@ -95,7 +110,7 @@
           <td>{{record.HoraTrabajada  | hora}}</td>
           <td>
             <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
-                    class="btn btn-primary">Editar
+                    class="btn btn-primary">Justificar
             </button>
           </td>
         </ng-container>
@@ -253,6 +268,35 @@
         <button data-dismiss="modal" type="button" (click)="actualizar()"
                 class="btn btn-primary">Guardar
         </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="deleteFile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Biometrico</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="nombre" class="col-form-label">¿ESTA SEGURO QUE DESEA ELIMINAR EL ARCHIVO?</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button data-dismiss="modal" type="button" class="btn btn-primary" (click)="deleteFile()">Eliminar
+        </button>
+
       </div>
     </div>
   </div>

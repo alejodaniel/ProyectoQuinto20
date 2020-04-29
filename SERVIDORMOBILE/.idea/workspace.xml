@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf371a58-963e-4c69-aa21-9b12f12f7b8c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/pages/registro/registro.page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/services/usuario.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab2/tab2.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/app/tab3/tab3.page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../BiometricoMovil/src/environments/environment.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/FileSystem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/classes/FileSystem.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/classes/server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist" beforeDir="false" afterPath="$PROJECT_DIR$/dist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/routes/timbrarRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/routes/timbrarRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/routes/usuarioRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/routes/usuarioRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/usuarioModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/usuarioModel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/timbrarRoutes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes/timbrarRoutes.ts" afterDir="false" />
@@ -120,7 +112,7 @@
       <workItem from="1587419746126" duration="721000" />
       <workItem from="1587421453507" duration="3583000" />
       <workItem from="1587489808281" duration="6156000" />
-      <workItem from="1587575349371" duration="5947000" />
+      <workItem from="1587575349371" duration="7187000" />
     </task>
     <servers />
   </component>
@@ -149,22 +141,22 @@
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1587417704208" />
     <state x="521" y="138" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587323688680" />
-    <state width="1493" height="251" key="GridCell.Tab.0.bottom" timestamp="1587580954306">
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom" timestamp="1587584764274">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587580954306" />
-    <state width="1493" height="251" key="GridCell.Tab.0.center" timestamp="1587580954305">
+    <state width="1493" height="251" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1587584764274" />
+    <state width="1493" height="251" key="GridCell.Tab.0.center" timestamp="1587584764274">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587580954305" />
-    <state width="1493" height="251" key="GridCell.Tab.0.left" timestamp="1587580954305">
+    <state width="1493" height="251" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1587584764274" />
+    <state width="1493" height="251" key="GridCell.Tab.0.left" timestamp="1587584764273">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587580954305" />
-    <state width="1493" height="251" key="GridCell.Tab.0.right" timestamp="1587580954306">
+    <state width="1493" height="251" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1587584764273" />
+    <state width="1493" height="251" key="GridCell.Tab.0.right" timestamp="1587584764274">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="251" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587580954306" />
+    <state width="1493" height="251" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1587584764274" />
     <state x="147" y="71" key="MergeDialog" timestamp="1587070657442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-    url:  'http://192.168.1.4:3000/server/'
-    // url: 'http://yavbiometrico.herokuapp.com/server/'
+    // url:  'http://192.168.0.105:3000/server/'
+    url: 'http://yavbiometrico.herokuapp.com/server/'
 };
 
 /*

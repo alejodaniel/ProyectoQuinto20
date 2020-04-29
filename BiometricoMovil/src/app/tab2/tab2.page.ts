@@ -7,8 +7,9 @@ import {Storage} from '@ionic/storage';
 import {UsuarioService} from '../services/usuario.service';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {UiService} from '../services/ui.service';
-import {ActionSheetController, AlertController, ModalController} from '@ionic/angular';
+import {ActionSheetController, AlertController, ModalController, Platform} from '@ionic/angular';
 import {UbicacionPage} from '../pages/ubicacion/ubicacion.page';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 
 declare var mapboxgl: any;
@@ -28,7 +29,7 @@ export class Tab2Page implements OnInit {
 
     constructor(private  uiService: UiService, private geolocation: Geolocation, private timbrarService: TimbrarService, private alert: AlertController,
                 private fingerprint: FingerprintAIO, private storage: Storage, public modalController: ModalController, private userService: UsuarioService,
-                private actionSheet: ActionSheetController) {
+                private actionSheet: ActionSheetController, private platform: Platform) {
         this.dibujarMapa();
     }
 
@@ -68,12 +69,16 @@ export class Tab2Page implements OnInit {
     }
 
     showFingerPrint(dato) {
-        this.fingerprint.show({
-            title: 'Escaner de Huella',
-            disableBackup: true,
-        }).then(res => {
-            this.updateTimbrada(dato);
-        });
+        if (this.platform.is('cordova')) {
+            this.fingerprint.show({
+                title: 'Escaner de Huella',
+                disableBackup: true,
+            }).then(res => {
+                this.updateTimbrada(dato);
+            });
+        } else {
+            this.uiService.alertaInformativa('Debes usar un dispositivo con lector de huella');
+        }
     }
 
     isTimbre() {

@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
   name = 'Sistema Biométrico';
   parametro: any;
   usersFound: any = [];
+  usersSearch: any = [];
   dataList: any[];
   busqueda: any = '-- selecione --';
   activeSelect: any = false;
@@ -43,6 +44,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     obj = this;
   }
+
   quitar(data) {
     if (data > 0) {
       if (this.users[data - 1].Nombre == this.users[data].Nombre && this.users[data - 1].Fecha == this.users[data].Fecha) {
@@ -143,7 +145,6 @@ export class MainComponent implements OnInit {
                 objeto.Fecha = this.dataList[i].Fecha;
                 this.fechaAcomodada = new DatePipe(objeto.Fecha);
                 this.fechaAcomodada = objeto.Fecha;
-                console.log(this.fechaAcomodada);
                 objeto.Departamento = this.dataList[i].Departamento;
                 objeto.Hora1 = this.dataList[i].Hora;
                 objeto.Hora2 = this.dataList[i + 1].Hora;
@@ -178,7 +179,7 @@ export class MainComponent implements OnInit {
       formData.append('uploads[]', this.uploadFile[i], this.uploadFile[i].name);
     }
     this.imagenesService.guardarArchivo(formData).subscribe(r => {
-      console.log(r);
+
     });
   }
 
@@ -209,6 +210,8 @@ export class MainComponent implements OnInit {
 
   loadData(id) {
     this.imagenesService.getOneArchivo(id).subscribe(r => {
+      console.log(r['datos']);
+      this.usersSearch = r['datos']['usuarios'];
       this.limpiarDatos(r['datos']['usuarios']);
     });
   }
@@ -265,7 +268,6 @@ export class MainComponent implements OnInit {
       this.user.Hora3 = undefined;
       this.user.Hora4 = undefined;
     }
-    console.log(this.user);
     this.imagenesService.actualizarPersona(this.user).subscribe(res => {
 
     });
@@ -273,12 +275,16 @@ export class MainComponent implements OnInit {
   }
 
   buscarPor() {
+    if (this.usersFound.length > 0) {
+      this.usersFound = [];
+    }
     if (this.busqueda == 'Nombre') {
-      this.imagenesService.findUserByName(this.parametro).subscribe(res => {
-        this.usersFound = res['datos'];
-      }, err => {
-        console.log(err);
-      });
+      for (let i = 0; i < this.usersSearch.length; i++) {
+        if (this.usersSearch[i].Nombre == this.parametro) {
+          this.usersFound.push(this.usersSearch[i]);
+        }
+      }
+
     }
     if (this.busqueda == 'Fecha') {
       this.imagenesService.findByDate(this.parametro).subscribe(res => {
@@ -287,6 +293,23 @@ export class MainComponent implements OnInit {
         console.log(err);
       });
     }
+  }
+
+  deleteFile() {
+    this.imagenesService.deleteFile(this.archivoSelected).subscribe(res => {
+      console.log(res);
+      this.users = [];
+      this.archivoSelected = 'selecione';
+      this.usersFound = [];
+
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  cancelarBusqueda() {
+    this.busqueda = '-- selecione --';
+    this.usersFound = [];
   }
 
 }

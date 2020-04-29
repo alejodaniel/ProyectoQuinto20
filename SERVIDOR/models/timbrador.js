@@ -2,8 +2,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var asistSchema = Schema({
-
-   Nombre: String,
+    Nombre: {
+        type: String,
+        unique: true
+    },
     Fecha: String,
     Departamento: String,
     Hora1: String,

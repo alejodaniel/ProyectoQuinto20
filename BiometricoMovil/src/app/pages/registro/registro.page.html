@@ -100,12 +100,12 @@
                             <div class="wrap-input100 validate-input m-b-10">
                                 <select class="input100" [(ngModel)]="usuario.carrera"
                                         name="carrera" #carrera="ngModel" required>
-                                    <option value="brown">Arte Culinario</option>
-                                    <option value="blonde">Control de Incendios</option>
-                                    <option value="red">Diseño de Modas</option>
-                                    <option value="red">Guia Nacional de Turismo</option>
-                                    <option value="black">Desarrollo de Software</option>
-                                    <option value="red">Marketing</option>
+                                    <option value="Arte Culinario">Arte Culinario</option>
+                                    <option value="Control de Incendios">Control de Incendios</option>
+                                    <option value="Diseño de Modas">Diseño de Modas</option>
+                                    <option value="Guia Nacional de Turismo">Guia Nacional de Turismo</option>
+                                    <option value="Desarrollo de Software">Desarrollo de Software</option>
+                                    <option value="Marketing">Marketing</option>
                                 </select>
                                 <div *ngIf="carrera.invalid && (carrera.dirty || carrera.touched)" class="input1001"
                                      role="alert">

@@ -47,4 +47,8 @@ export class ImagenesService {
     return this.http.get(this.url + 'asistentes/fecha/' + fecha);
   }
 
+  deleteFile(id) {
+    return this.http.delete(this.url + 'file/' + id);
+  }
+
 }

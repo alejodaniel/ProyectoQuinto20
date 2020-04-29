@@ -18,7 +18,6 @@ exports.create = (req, res) => {
 
 exports.createFile = (req, res) => {
     var archivo = new Archivo(req.body);
-    console.log(req)
     archivo.save().then(data => {
         return res.status(200).json({
             ok: true,
@@ -56,6 +55,27 @@ exports.findAll = (req, res) => {
         res.json(asistentes);
     }).catch(err => {
         res.status(500).send({message: 'Error al buscar'});
+    });
+};
+
+exports.deleteFile = (req, res) => {
+    Archivo.findByIdAndRemove(req.params.fileId)
+        .then(file => {
+            if (!file) {
+                return res.status(404).json({
+                    msg: "Asistente no se ecuentra " + req.params.fileIde
+                });
+            }
+            res.json({msg: "Se borro correctamente"});
+        }).catch(err => {
+        if (err.kind === 'ObjectId' || err.nombre === 'NotFound') {
+            return res.status(404).json({
+                msg: "Asistente no se encuentra" + req.params.fileIde
+            });
+        }
+        return res.status(500).json({
+            msg: "No se puede borrar" + req.params.fileIde
+        });
     });
 };
 
@@ -134,7 +154,6 @@ exports.findByDate = (req, res) => {
 exports.findByName = (req, res) => {
     let nombre = req.params.Nombre;
     nombre = nombre.replace('%20', ' ');
-    console.log(req.params.Nombre)
     Asistente.find({Nombre: nombre}).then(asistentes => {
         if (!asistentes) {
             res.status(404).send({message: 'No se encuentra'});
