@@ -15,7 +15,7 @@ let obj: MainComponent;
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+  pageActual: number = 1;
   name = 'Sistema Biométrico';
   parametro: any;
   usersFound: any = [];
@@ -127,7 +127,7 @@ export class MainComponent implements OnInit {
         skipEmptyLines: true,
         complete: (result, file) => {
           this.dataList = result.data;
-          this.dataList.sort(function(o1, o2) {
+          this.dataList.sort(function (o1, o2) {
             if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
               return 1;
             }
@@ -218,7 +218,7 @@ export class MainComponent implements OnInit {
 
 
   limpiarDatos(array) {
-    this.users = array.sort(function(o1, o2) {
+    this.users = array.sort(function (o1, o2) {
       if (o1.Nombre > o2.Nombre && o1.Fecha == o2.Fecha) {
         return 1;
       }

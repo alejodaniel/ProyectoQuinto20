@@ -80,7 +80,7 @@
     </thead>
 
     <tbody *ngIf="this.file !=null">
-    <tr *ngFor="let record of users;let i = index;">
+    <tr *ngFor="let record of users;let i = index">
       <ng-container *ngIf="quitar(i)">
         <td> {{record.Nombre}} </td>
         <td> {{record.Fecha | fechaPipe}} </td>
@@ -94,9 +94,11 @@
 
       </ng-container>
     </tr>
+
     </tbody>
+
     <tbody *ngIf="this.file ==null">
-    <ng-container *ngFor="let record of users;let i = index;">
+    <ng-container *ngFor="let record of users | paginate: {itemsPerPage:7,currentPage: pageActual} let i = index">
       <tr [ngClass]="record.timbradas < 4?'color1':''">
         <ng-container *ngIf="quitar(i)">
           <td> {{record.Nombre}}</td>
@@ -117,7 +119,11 @@
       </tr>
     </ng-container>
     </tbody>
+  <br>
+    <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
   </table>
+
+
   <table *ngIf="busqueda != '-- selecione --'" class="table table-bordered table-responsive">
     <thead>
     <tr>
