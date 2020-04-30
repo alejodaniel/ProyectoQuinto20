@@ -52,17 +52,24 @@
     <button (click)="obtenerArchivoExistente()" data-toggle="modal" data-target="#searchFile" type="button"
             class="btn btn-warning">Cargar Archivo Existente
     </button>
-
+    &nbsp; &nbsp;
     <button (click)="uploads.click()" type="button" class="btn btn-primary">Cargar Archivo Nuevo</button>
     <button data-toggle="modal" data-target="#searchFile" *ngIf="file!=null" (click)="activeSelect =false"
             type="button" class="btn btn-success">Guardar
       Archivo
     </button>
+    &nbsp; &nbsp;
     <button data-toggle="modal" data-target="#deleteFile" *ngIf="file==null && users.length>0"
             type="button" class="btn btn-danger">Eliminar Archivo
     </button>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+    <button type="button" *ngIf="file==null && users.length>0" (click)="imprimirPdf()"
+            class="btn btn-success">Generar Reporte
+    </button>
   </div>
   <br>
+
   <table *ngIf="busqueda == '-- selecione --'" class="table table-bordered table-responsive">
     <thead>
     <tr>
@@ -119,8 +126,9 @@
       </tr>
     </ng-container>
     </tbody>
-  <br>
+    <br>
     <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+
   </table>
 
 

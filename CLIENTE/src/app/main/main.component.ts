@@ -1,11 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import * as Papa from 'papaparse';
+import * as jsPDF from 'jspdf';
 import {User} from '../Models/User';
 import {ImagenesService} from '../services/imagenes.service';
 import {Archivo} from '../Models/Archivo';
 import {Pipe, PipeTransform} from '@angular/core';
 import {DatePipe} from '@angular/common';
 
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 let obj: MainComponent;
 
@@ -17,6 +22,7 @@ let obj: MainComponent;
 export class MainComponent implements OnInit {
   pageActual: number = 1;
   name = 'Sistema Biométrico';
+  pdfObject: any;
   parametro: any;
   usersFound: any = [];
   usersSearch: any = [];
@@ -312,4 +318,63 @@ export class MainComponent implements OnInit {
     this.usersFound = [];
   }
 
+  // imprimirPdf() {
+  // const doc = new jsPDF();
+
+  // d oc.fromHTML(document.getElementById('pdf'), 10, 10);
+  // doc.save('reporte');
+  // }
+  imprimirPdf() {
+    const data = [];
+    data.push(['Nombres y Apellidos', 'Departamento', 'Número de Timbradas', 'Horas Trabajadas']);
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].timbradas < 4) {
+        data.push([this.users[i].Nombre, this.users[i].Departamento, this.users[i].timbradas, this.users[i].HoraTrabajada]);
+      }
+    }
+    const genPdf = {
+      content: [
+        {text: 'INSTITUTO TECNOLÓGICO SUPERIOR "YAVIRAC"', style: 'header'},
+        'Reporte de docentes que no tienen las cuatro timbradas correspondientes.',
+        {text: 'DATOS INFORMATIVOS', style: 'subheader'},
+        {
+          style: 'tableExample',
+          table: {
+            body: data
+          }
+        },
+      ],
+      styles:
+        {
+          header: {
+            fontSize: 18,
+            bold: true,
+            margin: [0, 0, 0, 10]
+          },
+          subheader: {
+            fontSize: 16,
+            bold: true,
+            margin: [0, 10, 0, 5]
+          },
+          tableExample: {
+            margin: [0, 5, 0, 15],
+            color: 'black',
+            bold: true,
+            fontSize: 13,
+            cssClass: 'Table'
+          },
+          tableHeader: {
+            bold: true,
+            fontSize: 13,
+            color: 'black'
+          }
+        },
+      defaultStyle: {
+        // alignment: 'justify'
+      }
+
+    };
+    this.pdfObject = pdfMake.createPdf(genPdf);
+    this.pdfObject.download();
+  }
 }

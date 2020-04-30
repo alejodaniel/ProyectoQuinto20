@@ -1,0 +1,65 @@
+<br>
+<div class="container">
+  <h1 class="alert alert-success">{{name}}</h1>
+
+</div>
+<!--
+<table  class="table table-bordered table-responsive">
+  <thead>
+  <tr>
+    <td><b>Nombre</b></td>
+    <td><b>Fecha</b></td>
+    <td><b>Departamento</b></td>
+    <td><b>Hora Entrada</b></td>
+    <td><b>Salida Almuerzo</b></td>
+    <td><b>Regreso Almuerzo</b></td>
+    <td><b>Hora Salida</b></td>
+    <td><b>N° Timbradas</b></td>
+    <td><b>Horas Trabajadas</b></td>
+    <td *ngIf="this.file == null"><b>Justificar </b></td>
+  </tr>
+  </thead>
+
+  <tbody *ngIf="this.file !=null">
+  <tr *ngFor="let record of users;let i = index">
+    <ng-container *ngIf="quitar(i)">
+      <td> {{record.Nombre}} </td>
+      <td> {{record.Fecha | fechaPipe}} </td>
+      <td> {{record.Departamento}} </td>
+      <td> {{record.Hora1| hora}} </td>
+      <td> {{record.Hora2| hora}} </td>
+      <td> {{record.Hora3| hora}} </td>
+      <td> {{record.Hora4| hora}} </td>
+      <td *ngIf="contTimbradas(record,i)"> {{record.timbradas}} </td>
+      <td *ngIf="contHorasTrabajadas(record,i)">{{record.HoraTrabajada| hora}}</td>
+
+    </ng-container>
+  </tr>
+
+  </tbody>
+
+  <tbody *ngIf="this.file ==null">
+  <ng-container *ngFor="let record of users | paginate: {itemsPerPage:7,currentPage: pageActual} let i = index">
+    <tr [ngClass]="record.timbradas < 4?'color1':''">
+      <ng-container *ngIf="quitar(i)">
+        <td> {{record.Nombre}}</td>
+        <td> {{record.Fecha | fechaPipe}} </td>
+        <td> {{record.Departamento}} </td>
+        <td> {{record.Hora1 | hora}} </td>
+        <td> {{record.Hora2 | hora}} </td>
+        <td> {{record.Hora3 | hora}} </td>
+        <td> {{record.Hora4 | hora}} </td>
+        <td> {{record.timbradas}} </td>
+        <td>{{record.HoraTrabajada  | hora}}</td>
+        <td>
+          <button data-toggle="modal" data-target="#editPerson" (click)="user = record" type="button"
+                  class="btn btn-primary">Justificar
+          </button>
+        </td>
+      </ng-container>
+    </tr>
+  </ng-container>
+  </tbody>
+  <br>
+  <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+</table>-->

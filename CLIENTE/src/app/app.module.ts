@@ -8,16 +8,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {FechaPipePipe} from './services/pipes/fecha-pipe.pipe';
 import {HoraPipe} from './services/pipes/hora.pipe';
-import { LoginComponent } from './login/login.component';
+import {LoginComponent} from './login/login.component';
 import {RouterModule, Routes} from '@angular/router';
-import { MainComponent } from './main/main.component';
-import { UniqueDatePipe } from './services/pipes/unique-date.pipe';
-import { UniqueNamePipe } from './services/pipes/unique-name.pipe';
+import {MainComponent} from './main/main.component';
+import {UniqueDatePipe} from './services/pipes/unique-date.pipe';
+import {UniqueNamePipe} from './services/pipes/unique-name.pipe';
+import {ReportesComponent} from './reportes/reportes.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'main', component: MainComponent},
+  {path: 'reporte', component: ReportesComponent},
 ];
 
 @NgModule({
@@ -28,7 +31,8 @@ const routes: Routes = [
     LoginComponent,
     MainComponent,
     UniqueDatePipe,
-    UniqueNamePipe
+    UniqueNamePipe,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
