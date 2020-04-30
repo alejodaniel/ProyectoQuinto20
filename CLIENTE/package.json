@@ -23,7 +23,7 @@
     "@types/html2canvas": "0.0.35",
     "bootstrap": "^4.4.1",
     "html2canvas": "^1.0.0-rc.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "jspdf": "^1.5.3",
     "ngx-pagination": "^5.0.0",
     "papaparse": "^5.1.1",
