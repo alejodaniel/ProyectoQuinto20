@@ -24,7 +24,7 @@
     "bootstrap": "^4.4.1",
     "html2canvas": "^1.0.0-rc.5",
     "jquery": "^3.4.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.5.1",
     "ngx-pagination": "^5.0.0",
     "papaparse": "^5.1.1",
     "pdfmake": "^0.1.65",
